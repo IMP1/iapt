@@ -1,0 +1,30 @@
+body {
+	margin:0;
+	padding:0;
+}
+
+header {
+	width:960px;
+	margin:0 auto;
+	border-bottom:2px solid #333;
+}
+
+nav {
+	margin-top:20px;
+	float:right;
+}
+
+main {
+	width:960px;
+	margin:0 auto;
+}
+
+footer {
+	width:960px;
+	margin:0 auto;
+	text-align:center;
+}
+
+h1 {
+	display:inline-block;
+}

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>{{=response.title or request.application}}</title>
+		<link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/layout.css') }}" />
+		{{block head}}{{end}}
+	</head>
+	<body>
+		<header>
+			<h1>IAPT Group Six</h1>
+			<nav>
+				<a href="#">Home</a>
+				<a href="#">New Project</a>
+				<a href="#">Control Panel</a>
+			</nav>
+		</header>
