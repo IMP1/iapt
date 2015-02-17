@@ -19,7 +19,7 @@ def auth(session, db):
 
 	Keyword arguments:
 	session -- Instance of session.
-
+	db -- Instance of db (DAL) in use.
 	"""
 	if (session.auth != None) and db(db.User.id == session.auth).count() == 1:
 		return User(session.auth, db)
@@ -29,16 +29,15 @@ def auth(session, db):
 class User(object):
 	def __init__(self, id, db):
 		self._db = db
-		self._data = db(db.User.id == id).first()
+		self._data = db(db.User.id == id).select().first()
 
 	def getUsername(self):
 		return self._data.username
 
-	def setUsername(self, username):
-		pass
+	def setUsername(self, uname):
+		db(db.User.id == self._data.id).update(username=uname)
 
-
-	def setPassword(self, password):
-		pass
+	def setPassword(self, pword):
+		db(db.User.id == self._data.id).update(password=pword)
 
 		

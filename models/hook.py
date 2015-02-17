@@ -4,4 +4,5 @@ import users
 import projects
 import documents
 
+# Auth a user.
 print users.auth(session, db)
