@@ -1,4 +1,4 @@
 def index():
 	if user != None:
-		users.unauth(session)
+		users.deauth(session)
 	redirect(URL(c='default'))

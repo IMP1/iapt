@@ -41,8 +41,8 @@ def auth(session, db):
 	else:
 		return None 
 
-def unauth(session):
-	""" Un-authenticate a user.
+def deauth(session):
+	""" deauthenticate a user.
 
 	Keyword arguments:
 	session -- Instance of session.
