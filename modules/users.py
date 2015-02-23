@@ -12,6 +12,21 @@ def register(uname, password, db):
 	"""
 	db.User.insert(**db.User._filter_fields(dict(username=uname, password=password)))
 
+def login(uname, password, db, session):
+	""" Login a user in database and return true on success.
+
+	Keyword arguments:
+	uname -- The username for the new user.
+	password -- The password for the new user.
+	db -- Instance of db (DAL) in use.
+	session -- Instance of session.
+	"""
+	query = db((db.User.username == uname) & (db.User.password == password))
+	if query.count() == 1:
+		session.auth = query.select().first().id
+		return True
+	else:
+		return False
 
 def auth(session, db):
 	""" Authenticate a user in database and return a user object.
@@ -25,6 +40,14 @@ def auth(session, db):
 		return User(session.auth, db)
 	else:
 		return None 
+
+def unauth(session):
+	""" Un-authenticate a user.
+
+	Keyword arguments:
+	session -- Instance of session.
+	"""
+	session.auth = None
 
 class User(object):
 	def __init__(self, id, db):

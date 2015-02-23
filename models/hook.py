@@ -5,4 +5,4 @@ import projects
 import documents
 
 # Auth a user.
-print users.auth(session, db)
+user = users.auth(session, db)
