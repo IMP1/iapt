@@ -11,10 +11,12 @@ db.define_table('User',
         requires=[IS_NOT_EMPTY(), IS_LENGTH(64)]),
 )
 
-statuses = ('Open', 'Closed')
+project_statuses = ('Open', 'Closed')
 #Project
 db.define_table('Project',
     Field('creator', db.User),
+    Field('title', length=128),
+    Field('status', 'integer', requires=IS_IN_SET(range(2), project_statuses))
     )
 
 # What about document image statuses... How do these relate to project statuses?

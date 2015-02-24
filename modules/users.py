@@ -54,6 +54,9 @@ class User(object):
 		self._db = db
 		self._data = db(db.User.id == id).select().first()
 
+	def getId(self):
+		return self._data.id
+
 	def getUsername(self):
 		return self._data.username
 
@@ -62,5 +65,4 @@ class User(object):
 
 	def setPassword(self, pword):
 		db(db.User.id == self._data.id).update(password=pword)
-
-		
+	
