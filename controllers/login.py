@@ -1,5 +1,5 @@
 def index():
-	if user == None:
+	if current_user == None:
 		form = SQLFORM.factory(
 			 Field('username', length=128, default=''),
 			 Field('password', 'password', length=64)
