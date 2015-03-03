@@ -1,4 +1,4 @@
-def index():
+def login():
 	if current_user == None:
 		form = SQLFORM.factory(
 			 Field('username', length=128, default=''),
@@ -9,3 +9,11 @@ def index():
 		return dict(form=form)
 	else:
 		redirect(URL(c='default'))
+
+def logout():
+	if current_user != None:
+		users.deauth(session)
+	redirect(URL(c='default'))
+
+def register():
+    return dict()
