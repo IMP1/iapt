@@ -2,7 +2,7 @@
 # ORM for Projects.
 
 def create(title, user, db):
-	id = db.Project.insert(creator=user.getId(), title=title, status=2)
+	id = db.Project.insert(creator=user.getId(), title=title)
 	return Project(id, db)
 
 class Project(object):
@@ -12,3 +12,10 @@ class Project(object):
 
 	def getTitle(self):
 		return self._data.title
+
+	def setTitle(self, title):
+		db(db.Project.id == self._data.id).update(title=title)
+		self._data.title = title
+
+	def getCreator(self):
+		return self._data.creator

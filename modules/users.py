@@ -10,7 +10,8 @@ def register(uname, password, db):
 	db -- Instance of db (DAL) in use.
 
 	"""
-	db.User.insert(**db.User._filter_fields(dict(username=uname, password=password)))
+	id = db.User.insert(username=uname, password=password)
+	return User(id, db)
 
 def login(uname, password, db, session):
 	""" Login a user in database and return true on success.
@@ -62,7 +63,9 @@ class User(object):
 
 	def setUsername(self, uname):
 		db(db.User.id == self._data.id).update(username=uname)
+		self._data.username = uname
 
 	def setPassword(self, pword):
 		db(db.User.id == self._data.id).update(password=pword)
+		self._data.password = pword
 	

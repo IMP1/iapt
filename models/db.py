@@ -11,13 +11,32 @@ db.define_table('User',
         requires=[IS_NOT_EMPTY(), IS_LENGTH(64)]),
 )
 
-project_statuses = ('Open', 'Closed')
 #Project
 db.define_table('Project',
     Field('creator', db.User),
     Field('title', length=128),
-    Field('status', 'integer', requires=IS_IN_SET(range(2), project_statuses))
     )
 
-# What about document image statuses... How do these relate to project statuses?
-# Can project status be derived from document image statuses?
+#Document
+doc_statuses = ('Closed', 'Open')
+db.define_table('Document',
+	Field('project', db.Project),
+	Field('image', 'upload'),
+	Field('title'),
+	Field('status', requires=IS_IN_SET(range(2), doc_statuses))
+	)
+
+#Section
+db.define_table('Section',
+	Field('document', db.Document),
+	Field('description')
+	#Type?
+	)
+
+#Transcription
+db.define_table('Transcription',
+	Field('section', db.Section),
+	#Field('transcriber', db.User),
+	Field('text'),
+	Field('accepted', 'boolean')
+	)
