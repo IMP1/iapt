@@ -1,6 +1,9 @@
 body {
 	margin:0;
 	padding:0;
+	background:rgb(252,251,227);
+	color:rgb(117,92,59);
+	font-family:Verdana, sans-serif;
 }
 
 header {
