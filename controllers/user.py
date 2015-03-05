@@ -22,7 +22,9 @@ def register():
 			label="Confirm",
 			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
 		    submit_button='Next >'
-		)
+			)
+		if form.process().accepted:
+			users.login(form.vars.username, form.vars.password, db, session)
 		return dict(form=form)
 	else:
 		redirect(URL(c='default'))
