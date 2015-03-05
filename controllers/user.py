@@ -19,7 +19,7 @@ def register():
 	if current_user == None:
 		form = SQLFORM.factory(db.User, 
 			Field('cpassword', 'password', 
-			label="Confirm",
+			label="Confirm Password",
 			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
 		    submit_button='Next >'
 			)
