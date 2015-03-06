@@ -41,6 +41,7 @@ header {
 }
 header > div {
 	position: relative;
+	padding: 10px;
 }
 header > div > a {
 	font-weight: bold;
@@ -67,7 +68,7 @@ header li {
 #search {
 	border: 1px solid #7F441D;
 	width: 462px;
-	margin: 10px auto;
+	margin: 0 auto;
 	box-shadow: 0 0 5px -2px #000;
 }
 #search input {
