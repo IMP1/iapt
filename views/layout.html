@@ -7,31 +7,33 @@
 	</head>
 	<body>
 		<header>
-            {{block header}}
-			<div class="header-centre">
-				<div class="logo">
-					<a href="/iapt/default/index"><h1>Transcriber</h1></a>
-				</div>
-				<form class="header-search">
-					<input type="search" placeholder="Search..." ><input type="submit" value="Search">
-				</form>
+			{{block header}}
+			<div>
+				<a href="{{= URL('default', 'index') }}">Transcriber</a>
 				<nav>
-					<a href="/iapt/default/index">Home</a>
-					<a href="#">Dashboard</a>
-					<a href="#">Create a Project</a>
+					<ul>
+						<li><a href="{{= URL('user', 'login') }}">Login</a></li><!--
+						--><li><a href="{{= URL('user', 'register') }}">Register</a></li><!--
+						--><li><a href="{{= URL('project', 'new') }}">New Project</a></li>
+					</ul>
 				</nav>
+				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="text" /><input type="submit" value="Search" /></form>
 			</div>
-            {{end}}
+			{{end}}
 		</header>
-        <main>
-            {{include}}
-            <div style="height: 1280px"></div>
-        </main>
-        <footer>
-            {{block footer}}
-            &copy; IAPT Group Six
-            {{end}}
-        </footer>
-        <!-- Load javascript last to improve page rendering speed -->
-    </body>
+		<main>
+			{{include}}
+		</main>
+		<div id="spacer"></div>
+		<footer>
+			{{block footer}}
+			<div>
+				<div class="section">The footer of doom, not sure if really required</div>
+				<div class="section">Other Sites<ul><li>David</li><li>Made</li><li>Me</li><li>Do</li><li>It</li></ul></div>
+				<div class="section">Some other crap</div>
+			</div>
+			{{end}}
+		</footer>
+		<!-- Load javascript last to improve page rendering speed -->
+	</body>
 </html>

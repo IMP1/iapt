@@ -1,164 +1,119 @@
 * {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-}
-
-body {
 	margin: 0;
 	padding: 0;
-	background: rgb(252,251,227);
-	color: rgb(117,92,59);
-	font-family: Verdana, sans-serif;
+	box-sizing: border-box;
 }
-
-a {
-	text-decoration: none;
-	color: rgb(117,92,59);
-}
-
-a:focus,
-a:hover {
-    outline: none;
-    text-decoration: none;
-    color: rgb(70, 61, 45);
-    border-bottom: 1px solid rgb(70, 61, 45);
-}
-
-h1 {
-	display: inline-block;
-	margin: 0;
-	padding-top: 0.3rem;
-	font-size: 18pt;
-	float: left;
-	height: 2rem;
-	font-family: Georgia, serif;
-	letter-spacing: -0.03em;
-}
-
-h2 {
-	margin: 0;
-	padding: 0;
-	font-size: 16pt;
-}
-
-header {
-	width: 100%;
-	height: 2.5rem;
-	background: rgb(205,187,153);
-    position: fixed;
-}
-
-.header-centre {
-    vertical-align: baseline;   
-	margin: 0 auto;
-	width: 960px;
-    height: 100%;
-}
-
-nav {
-	float: right;
-    padding-top: 0.5rem;
+html {
 	height: 100%;
-	box-sizing: border-box;	
 }
-
-nav a {
-    font-weight: bold;
-	margin: 0 0.8rem 0 0;
-	font-size :12pt;
+body {
+	font-family: Arial, Sans-serif;
+	color: #4C2811;
+	position: relative;
+	min-height: 100%;
 }
-
-nav a:last-child {
-	margin: 0;
+header > div, .content, .dark > div, footer > div {
+	width: 1020px;
+	margin: auto;
 }
-
-main {
-	width: 960px;
-	margin: 0 auto;
-	padding: 4rem 0 0 0;
+h1 {
+	margin: 30px 0 10px;
+}
+a {
+	color: #4C2811;
+	text-decoration: none;
+}
+a:hover {
+	color: #C7B18F;
+}
+.dark {
+	background-color: #CDBB99;
+	padding: 30px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 5px -2px #000 inset, 0 -2px 5px -2px #000 inset;
 }
 
 footer {
-	text-align: center;
+	box-shadow: 0 2px 5px -2px #000 inset;
 }
-
-input[type=submit] {
-    height: 1.8rem;
-    vertical-align: middle;
-    margin: 0;
-    border: 1px solid rgb(117,92,59);
-    border-radius: 0.3rem;
-	background: rgb(205,187,153);
-	color: rgb(117,92,59);
+header {
+	width: 100%;
 }
-
-input[type=submit]:hover,
-input[type=submit]:focus {
-    cursor: pointer;
-    -webkit-appearance: none;
-    outline: none;
-	background: rgb(117,92,59);
-	color: rgb(205,187,153);
+header > div {
+	position: relative;
 }
-
-.logo {
-	float: left;
-	height: 95%;
+header > div > a {
+	font-weight: bold;
+	font-size: 26px;
+	position: absolute;
+	left: 0;
+	padding: 4px 0 3px;
 }
-
-.header-search {
-	float: left;
+header > div > a:hover {
+	color: #4C2811;
+}
+header ul {
+	position: absolute;
+	right: 0;
+	margin-left: 200px;
+	height: 38px;
+	list-style-type: none;
+}
+header li {
 	display: inline-block;
-	margin-top: 0.3rem;
-    margin-left: 4rem;
-    width: 40%;
+	padding: 10px;
 }
 
-.header-search input[type=search] {
-    width: 80%;
-    height: 1.8rem;
-    vertical-align: middle;
-    border: 1px solid rgb(117,92,59);
-    border-top-left-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
-    padding: 0.3rem;
+#search {
+	border: 1px solid #7F441D;
+	width: 462px;
+	margin: 10px auto;
+	box-shadow: 0 0 5px -2px #000;
+}
+#search input {
+	padding: 8px;
+	font-size: 18px;
+	border: 0;
+}
+#search input[type=text] {
+	width: 360px;
+}
+#search .arrow {
+	border: 10px solid transparent;
+	border-right: 10px solid #F4E5C4;
+	position: absolute;
+	margin: 10px 0 0 340px;
+}
+#search input[type=submit] {
+	background-color: #F4E5C4;
+	color: #4C2811;
+	width: 100px;
 }
 
-.header-search input[type=submit] {
-    height: 1.8rem;
-    vertical-align: middle;
-    margin: 0;
-    border: 1px solid rgb(117,92,59);
-    border-top-right-radius: 0.3rem;
-    border-top-left-radius: 0rem;
-    border-bottom-right-radius: 0.3rem;
-    border-bottom-left-radius: 0rem;
-    border-left-width: 0;
-	background: rgb(205,187,153);
-	color: rgb(117,92,59);
+footer .section:nth-child(1) {
+	border: 0;
 }
-
-.header-search input[type=submit]:hover,
-.header-search input[type=submit]:focus {
-    cursor: pointer;
-    -webkit-appearance: none;
-    outline: none;
-	background: rgb(117,92,59);
-	color: rgb(205,187,153);
+#spacer {
+	height: 260px;
 }
-
-.document-list {
-	list-style: none;
+footer > div {
+	height: 180px;
 }
-
-.document-list li {
+footer .section {
+	width: 330px;
+	vertical-align: top;
+	height: 100%;
 	display: inline-block;
-    float: left;
-	width: 20%;
+	border-left: 1px solid #4C2811;
+	padding: 20px;
 }
-
-.document-preview {
-	width: 180px;
-	height: 200px;
-    border: 1px solid rgb(117,92,59);
+footer {
+	position: absolute;
+	bottom: 0;
+	padding: 20px;
+	width: 100%;
+	background-color: #CDBB99;
+}
+footer li {
+	margin: 5px 0 5px 50px;
 }
