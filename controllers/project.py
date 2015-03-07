@@ -2,14 +2,17 @@ def index():
 	if current_user == None:
 		session.flash = 'You must be logged in to see your projects.'
 		redirect(URL(c='user', f='login'))
-	projects = [
-				{'title':"Test Project 1"},
-				{'title':"Test Project 2"}
-				]
-	return dict(projects=projects)
+	return dict(projects=projects.users_projects(current_user, db))
 
 def new():
 	if current_user == None:
 		session.flash = 'You must be logged in to create a project.'
 		redirect(URL(c='user', f='login'))
-	return dict()
+	form = SQLFORM.factory(
+			Field('title', 'string', requires=IS_NOT_EMPTY())
+			)
+	if form.process().accepted:
+		projects.create(form.vars.title, current_user, db)
+		# TODO: Redirect to manage this project.
+		redirect(URL(c='project', f='index'))
+	return dict(form=form)
