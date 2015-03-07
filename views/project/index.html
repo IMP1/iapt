@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<div class=".dark">&nbsp;</div>
+<div class="content">
+	<h1>Your Projects</h1>
+	<ul class="projects-list">
+	{{for p in projects: }}
+		<li>{{=p['title']}}</li>
+	{{pass}}
+	</ul>
+</div>
