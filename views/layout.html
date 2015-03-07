@@ -25,11 +25,16 @@
 						{{ pass }}
 					</ul>
 				</nav>
-				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="text" /><input type="submit" value="Search" /></form>
+				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="search" /><input type="submit" value="Search" /></form>
 			</div>
 			{{end}}
 		</header>
 		<main>
+			{{if response.flash:}}
+				<div id="flash">
+					FLASH! {{= response.flash}}
+				</div>
+			{{pass}}
 			{{include}}
 			{{pass}}
 		</main>

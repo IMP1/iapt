@@ -2,8 +2,32 @@
 # ORM for Projects.
 
 def create(title, user, db):
+	""" Create a new project.
+		Returns the Project object for new project.
+
+	Keyword arguments:
+	title -- Title of the new project.
+	user -- User object for creator.
+	db -- Instance of db (DAL) in use.
+
+	"""
 	id = db.Project.insert(creator=user.getId(), title=title)
 	return Project(id, db)
+
+def users_projects(user, db):
+	""" Get all projects belonging to user.
+		Returns list of Project objects.
+
+	Keyword arguments:
+	user -- User object for creator.
+	db -- Instance of db (DAL) in use.
+
+	"""
+	ret_list = list()
+	results = db(db.Project.creator ==  user.getId()).select()
+	for r in results:
+		ret_list.append(Project(r.id, db))
+	return ret_list
 
 class Project(object):
 	def __init__(self, id, db):

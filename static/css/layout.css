@@ -76,7 +76,7 @@ header li {
 	font-size: 18px;
 	border: 0;
 }
-#search input[type=text] {
+#search input[type=search] {
 	width: 360px;
 }
 #search .arrow {
