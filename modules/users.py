@@ -62,10 +62,10 @@ class User(object):
 		return self._data.username
 
 	def setUsername(self, uname):
-		db(db.User.id == self._data.id).update(username=uname)
+		self._db(self._db.User.id == self._data.id).update(username=uname)
 		self._data.username = uname
 
 	def setPassword(self, pword):
-		db(db.User.id == self._data.id).update(password=pword)
+		self._db(self._db.User.id == self._data.id).update(password=pword)
 		self._data.password = pword
 	

@@ -6,6 +6,7 @@ track_changes(True)
 import users
 import projects
 import documents
+import sections
 
 # Auth a user. 
 current_user = users.auth(session, db)

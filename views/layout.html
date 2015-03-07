@@ -12,9 +12,17 @@
 				<a href="{{= URL('default', 'index') }}">Transcriber</a>
 				<nav>
 					<ul>
-						<li><a href="{{= URL('user', 'login') }}">Login</a></li><!--
-						--><li><a href="{{= URL('user', 'register') }}">Register</a></li><!--
-						--><li><a href="{{= URL('project', 'new') }}">New Project</a></li>
+						<li><a href="{{= URL('default', 'index') }}">Home</a></li><!--
+						--><li><a href="{{= URL('project', 'index') }}">Your Projects</a></li><!--
+						--><li><a href="{{= URL('project', 'new') }}">New Project</a></li><!--
+						{{ if current_user: }}
+							--><li><a href="{{= URL('user', 'logout') }}">Logout</a></li><!--
+							--><li><a href="{{= URL('user', 'profile') }}">Your Profile</a></li>
+						{{ else: }}
+							--><li><a href="{{= URL('user', 'login') }}">Login</a></li><!--
+							--><li><a href="{{= URL('user', 'register') }}">Register</a></li>
+							
+						{{ pass }}
 					</ul>
 				</nav>
 				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="text" /><input type="submit" value="Search" /></form>

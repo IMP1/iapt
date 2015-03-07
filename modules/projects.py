@@ -10,11 +10,14 @@ class Project(object):
 		self._db = db
 		self._data = db(db.Project.id == id).select().first()
 
+	def getId(self):
+		return self._data.id
+
 	def getTitle(self):
 		return self._data.title
 
 	def setTitle(self, title):
-		db(db.Project.id == self._data.id).update(title=title)
+		self._db(self._db.Project.id == self._data.id).update(title=title)
 		self._data.title = title
 
 	def getCreator(self):
