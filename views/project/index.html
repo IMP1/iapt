@@ -4,7 +4,16 @@
 	<h1>Your Projects</h1>
 	<ul class="projects-list">
 	{{for p in projects: }}
-		<li>{{=p.getTitle()}}</li>
+		<li>
+			{{=p.getTitle()}}
+			<ol class="documents-list">
+				{{for d in p.getDocuments():}}
+					<li>
+						{{=d.getTitle()}}
+					</li>
+				{{pass}}
+			</ol>
+		</li>
 	{{pass}}
 	</ul>
 </div>

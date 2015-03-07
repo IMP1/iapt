@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # ORM for Projects.
+import documents
 
 def create(title, user, db):
 	""" Create a new project.
@@ -33,6 +34,10 @@ class Project(object):
 	def __init__(self, id, db):
 		self._db = db
 		self._data = db(db.Project.id == id).select().first()
+		self._documents = list()
+		docs = db(db.Document.project == id).select()
+		for d in docs:
+			self._documents.append(documents.Document(d.id, db))
 
 	def getId(self):
 		return self._data.id
@@ -46,3 +51,6 @@ class Project(object):
 
 	def getCreator(self):
 		return self._data.creator
+
+	def getDocuments(self):
+		return self._documents
