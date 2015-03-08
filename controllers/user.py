@@ -1,14 +1,32 @@
+def index():
+	if current_user == None:
+		session.back = URL(args=request.args, host=True)
+		session.flash = 'You must be logged in to see your profile.'
+		redirect(URL(c='user', f='login'))
+	return dict()
+
 def login():
 	if current_user == None:
 		form = SQLFORM.factory(
 			Field('username', length=128, default=''),
-			Field('password', 'password', length=64)
+			Field('password', 'password', length=64),
+			submit_button='Login'
 			)
 		if form.process().accepted:
-			users.login(form.vars.username, form.vars.password, db, session)
-			redirect(URL(c='default', f='index'))
+			if users.login(form.vars.username, form.vars.password, db, session):
+				if session.back:
+					# Extract session.back and clear it. Redirect to wherever the user was.
+					tmp = session.back
+					session.back = None
+					redirect(tmp)
+				else:
+					# Redirect to home as fallback.
+					redirect(URL(c='default', f='index'))
+			else:
+				response.flash = "Invalid credentials."
 		return dict(form=form)
 	else:
+		# This should never happen, redirect them home if it does.
 		redirect(URL(c='default', f='index'))
 
 def logout():
