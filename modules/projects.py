@@ -37,7 +37,7 @@ class Project(object):
 		self._documents = list()
 		docs = db(db.Document.project == id).select()
 		for d in docs:
-			self._documents.append(documents.Document(d.id, db))
+			self._documents.append(documents.Document(d.id, db, False))
 
 	def getId(self):
 		return self._data.id

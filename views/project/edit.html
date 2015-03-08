@@ -2,4 +2,13 @@
 <div class=".dark">&nbsp;</div>
 <div class="content">
 	<h1>{{=project.getTitle()}}</h1>
+	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
+	<ul>
+		<li>Create New Document Link</li>
+		{{for d in project.getDocuments():}}
+			<li>
+			<a href="{{=URL(c='document', f='edit', args=[d.getId()])}}">{{=d.getTitle()}}</a>
+			</li>
+		{{pass}}
+	</ul>
 </div>

@@ -15,9 +15,9 @@ def new():
 			submit_button='Create Project'
 			)
 	if form.process().accepted:
-		projects.create(form.vars.title, current_user, db)
+		
 		# TODO: Redirect to manage this project.
-		redirect(URL(c='project', f='index'))
+		redirect(URL(c='project', f='edit', args=[projects.create(form.vars.title, current_user, db).getId()]))
 	return dict(form=form)
 
 # TODO: Handle errors.
