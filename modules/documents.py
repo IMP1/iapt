@@ -25,6 +25,9 @@ class Document(object):
 	def getId(self):
 		return self._data.id
 
+	def getImage(self):
+		return self._data.image
+
 	def getProject(self):
 		return self._project
 

@@ -16,4 +16,8 @@ def new():
 	return dict(form=form, project=project)
 
 def transcribe():
-	pass
+	document = documents.Document(request.args[0], db)
+	return dict(document=document)
+
+def image():
+	return response.download(request, db)
