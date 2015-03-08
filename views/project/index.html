@@ -5,7 +5,7 @@
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
-			{{=p.getTitle()}}
+			<a href="{{=URL(c='project', f='edit', args=[p.getId()])}}">{{=p.getTitle()}}</a>
 			<ol class="documents-list">
 				{{for d in p.getDocuments():}}
 					<li>

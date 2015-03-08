@@ -19,3 +19,18 @@ def new():
 		# TODO: Redirect to manage this project.
 		redirect(URL(c='project', f='index'))
 	return dict(form=form)
+
+# TODO: Handle errors.
+def edit():
+	# Must be logged in.
+	if current_user == None:
+		session.back = URL(args=request.args, host=True)
+		session.flash = 'You must be logged in to edit a project.'
+		redirect(URL(c='user', f='login'))
+	# Retrieve project.
+	project = projects.Project(request.args[0], db)
+	# Check project owner.
+	if current_user.getId() != project.getCreator():
+		session.flash = 'You can not edit this project.'
+		redirect(URL(c='project', f='index'))
+	return dict(project=project)
