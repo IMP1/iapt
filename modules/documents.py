@@ -12,8 +12,8 @@ def create(title, project, image, db):
 	db -- Instance of db (DAL) in use.
 
 	"""
-	id = db.Documnent.insert(title=title, project=project.getId(),
-							 image=image, status=doc_statuses.index('Closed'))
+	id = db.Document.insert(title=title, project=project.getId(),
+							 image=image, status=1)
 	return Document(id, db)
 
 class Document(object):
