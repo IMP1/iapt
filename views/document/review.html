@@ -2,5 +2,5 @@
 <div class=".dark">&nbsp;</div>
 <div class="content">
 	<div class="breadcrumb">{{=document.getProject().getTitle()}} &gt; {{=document.getTitle()}}</div>
-	<img src="{{=URL(c='document', f='image/'+document.getImage())}}">
+	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
 </div>

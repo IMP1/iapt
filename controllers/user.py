@@ -1,8 +1,5 @@
 def index():
-	if current_user == None:
-		session.back = URL(args=request.args, host=True)
-		session.flash = 'You must be logged in to see your profile.'
-		redirect(URL(c='user', f='login'))
+	auth_required('You must be logged in to see your profile.')
 	return dict()
 
 def login():

@@ -2,5 +2,20 @@
 <div class=".dark">&nbsp;</div>
 <div class="content">
 	<h1>{{=document.getTitle()}}</h1>
-	<img src="{{=URL(c='document', f='image/'+document.getImage())}}">
+	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
+	<div class="transcribe-sections">
+		<form>
+			<ul>
+				<li>
+				<h3>Section 1</h3>
+				<textarea></textarea>
+				</li>
+				<li>
+				<h3>Section 2</h3>
+				<textarea></textarea>
+				</li>
+			</ul>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
 </div>
