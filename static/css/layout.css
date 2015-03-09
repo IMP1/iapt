@@ -12,11 +12,11 @@ body {
 	position: relative;
 	min-height: 100%;
 }
-header > div, .content, .dark > div, footer > div {
+.content, .dark > div, footer > div {
 	width: 1020px;
 	margin: auto;
 }
-h1 {
+h2 {
 	margin: 30px 0 10px;
 }
 a {
@@ -43,11 +43,11 @@ header > div {
 	position: relative;
 	padding: 10px;
 }
-header > div > a {
+header h1 {
 	font-weight: bold;
 	font-size: 26px;
 	position: absolute;
-	left: 0;
+	left: 10px;
 	padding: 4px 0 3px;
 }
 header > div > a:hover {
@@ -55,7 +55,7 @@ header > div > a:hover {
 }
 header ul {
 	position: absolute;
-	right: 0;
+	right: 10px;
 	margin-left: 200px;
 	height: 38px;
 	list-style-type: none;
