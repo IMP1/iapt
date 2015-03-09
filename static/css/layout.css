@@ -13,6 +13,9 @@ body {
 	position: relative;
 	min-height: 100%;
 }
+input {
+	border: 1px solid #9A9A9A;
+}
 .content, .dark > div, footer > div {
 	width: 1020px;
 	margin: auto;
@@ -88,7 +91,7 @@ header li {
 
 #search {
 	border: 1px solid #7F441D;
-	width: 462px;
+	width: 550px;
 	margin: 0 auto;
 	box-shadow: 0 0 5px -2px #000;
 }
@@ -98,13 +101,13 @@ header li {
 	border: 0;
 }
 #search input[type=search] {
-	width: 360px;
+	width: 448px;
 }
 #search .arrow {
 	border: 10px solid transparent;
 	border-right: 10px solid #F4E5C4;
 	position: absolute;
-	margin: 10px 0 0 340px;
+	margin: 10px 0 0 428px;
 }
 #search input[type=submit] {
 	background-color: #F4E5C4;
