@@ -33,6 +33,26 @@ a:hover {
 	margin-bottom: 30px;
 	box-shadow: 0 2px 5px -2px #000 inset, 0 -2px 5px -2px #000 inset;
 }
+form {
+	width: 550px;
+	margin: auto;
+	font-size: 20px;
+}
+form table {
+	width: 100%;
+}
+.w2p_fl {
+	text-align: right;
+	height: 50px;
+	padding-right: 10px;
+}
+.w2p_fw, form input[type=text], form input[type=password] {
+	width: 300px;
+}
+form input {
+	padding: 8px;
+	font-size: 18px;
+}
 
 footer {
 	box-shadow: 0 2px 5px -2px #000 inset;
