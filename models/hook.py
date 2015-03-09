@@ -11,3 +11,9 @@ import sections
 
 # Auth a user. 
 current_user = users.auth(session, db)
+
+def auth_required(msg='You must be logged in to see this page.'):
+	if current_user == None:
+		session.back = URL(args=request.args, host=True)
+		session.flash = msg
+		redirect(URL(c='user', f='login'))

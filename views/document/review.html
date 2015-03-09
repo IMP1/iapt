@@ -2,5 +2,5 @@
 <div class=".dark">&nbsp;</div>
 <div class="content">
 	<h1>{{=document.getProject().getTitle()}} &gt; {{=document.getTitle()}}</h1>
-	<img src="{{=URL(c='document', f='image/'+document.getImage())}}">
+	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
 </div>

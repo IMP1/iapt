@@ -1,15 +1,9 @@
 def index():
-	if current_user == None:
-		session.back = URL(args=request.args, host=True)
-		session.flash = 'You must be logged in to see your projects.'
-		redirect(URL(c='user', f='login'))
+	auth_required('You must be logged in to see your projects.')
 	return dict(projects=projects.users_projects(current_user, db))
 
 def new():
-	if current_user == None:
-		session.back = URL(args=request.args, host=True)
-		session.flash = 'You must be logged in to create a project.'
-		redirect(URL(c='user', f='login'))
+	auth_required('You must be logged in to create a project.')
 	form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			submit_button='Create Project'
@@ -20,11 +14,7 @@ def new():
 
 # TODO: Handle errors.
 def edit():
-	# Must be logged in.
-	if current_user == None:
-		session.back = URL(args=request.args, host=True)
-		session.flash = 'You must be logged in to edit a project.'
-		redirect(URL(c='user', f='login'))
+	auth_required('You must be logged in to edit a project.')
 	# Retrieve project.
 	project = projects.Project(request.args[0], db)
 	# Check project owner.
