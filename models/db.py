@@ -28,7 +28,7 @@ db.define_table('Document',
 
 #Section
 db.define_table('Section',
-	Field('document', db.Document),
+	Field('Project', db.Project),
 	Field('description')
 	#Type?
 	)

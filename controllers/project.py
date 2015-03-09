@@ -4,6 +4,7 @@ def index():
 
 def new():
 	auth_required('You must be logged in to create a project.')
+	flow = int(request.args[0]) if len(request.args) == 1 else 0
 	form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			submit_button='Create Project'
@@ -13,7 +14,7 @@ def new():
 	return dict(form=form)
 
 # TODO: Handle errors.
-def edit():
+def manage():
 	auth_required('You must be logged in to edit a project.')
 	# Retrieve project.
 	project = projects.Project(request.args[0], db)

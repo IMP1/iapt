@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 # ORM for Sections.
 
-#delete all non-accepted transcriptions...
 class Section(object):
 	def __init__(self, id, db):
 		self._db = db
