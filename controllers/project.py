@@ -4,14 +4,25 @@ def index():
 
 def new():
 	auth_required('You must be logged in to create a project.')
-	flow = int(request.args[0]) if len(request.args) == 1 else 0
-	form = SQLFORM.factory(
+	step = int(request.args[0]) if len(request.args) == 1 else 1
+	if step == 1:
+		#First step, project title.
+		form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
-			submit_button='Create Project'
+			submit_button='Next >'
 			)
+	elif step == 2:
+		#Second step, project sections.
+		pass
+	elif step == 3:
+		#Final step, document uploads.
+		pass
+	else:
+		#Ooopsy.
+		pass
 	if form.process().accepted:
 		redirect(URL(c='project', f='edit', args=[projects.create(form.vars.title, current_user, db).getId()]))
-	return dict(form=form)
+	return dict(form=form, step=step)
 
 # TODO: Handle errors.
 def manage():
