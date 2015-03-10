@@ -6,7 +6,16 @@
 	{{if step == 1:}}
 		{{=form}}
 	{{elif step == 2:}}
+		<ul>
+		{{for doc in new_project['documents']: }}
+			<li>
+			{{=doc['title']}}
+			<img alt="{{=doc['title']}} image." src="data:image/png;base64,{{=doc['image']}}" >
+			</li>
+		{{pass}}
+		</ul>
 		Document step.
+		{{=form}}
 	{{else:}}
 		Section step.
 	{{pass}}

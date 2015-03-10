@@ -1,3 +1,5 @@
+import base64
+
 def index():
 	auth_required('You must be logged in to see your projects.')
 	return dict(projects=projects.users_projects(current_user, db))
@@ -11,18 +13,28 @@ def new():
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			submit_button='Next >'
 			)
+		if form.process().accepted:
+			session.new_project = {	'title' : request.vars.title,
+									'documents' : [] }
+		return dict(form=form, step=step)
 	elif step == 2:
-		#Second step, project sections.
-		pass
+		#Second step, document uploads.
+		form = SQLFORM.factory(
+			Field('title', 'string', requires=IS_NOT_EMPTY()),
+			Field('image', 'upload', uploadfolder='documents'),
+			submit_button='Upload'
+			)
+		if form.process().accepted:
+			session.new_project['documents'].append({
+					'title' : request.vars.title,
+					'image' : base64.b64encode(request.vars.image.value)
+				})
+		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
-		#Final step, document uploads.
-		pass
+		#Final step, project sections.
+		return dict(step=step)
 	else:
-		#Ooopsy.
-		pass
-	if form.process().accepted:
-		redirect(URL(c='project', f='edit', args=[projects.create(form.vars.title, current_user, db).getId()]))
-	return dict(form=form, step=step)
+		return dict(step=step)
 
 # TODO: Handle errors.
 def manage():
