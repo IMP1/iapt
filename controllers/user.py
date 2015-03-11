@@ -1,11 +1,7 @@
 def index():
 	#Create forms to change the current user's username or password
 	auth_required('You must be logged in to see your profile.')
-<<<<<<< HEAD
-=======
-	print IS_FLOAT_IN_RANGE(0, 100, dot=".", error_message='too small or too large!')
 	# Create form to change username
->>>>>>> 56858f0d9e1be5565d17412cba3651d72b964b10
 	unform = SQLFORM.factory(
 		Field('username', length=128, label="New Username", 
 			default='', requires=[users.IS_NOT_IN_USE(db)]),
@@ -24,12 +20,8 @@ def index():
 	#Change password if form is accepted
 	if pwform.process().accepted:
 		current_user.setPassword(pwform.vars.password)
-<<<<<<< HEAD
-	return dict(unform=unform, pwform = pwform)
-=======
 	# Return username and password forms to view
 	return dict(unform=unform, pwform=pwform)
->>>>>>> 56858f0d9e1be5565d17412cba3651d72b964b10
 
 def login():
 	# Create login form if there is no user currently logged in
