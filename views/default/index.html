@@ -19,7 +19,7 @@
 					{{pass}}
 				</ol>
 			{{else:}}
-				{{if current_user != p.getCreator():}}
+				{{if current_user.getId() != p.getCreator():}}
 					<a href="{{=URL(c='project', f='view', args=[p.getId()])}}">{{=p.getTitle()}}</a>
 					<ol class="documents-list">
 						{{for d in p.getDocuments():}}
