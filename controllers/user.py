@@ -1,7 +1,8 @@
 def index():
 	auth_required('You must be logged in to see your profile.')
 	unform = SQLFORM.factory(
-		Field('username', length=128, label="New Username", default='')
+		Field('username', length=128, label="New Username", default=''),
+		submit_button='Change Username'
 		)
 	if unform.process().accepted:
 		current_user.setUsername(unform.vars.username)
@@ -9,7 +10,8 @@ def index():
 		Field('password', 'password', length=64, label="New Password"),
 		Field('cpassword', 'password', 
 			label="Confirm Password",
-			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.'))
+			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
+		submit_button='Change Password'
 		)
 	if pwform.process().accepted:
 		current_user.setPassword(pwform.vars.password)
