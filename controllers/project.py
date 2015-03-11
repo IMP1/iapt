@@ -50,5 +50,4 @@ def manage():
 	return dict(project=project)
 
 def view():
-	project = projects.Project(request.args[0], db)
-	return dict(project=project)
+	return dict(project=projects.Project(request.args[0], db))
