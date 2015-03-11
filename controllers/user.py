@@ -2,15 +2,18 @@ def index():
 	auth_required('You must be logged in to see your profile.')
 	print IS_FLOAT_IN_RANGE(0, 100, dot=".", error_message='too small or too large!')
 	unform = SQLFORM.factory(
-		Field('username', length=128, default='',
-        requires=[users.IS_NOT_IN_USE(db)]))
+		Field('username', length=128, label="New Username", 
+			default='', requires=[users.IS_NOT_IN_USE(db)]))
+		submit_button='Change Username'
+		)
 	if unform.process().accepted:
 		current_user.setUsername(request.vars.username)
 	pwform = SQLFORM.factory(
 		Field('password', 'password', length=64, label="New Password"),
 		Field('cpassword', 'password', 
 			label="Confirm Password",
-			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.'))
+			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
+		submit_button='Change Password'
 		)
 	if pwform.process().accepted:
 		current_user.setPassword(pwform.vars.password)

@@ -2,4 +2,4 @@
 
 def index():
     response.title = "IAPT Group Six"
-    return dict()
+    return dict(projects=projects.recent_projects(db))

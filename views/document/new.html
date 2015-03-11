@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<div class=".dark">&nbsp;</div>
+<div class="content">
+	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; Document</div>
+	<h2>New Document</h2>
+	{{=form}}
+</div>

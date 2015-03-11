@@ -30,6 +30,20 @@ def users_projects(user, db):
 		ret_list.append(Project(r.id, db))
 	return ret_list
 
+def recent_projects(db):
+	""" Get the 9 most recent projects
+		Returns list of 9 recent projects
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+
+	"""	
+	ret_list = list()
+	results = db(db.Project).select(orderby=~db.Project.id,limitby=(0,9))
+	for r in results:
+		ret_list.append(Project(r.id, db))
+	return ret_list
+
 class Project(object):
 	def __init__(self, id, db):
 		self._db = db

@@ -7,51 +7,39 @@
 </div>
 <div class="content">
 	<h1>Recent Documents:</h1>
-	<ul class="document-list">
+	{{for p in projects: }}
 		<li>
-			<div class="document-preview">
-				Document One
-			</div>
+			{{if current_user == None:}}
+				<a href="{{=URL(c='project', f='view', args=[p.getId()])}}">{{=p.getTitle()}}</a>
+				<ol class="documents-list">
+					{{for d in p.getDocuments():}}
+						<li>
+							{{=d.getTitle()}}
+						</li>
+					{{pass}}
+				</ol>
+			{{else:}}
+				{{if current_user.getId() != p.getCreator():}}
+					<a href="{{=URL(c='project', f='view', args=[p.getId()])}}">{{=p.getTitle()}}</a>
+					<ol class="documents-list">
+						{{for d in p.getDocuments():}}
+							<li>
+								{{=d.getTitle()}}
+							</li>
+						{{pass}}
+					</ol>
+				{{else:}}
+					<a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a>
+					<ol class="documents-list">
+						{{for d in p.getDocuments():}}
+							<li>
+								<!--TODO Mark in some way that this is the current user's project-->
+								{{=d.getTitle()}}
+							</li>
+						{{pass}}
+					</ol>
+				{{pass}}
+			{{pass}}
 		</li>
-		<li>
-			<div class="document-preview">
-				Document Two
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Three
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Four
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Five
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Six
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Seven
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Eight
-			</div>
-		</li>
-		<li>
-			<div class="document-preview">
-				Document Nine
-			</div>
-		</li>
-	</ul>
+	{{pass}}
 </div>
