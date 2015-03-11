@@ -3,9 +3,8 @@ def index():
 	print IS_FLOAT_IN_RANGE(0, 100, dot=".", error_message='too small or too large!')
 	unform = SQLFORM.factory(
 		Field('username', length=128, label="New Username", 
-			default='', requires=[users.IS_NOT_IN_USE(db)]))
-		submit_button='Change Username'
-		)
+			default='', requires=[users.IS_NOT_IN_USE(db)]),
+		submit_button='Change Username')
 	if unform.process().accepted:
 		current_user.setUsername(request.vars.username)
 	pwform = SQLFORM.factory(
