@@ -46,3 +46,7 @@ def manage():
 		session.flash = 'You can not edit this project.'
 		redirect(URL(c='project', f='index'))
 	return dict(project=project)
+
+def view():
+	project = projects.Project(request.args[0], db)
+	return dict(project=project)
