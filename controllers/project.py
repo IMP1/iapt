@@ -16,6 +16,7 @@ def new():
 		if form.process().accepted:
 			session.new_project = {	'title' : request.vars.title,
 									'documents' : [] }
+			redirect(URL(args=[2]))
 		return dict(form=form, step=step)
 	elif step == 2:
 		#Second step, document uploads.
@@ -33,7 +34,7 @@ def new():
 				})
 		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
-		#Final step, project sections.
+		#Final step, project sections. N.b. must be at least 1 doc...
 		return dict(new_project=session.new_project, step=step)
 	else:
 		return dict(step=step)

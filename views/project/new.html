@@ -2,6 +2,7 @@
 <div class=".dark">&nbsp;</div>
 <div class="content">
 	<h1>New Project</h1>
+	<progress max="3" value="{{=step}}"></progress>
 	Step {{=step}} of 3.
 	{{if step == 1:}}
 		{{=form}}
@@ -51,7 +52,9 @@
 		});
 
 		function add_section() {
-			$("#section-editor").append($("<li>Test</li>"));
+			$("#section-editor").append(
+				$("<li></li>").html('<input name="section-title[1]" type="text">\
+									<textarea></textarea>'));
 		}
 	</script>
 {{pass}}
