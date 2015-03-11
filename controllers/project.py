@@ -27,12 +27,14 @@ def new():
 		if form.process().accepted:
 			session.new_project['documents'].append({
 					'title' : request.vars.title,
-					'image' : base64.b64encode(request.vars.image.value)
+					'image' : base64.b64encode(request.vars.image.value),
+					'type' : 'png' if request.vars.image.filename.split('.')[-1] == 'png'
+									else 'jpeg'
 				})
 		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
 		#Final step, project sections.
-		return dict(step=step)
+		return dict(new_project=session.new_project, step=step)
 	else:
 		return dict(step=step)
 

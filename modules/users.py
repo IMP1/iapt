@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # ORM for Users.
+from gluon.validators import Validator
 
 def register(uname, password, db):
 	""" Register a user in database and return a user object.
@@ -49,6 +50,17 @@ def deauth(session):
 	session -- Instance of session.
 	"""
 	session.auth = None
+
+class IS_NOT_IN_USE(Validator):
+	def __init__(self, other, error_message='Username already in use'):
+	    self.db = other
+	    self.error_message = error_message
+
+	def __call__(self, value):
+		error = None
+		if self.db(self.db.User.username == value).count() != 0:
+			error = self.error_message
+		return (value, error)
 
 class User(object):
 	def __init__(self, id, db):

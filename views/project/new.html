@@ -10,13 +10,49 @@
 		{{for doc in new_project['documents']: }}
 			<li>
 			{{=doc['title']}}
-			<img alt="{{=doc['title']}} image." src="data:image/png;base64,{{=doc['image']}}" >
+			<img alt="{{=doc['title']}} image." 
+			src="data:image/{{=doc['type']}};base64,{{=doc['image']}}">
 			</li>
 		{{pass}}
 		</ul>
-		Document step.
 		{{=form}}
 	{{else:}}
-		Section step.
+		<ul>
+		{{for doc in new_project['documents']: }}
+			<li>
+			{{=doc['title']}}
+			<img alt="{{=doc['title']}} image." 
+			src="data:image/{{=doc['type']}};base64,{{=doc['image']}}">
+			</li>
+		{{pass}}
+		</ul>
+		<ul id="section-editor">
+			<li>
+			<a id="add-section">
+			Add a new section.
+			</a>
+			</li>
+		</ul>
+		<form id="save=section" method='post'>
+			<input type="hidden" name="_sections">
+			<input type="submit" value="Save changes">
+		</form>
 	{{pass}}
 </div>
+
+{{block script}}
+{{if step == 3:}}
+	<script type="text/javascript" src="{{= URL('static', 'js/jquery.js') }}"></script>
+	<script type="text/javascript">
+		sections = [];
+
+		$(document).ready(function() {
+			$("#add-section").click(add_section);
+		});
+
+		function add_section() {
+			$("#section-editor").append($("<li>Test</li>"));
+		}
+	</script>
+{{pass}}
+{{end}}

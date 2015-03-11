@@ -4,7 +4,6 @@
 	<h1>{{=project.getTitle()}}</h1>
 	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
 	<ul>
-		<li><a href="{{=URL(c='document', f='new', args=[project.getId()])}}">Create New Document</a></li>
 		{{for d in project.getDocuments():}}
 			<li>
 			<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">{{=d.getTitle()}}</a>
