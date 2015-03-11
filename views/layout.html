@@ -36,7 +36,6 @@
 				</div>
 			{{pass}}
 			{{include}}
-			{{pass}}
 		</main>
 		<div id="spacer"></div>
 		<footer>
@@ -44,7 +43,18 @@
 			<div>
 				<div class="section">The footer of doom, not sure if really required</div>
 				<div class="section">Other Sites<ul><li>David</li><li>Made</li><li>Me</li><li>Do</li><li>It</li></ul></div>
-				<div class="section">Some other crap</div>
+				<div class="section">Site Map<ul>
+						<li><a href="{{= URL('default', 'index') }}">Home</a></li>
+						<li><a href="{{= URL('project', 'index') }}">Your Projects</a></li>
+						<li><a href="{{= URL('project', 'new') }}">New Project</a></li>
+						{{ if current_user: }}
+							<li><a href="{{= URL('user', 'logout') }}">Logout</a></li>
+							<li><a href="{{= URL('user', 'index') }}">Your Profile</a></li>
+						{{ else: }}
+							<li><a href="{{= URL('user', 'login') }}">Login</a></li>
+							<li><a href="{{= URL('user', 'register') }}">Register</a></li>
+						{{ pass }}
+					</ul></div>
 			</div>
 			{{end}}
 		</footer>

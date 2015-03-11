@@ -1,7 +1,7 @@
 {{extend 'layout.html'}}
 <div class=".dark">&nbsp;</div>
 <div class="content">
-	<h1>{{=project.getTitle()}}</h1>
+	<h2>{{=project.getTitle()}}</h2>
 	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
 	<ul>
 		{{for d in project.getDocuments():}}
