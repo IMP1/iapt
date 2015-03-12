@@ -14,11 +14,13 @@ body {
 	position: relative;
 	min-height: 100%;
 	min-width:1090px;
+	background-color: #CDBB99;
 }
 input {
 	border: 1px solid #9A9A9A;
 }
-.content, .dark > div, footer > div {
+
+main > div, footer > div {
 	width: 1020px;
 	margin: auto;
 }
@@ -32,12 +34,12 @@ a {
 a:hover {
 	color: #C7B18F;
 }
-.dark {
-	background-color: #CDBB99;
+
+main {
 	padding: 30px;
-	margin-bottom: 30px;
-	box-shadow: 0 2px 5px -2px #000 inset, 0 -2px 5px -2px #000 inset;
+	height:100%;
 }
+
 form {
 	width: 550px;
 	margin: auto;
@@ -63,11 +65,10 @@ progress {
 	width:100%;
 }
 
-footer {
-	box-shadow: 0 2px 5px -2px #000 inset;
-}
 header {
 	width: 100%;
+	background-color:#fff;
+	box-shadow:0 2px 5px -2px #000;
 }
 header > div {
 	position: relative;
@@ -125,7 +126,7 @@ footer .section:nth-child(1) {
 	border: 0;
 }
 #spacer {
-	height: 260px;
+	height: 220px;
 }
 footer > div {
 	height: 180px;
@@ -143,7 +144,8 @@ footer {
 	bottom: 0;
 	padding: 20px;
 	width: 100%;
-	background-color: #CDBB99;
+	background-color:#fff;
+	box-shadow:0 -2px 5px -2px #000
 }
 footer li {
 	margin: 5px 0 5px 50px;

@@ -1,6 +1,5 @@
 {{extend 'layout.html'}}
-<div class=".dark">&nbsp;</div>
-<div class="content">
+<div>
 	<div class="breadcrumb">{{=document.getProject().getTitle()}} &gt; {{=document.getTitle()}}</div>
 	<h2>{{=document.getTitle()}}</h2>
 	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
