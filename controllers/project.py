@@ -1,4 +1,4 @@
-import base64
+import md5, time, os
 
 def index():
 	# If there is a user logged in, return their projects to the view
@@ -25,15 +25,19 @@ def new():
 		# Second step, document uploads.
 		form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
-			Field('image', 'upload', uploadfolder='documents'),
+			Field('image', 'upload', uploadfolder='documents', requires=IS_NOT_EMPTY()),
 			submit_button='Upload'
 			)
 		if form.process().accepted:
+			# Save the image somewhere.
+			hash =  md5.new(request.vars.image.filename + str(time.time()))
+			iname = hash.hexdigest() + '.' + request.vars.image.filename.split('.')[-1]
+			ipath = os.path.join(request.folder,'uploads', iname)
+			ifile = open(ipath, 'w')
+			ifile.write(request.vars.image.value)
 			session.new_project['documents'].append({
 					'title' : request.vars.title,
-					'image' : base64.b64encode(request.vars.image.value),
-					'type' : 'png' if request.vars.image.filename.split('.')[-1] == 'png'
-									else 'jpeg'
+					'image' : iname
 				})
 		# Return the current project, step 2 form and the current step to the view
 		return dict(new_project=session.new_project, form=form, step=step)
@@ -60,3 +64,11 @@ def manage():
 def view():
 	# Return the project to the view
 	return dict(project=projects.Project(request.args[0], db))
+
+def image():
+	# Stream the image without using db.
+	filename=request.args[0]
+	path=os.path.join(request.folder,'uploads',filename)
+	response.headers['ContentType'] ="application/octet-stream";
+	response.headers['Content-Disposition']="attachment; filename="+filename
+	return response.stream(open(path),chunk_size=4096)
