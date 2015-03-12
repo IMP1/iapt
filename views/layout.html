@@ -9,23 +9,23 @@
 		<header>
 			{{block header}}
 			<div>
-				<h1><a href="{{= URL('default', 'index') }}">Transcriber</a></h1>
+				<h1><a href="{{= URL('default', 'index') }}" tabindex="1">Transcriber</a></h1>
 				<nav>
 					<ul>
-						<li><a href="{{= URL('default', 'index') }}">Home</a></li><!--
-						--><li><a href="{{= URL('project', 'index') }}">Your Projects</a></li><!--
-						--><li><a href="{{= URL('project', 'new') }}">New Project</a></li><!--
+						<li><a href="{{= URL('default', 'index') }}" tabindex="3">Home</a></li><!--
+						--><li><a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a></li><!--
+						--><li><a href="{{= URL('project', 'new') }}" tabindex="3">New Project</a></li><!--
 						{{ if current_user: }}
-							--><li><a href="{{= URL('user', 'logout') }}">Logout</a></li><!--
-							--><li><a href="{{= URL('user', 'index') }}">Your Profile</a></li>
+							--><li><a href="{{= URL('user', 'logout') }}" tabindex="3">Logout</a></li><!--
+							--><li><a href="{{= URL('user', 'index') }}" tabindex="3">Your Profile</a></li><!--
 						{{ else: }}
-							--><li><a href="{{= URL('user', 'login') }}">Login</a></li><!--
-							--><li><a href="{{= URL('user', 'register') }}">Register</a></li>
+							--><li><a href="{{= URL('user', 'login') }}" tabindex="3">Login</a></li><!--
+							--><li><a href="{{= URL('user', 'register') }}" tabindex="3">Register</a></li>
 							
 						{{ pass }}
 					</ul>
 				</nav>
-				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="search" name="searchterm" /><input type="submit" value="Search" /></form>
+				<form method="POST" action="{{= URL('search', 'index') }}" id="search"><div class="arrow"></div><input type="search" name="searchterm" tabindex="2"/><input type="submit" value="Search" tabindex="2"/></form>
 			</div>
 			{{end}}
 		</header>
