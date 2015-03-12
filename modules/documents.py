@@ -2,6 +2,18 @@
 # ORM for Documents.
 import projects
 
+def create(title, project, image, db):
+	""" Create a new document and return document object.
+	Keyword arguments:
+	title -- The title for the new document.
+	project -- The parent project object for the new document.
+	image -- The image for the new document.
+	db -- Instance of db (DAL) in use.
+	"""
+	id = db.Document.insert(title=title, project=project.getId(),
+							 image=image, status=1)
+	return Document(id, db)
+
 def search_results(db, searchterm):
 	""" Get the documents with titles like searchterm
 		Returns a list of projects

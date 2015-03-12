@@ -28,15 +28,14 @@ db.define_table('Document',
 
 #Section
 db.define_table('Section',
-	Field('Project', db.Project),
-	Field('description')
-	#Type?
+	Field('project', db.Project),
+	Field('title'),
+	Field('blurb')
 	)
 
 #Transcription
 db.define_table('Transcription',
 	Field('section', db.Section),
-	#Field('transcriber', db.User),
 	Field('text'),
 	Field('accepted', 'boolean')
 	)
