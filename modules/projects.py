@@ -44,6 +44,22 @@ def recent_projects(db):
 		ret_list.append(Project(r.id, db))
 	return ret_list
 
+def search_results(db, searchterm):
+	""" Get the projects with titles like searchterm
+		Returns a list of projects
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+	searchterm -- text entered in searchbar
+
+	"""
+	ret_list = list()
+	term = "%"+searchterm+"%"
+	results = db((db.Project.title.like(term))).select()
+	for r in results:
+		ret_list.append(Project(r.id, db))
+	return ret_list
+
 class Project(object):
 	def __init__(self, id, db):
 		self._db = db
