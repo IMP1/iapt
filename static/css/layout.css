@@ -149,6 +149,10 @@ footer li {
 	margin: 5px 0 5px 50px;
 }
 
+footer p {
+	margin: 5px 0 5px 0;
+}
+
 /* BE MORE RESPONSIVE */
 @media (max-width: 1520px)	{
 	#search {
