@@ -3,38 +3,16 @@
 	<h2>Search Results for {{=term}}:</h2>
 	{{=str(resultnum) + resulttext}}
 	{{for r in results: }}
+		{{if current_user == None:}}
+			{{method = 'transcribe'}}
+		{{elif r.getProject().getCreator() == current_user.getId():}}
+			{{method = 'review'}}
+		{{else:}}
+			{{method = 'transcribe'}}
+		{{pass}}
+		
 		<li>
-			{{if current_user == None:}}
-				<a href="{{=URL(c='project', f='view', args=[r.getId()])}}">{{=r.getTitle()}}</a>
-				<ol class="documents-list">
-					{{for d in r.getDocuments():}}
-						<li>
-							{{=d.getTitle()}}
-						</li>
-					{{pass}}
-				</ol>
-			{{else:}}
-				{{if current_user.getId() != r.getCreator():}}
-					<a href="{{=URL(c='project', f='view', args=[r.getId()])}}">{{=r.getTitle()}}</a>
-					<ol class="documents-list">
-						{{for d in r.getDocuments():}}
-							<li>
-								{{=d.getTitle()}}
-							</li>
-						{{pass}}
-					</ol>
-				{{else:}}
-					<a href="{{=URL(c='project', f='manage', args=[r.getId()])}}">{{=r.getTitle()}}</a>
-					<ol class="documents-list">
-						{{for d in r.getDocuments():}}
-							<li>
-								<!--TODO Mark in some way that this is the current user's project-->
-								{{=d.getTitle()}}
-							</li>
-						{{pass}}
-					</ol>
-				{{pass}}
-			{{pass}}
+			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">{{=r.getTitle()}}</a>
 		</li>
 	{{pass}}
 </div>

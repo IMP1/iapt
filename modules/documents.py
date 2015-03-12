@@ -2,6 +2,22 @@
 # ORM for Documents.
 import projects
 
+def search_results(db, searchterm):
+	""" Get the documents with titles like searchterm
+		Returns a list of projects
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+	searchterm -- text entered in searchbar
+
+	"""
+	ret_list = list()
+	term = "%"+searchterm+"%"
+	results = db((db.Document.title.like(term))).select()
+	for r in results:
+		ret_list.append(Document(r.id, db))
+	return ret_list
+
 class Document(object):
 	def __init__(self, id, db):
 		""" Constructor for documents.
@@ -14,6 +30,7 @@ class Document(object):
 		"""
 		self._db = db
 		self._data = db(db.Document.id == id).select().first()
+		self._project = None
 
 	def getTitle(self):
 		return self._data.title
