@@ -3,7 +3,7 @@
 import projects
 
 class Document(object):
-	def __init__(self, id, db, get_project=True):
+	def __init__(self, id, db):
 		""" Constructor for documents.
 
 		Keyword arguments:
@@ -14,10 +14,6 @@ class Document(object):
 		"""
 		self._db = db
 		self._data = db(db.Document.id == id).select().first()
-		if get_project:
-			self._project = projects.Project(self._data.project, self._db)
-		else:
-			self._project = None
 
 	def getTitle(self):
 		return self._data.title
@@ -29,5 +25,8 @@ class Document(object):
 		return self._data.image
 
 	def getProject(self):
+		# Lazy load project.
+		if self._project == None:
+			self._project = projects.Project(self._data.project, self._db)
 		return self._project
 

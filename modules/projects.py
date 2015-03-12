@@ -64,10 +64,7 @@ class Project(object):
 	def __init__(self, id, db):
 		self._db = db
 		self._data = db(db.Project.id == id).select().first()
-		self._documents = list()
-		docs = db(db.Document.project == id).select()
-		for d in docs:
-			self._documents.append(documents.Document(d.id, db, False))
+		self._documents = None
 
 	def getId(self):
 		return self._data.id
@@ -83,4 +80,10 @@ class Project(object):
 		return self._data.creator
 
 	def getDocuments(self):
+		# Lazy load documents.
+		if self._documents == None:
+			self._documents = list()
+			docs = self._db(self._db.Document.project == self._data.id).select()
+			for d in docs:
+				self._documents.append(documents.Document(d.id, self._db))
 		return self._documents
