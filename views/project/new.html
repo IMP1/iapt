@@ -10,8 +10,7 @@
 		{{for doc in new_project['documents']: }}
 			<li>
 			{{=doc['title']}}
-			<img alt="{{=doc['title']}} image." 
-			src="data:image/{{=doc['type']}};base64,{{=doc['image']}}">
+			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
 			</li>
 		{{pass}}
 		</ul>
@@ -21,8 +20,7 @@
 		{{for doc in new_project['documents']: }}
 			<li>
 			{{=doc['title']}}
-			<img alt="{{=doc['title']}} image." 
-			src="data:image/{{=doc['type']}};base64,{{=doc['image']}}">
+			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
 			</li>
 		{{pass}}
 		</ul>
