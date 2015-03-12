@@ -1,41 +1,41 @@
 {{extend 'layout.html'}}
+{{block head}}
+<link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
+{{end}}
 <div>
 	<h2>New Project</h2>
 	<progress max="3" value="{{=step}}"></progress>
-	Step {{=step}} of 3.
+	<div>Step {{=step}} of 3.</div>
 	{{if step == 1:}}
 		{{=form}}
 	{{elif step == 2:}}
-		<ul>
+		<ul class="document-list">
 		{{for doc in new_project['documents']: }}
 			<li>
-			{{=doc['title']}}
+			<h3>{{=doc['title']}}</h3>
 			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
 			</li>
 		{{pass}}
 		</ul>
 		{{=form}}
+		<a class="button next-button" href="{{=URL(args=[3])}}">Next &gt;</a>
 	{{else:}}
-		<ul>
+		<ul class="document-list document-list-left">
 		{{for doc in new_project['documents']: }}
 			<li>
-			{{=doc['title']}}
+			<h3>{{=doc['title']}}</h3>
 			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
 			</li>
 		{{pass}}
 		</ul>
-		<ul id="section-editor">
-			<li>
-			<a id="add-section">
-			Add a new section.
-			</a>
-			</li>
-		</ul>
-		<form id="save=section" method='post'>
-			<input type="hidden" name="_sections">
-			<input type="submit" value="Save changes">
+		<form id="section-form" method='post'>
+			<ul id="section-editor">
+			</ul>
+			<a class="button" id="add-section">Add New Section</a>
+			<input type="submit" value="Submit Project">
 		</form>
 	{{pass}}
+	<div class="clear"></div>
 </div>
 
 {{block script}}
@@ -45,13 +45,25 @@
 		sections = [];
 
 		$(document).ready(function() {
+			// Add preliminary section
+			add_section();
+			// Setup event handler
 			$("#add-section").click(add_section);
 		});
 
 		function add_section() {
 			$("#section-editor").append(
-				$("<li></li>").html('<input name="section-title[1]" type="text">\
-									<textarea></textarea>'));
+				$("<li>").append(
+					$('<input>').attr(
+						'name', 'section-title[]').attr( 
+						'placeholder', 'Section Name').attr(
+						'type','text')).append(
+					"<br>").append(
+					$('<textarea>').attr(
+						'name', 'section-blurb[]').attr(
+						'cols', '24').attr(
+						'rows', '3').attr(
+						'placeholder', 'Section Description')));
 		}
 	</script>
 {{pass}}

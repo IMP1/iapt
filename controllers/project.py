@@ -43,6 +43,8 @@ def new():
 		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
 		#Final step, project sections. N.b. must be at least 1 doc...
+		if request.env.request_method == 'POST':
+			print request.vars
 		# Return the current project and the current step to the view
 		return dict(new_project=session.new_project, step=step)
 	else:
