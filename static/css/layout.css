@@ -16,7 +16,14 @@ body {
 	min-width:1090px;
 	background-color: #E5D5B6;
 }
-input {
+
+input[type=submit], .button {
+	background-color:buttonface;
+	color:black;
+}
+
+
+input, .button {
 	border: 1px solid #9A9A9A;
 }
 
@@ -68,7 +75,7 @@ form table {
 .w2p_fw, form input[type=text], form input[type=password] {
 	width: 300px;
 }
-form input {
+form input, form textarea, .button {
 	padding: 8px;
 	font-size: 18px;
 }
@@ -77,6 +84,11 @@ progress {
 	width:100%;
 }
 
+.clear {
+	clear:both;
+}
+
+/* Header */
 header {
 	width: 100%;
 	background-color:#fff;
@@ -108,6 +120,7 @@ header li {
 	padding: 10px;
 }
 
+/* Search */
 #search {
 	border: 1px solid #7F441D;
 	width: 550px;
@@ -134,12 +147,15 @@ header li {
 	width: 100px;
 }
 
-footer .section:nth-child(1) {
-	border: 0;
-}
+/* Footer */
 #spacer {
 	height: 220px;
 }
+
+footer .section:nth-child(1) {
+	border: 0;
+}
+
 footer > div {
 	height: 180px;
 }
@@ -167,7 +183,7 @@ footer p {
 	margin: 5px 0 5px 0;
 }
 
-/* BE MORE RESPONSIVE */
+/* Responsive search */
 @media (max-width: 1520px)	{
 	#search {
 		margin:0 0 0 17%;

@@ -1,0 +1,45 @@
+.document-list {
+	list-style:none;
+}
+
+.document-list li {
+	width:200px;
+	display:inline-block;
+	border:1px solid black;
+	padding:0;
+	margin:0 0 10px 0;
+}
+
+.document-list li img {
+	max-width:190px;
+	max-height:50px;
+}
+
+.next-button {
+	float:right;
+}
+
+/* Final step */
+
+.document-list-left {
+	float:left;
+	width:650px;
+}
+
+#section-form {
+	float:right;
+	width:330px;
+}
+
+#section-editor {
+	list-style:none;
+}
+
+#section-editor li {
+	padding:10px;
+	border-bottom:1px solid black;
+}
+
+#section-editor li:last-child {
+	border:none;
+}

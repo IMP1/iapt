@@ -43,6 +43,21 @@ def new():
 		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
 		#Final step, project sections. N.b. must be at least 1 doc...
+		if request.env.request_method == 'POST':
+			# Create the project from the session.
+			proj = projects.create(session.new_project['title'], current_user, db)
+			# Create documents.
+			docs = map(lambda x: documents.create(x['title'], proj, x['image'], db), session.new_project['documents'])
+			# Create section(s)
+			if isinstance(request.vars['section-title[]'], list):
+				for s in range(len(request.vars['section-title[]'])):
+					sections.create(request.vars['section-title[]'][s], request.vars['section-blurb[]'][s], proj, db)
+			else:
+				# Only one section.
+				sections.create(request.vars['section-title[]'], request.vars['section-blurb[]'], proj, db)
+			# Clear the new project session
+			session.new_project = None
+			redirect(URL(f='manage', args=[proj.getId()]))
 		# Return the current project and the current step to the view
 		return dict(new_project=session.new_project, step=step)
 	else:

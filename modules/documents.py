@@ -2,6 +2,48 @@
 # ORM for Documents.
 import projects
 
+def create(title, project, image, db):
+	""" Create a new document and return document object.
+	Keyword arguments:
+	title -- The title for the new document.
+	project -- The parent project object for the new document.
+	image -- The image for the new document.
+	db -- Instance of db (DAL) in use.
+	"""
+	id = db.Document.insert(title=title, project=project.getId(),
+							 image=image, status=1)
+	return Document(id, db)
+
+def recent_documents(db):
+	""" Get the 9 most recent documents
+		Returns list of 9 recent documents
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+
+	"""	
+	ret_list = list()
+	results = db(db.Document).select(orderby=~db.Document.id,limitby=(0,9))
+	for r in results:
+		ret_list.append(Document(r.id, db))
+	return ret_list
+
+def search_results(db, searchterm):
+	""" Get the documents with titles like searchterm
+		Returns a list of projects
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+	searchterm -- text entered in searchbar
+
+	"""
+	ret_list = list()
+	term = "%"+searchterm+"%"
+	results = db((db.Document.title.like(term))).select()
+	for r in results:
+		ret_list.append(Document(r.id, db))
+	return ret_list
+
 class Document(object):
 	def __init__(self, id, db):
 		""" Constructor for documents.
@@ -14,6 +56,7 @@ class Document(object):
 		"""
 		self._db = db
 		self._data = db(db.Document.id == id).select().first()
+		self._project = None
 
 	def getTitle(self):
 		return self._data.title

@@ -51,6 +51,7 @@ def login():
 def logout():
 	# Logout the current user and return to homepage
 	if current_user != None:
+		session.flash = "You have been logged out."
 		users.deauth(session)
 	redirect(URL(c='default', f='index'))
 
