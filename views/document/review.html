@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <div>
-	<div class="breadcrumb">{{=document.getProject().getTitle()}} &gt; {{=document.getTitle()}}</div>
+	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; Document</div>
 	<h2>{{=document.getTitle()}}</h2>
 	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
 </div>
