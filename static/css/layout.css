@@ -33,13 +33,16 @@ main > div, footer > div {
 	line-height: 300%;
 	text-align: center;
 }
+
 h2 {
 	margin: 30px 0 10px;
 }
+
 a {
-	color: #4C2811;
+	color: #0f364f;
 	text-decoration: none;
 }
+
 a:hover {
 	color: #C7B18F;
 }
