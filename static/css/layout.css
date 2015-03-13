@@ -47,7 +47,6 @@ h2 {
 
 a {
 	color: #4C2811;
-	font-size: 14px;
 }
 
 a:hover {
@@ -186,6 +185,11 @@ footer li {
 
 footer p {
 	margin: 5px 0 5px 0;
+}
+
+footer a {
+	color: #4C2811;
+	font-size: 14px;
 }
 
 /* Responsive search */
