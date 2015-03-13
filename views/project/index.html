@@ -8,7 +8,7 @@
 			<ol class="documents-list">
 				{{for d in p.getDocuments():}}
 					<li>
-						{{=d.getTitle()}}
+						<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">{{=d.getTitle()}}</a>
 					</li>
 				{{pass}}
 			</ol>
