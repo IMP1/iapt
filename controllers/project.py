@@ -33,8 +33,9 @@ def new():
 			hash =  md5.new(request.vars.image.filename + str(time.time()))
 			iname = hash.hexdigest() + '.' + request.vars.image.filename.split('.')[-1]
 			ipath = os.path.join(request.folder,'uploads', iname)
-			ifile = open(ipath, 'w')
+			ifile = open(ipath, 'wb')
 			ifile.write(request.vars.image.value)
+			ifile.close()
 			session.new_project['documents'].append({
 					'title' : request.vars.title,
 					'image' : iname
@@ -66,12 +67,12 @@ def new():
 
 # TODO: Handle errors.
 def manage():
-	auth_required('You must be logged in to edit a project.')
+	auth_required('You must be logged in to manage a project.')
 	# Retrieve project.
 	project = projects.Project(request.args[0], db)
 	# Check project owner.
 	if current_user.getId() != project.getCreator():
-		session.flash = 'You can not edit this project.'
+		session.flash = 'You can not manage this project.'
 		redirect(URL(c='project', f='index'))
 	# Return the project to the view
 	return dict(project=project)
@@ -86,4 +87,4 @@ def image():
 	path=os.path.join(request.folder,'uploads',filename)
 	response.headers['ContentType'] ="application/octet-stream";
 	response.headers['Content-Disposition']="attachment; filename="+filename
-	return response.stream(open(path),chunk_size=4096)
+	return response.stream(open(path, 'rb'),chunk_size=4096)

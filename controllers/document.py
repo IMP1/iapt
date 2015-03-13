@@ -15,4 +15,4 @@ def image():
 	response.headers['ContentType'] ="application/octet-stream";
 	response.headers['Content-Disposition']="attachment; filename="+filename
 	print path
-	return response.stream(open(path),chunk_size=4096)
+	return response.stream(open(path, 'rb'),chunk_size=4096)
