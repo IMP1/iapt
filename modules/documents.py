@@ -14,6 +14,20 @@ def create(title, project, image, db):
 							 image=image, status=1)
 	return Document(id, db)
 
+def recent_documents(db):
+	""" Get the 9 most recent documents
+		Returns list of 9 recent documents
+
+	Keyword arguments:
+	db -- Instance of db (DAL) in use.
+
+	"""	
+	ret_list = list()
+	results = db(db.Document).select(orderby=~db.Document.id,limitby=(0,9))
+	for r in results:
+		ret_list.append(Document(r.id, db))
+	return ret_list
+
 def search_results(db, searchterm):
 	""" Get the documents with titles like searchterm
 		Returns a list of projects
