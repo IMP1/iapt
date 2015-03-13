@@ -47,8 +47,7 @@ h2 {
 
 a {
 	color: #4C2811;
-	font-style: oblique;
-	text-decoration: none;
+	font-size: 14px;
 }
 
 a:hover {
@@ -101,13 +100,15 @@ header > div {
 }
 header h1 {
 	font-weight: bold;
-	font-size: 26px;
 	position: absolute;
 	left: 10px;
 	padding: 4px 0 3px;
 }
-header > div > a:hover {
-	color: #4C2811;
+header h1 a {
+	font-size: 26px;
+}
+header a {
+	text-decoration: none;
 }
 header ul {
 	position: absolute;
@@ -175,6 +176,9 @@ footer {
 	width: 100%;
 	background-color:#fff;
 	box-shadow:0 -2px 5px -2px #000
+}
+footer h4 {
+	font-size: 18px;
 }
 footer li {
 	margin: 5px 0 5px 50px;
