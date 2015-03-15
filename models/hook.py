@@ -8,6 +8,7 @@ import users
 import documents
 import projects
 import sections
+import transcriptions
 
 # Auth a user. 
 current_user = users.auth(session, db)
