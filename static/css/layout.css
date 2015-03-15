@@ -84,6 +84,27 @@ form input, form textarea, .button {
 
 progress {
 	width:100%;
+	height: 30px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border: none;
+	background-size: auto;
+	border: 1px solid #7F441D;
+	border-radius: 5px;
+	background-color: #eee;
+}
+progress::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 5px;
+}
+progress::-webkit-progress-value {
+	background-color: #5ADB62;
+	border-radius: 5px 0 0 5px;
+	background-size: 70px 40px, 100% 100%, 100% 100%;
+}
+progress::-moz-progress-bar {
+	background-color: #5ADB62;
 }
 
 .clear {
