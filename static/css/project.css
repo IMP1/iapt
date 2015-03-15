@@ -15,7 +15,19 @@
 	max-height:50px;
 }
 
-.next-button {
+#progress {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 5px;
+}
+progress, p {
+	margin-bottom: 30px
+}
+#next-form {
+	width: auto;
+}
+#next-form input {
 	float:right;
 }
 

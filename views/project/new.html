@@ -4,11 +4,13 @@
 {{end}}
 <div>
 	<h2>New Project</h2>
+	<p id="progress">{{=((step-1)*100)/3}}% complete</p>
 	<progress max="3" value="{{=step-1}}"></progress>
-	<div>Step {{=step}} of 3.</div>
 	{{if step == 1:}}
 		{{=form}}
 	{{elif step == 2:}}
+		<h3>Upload Documents</h3>
+		<p>Add documents you want to be transcribed to your project.</p>
 		<ul class="document-list">
 		{{for doc in new_project['documents']: }}
 			<li>
@@ -18,7 +20,7 @@
 		{{pass}}
 		</ul>
 		{{=form}}
-		<a class="button next-button" href="{{=URL(args=[3])}}">Next &gt;</a>
+		<form action="{{=URL(args=[3])}}" id="next-form"><input type="submit" value="Next &gt;" /></form>
 	{{else:}}
 		<ul class="document-list document-list-left">
 		{{for doc in new_project['documents']: }}
@@ -35,7 +37,6 @@
 			<input type="submit" value="Submit Project">
 		</form>
 	{{pass}}
-	<div class="clear"></div>
 </div>
 
 {{block script}}
