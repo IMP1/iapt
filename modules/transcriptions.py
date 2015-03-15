@@ -2,8 +2,8 @@
 # ORM for Transcriptions.
 
 def create(section, text, db):
-	""" Create a new section.
-		Returns the Section object for new section.
+	""" Create a new transcription.
+		Returns the transcription object for new transcription.
 
 	Keyword arguments:
 	section -- Object for corresponding section.

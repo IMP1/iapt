@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # ORM for Sections.
+import transcriptions
 
 def create(title, blurb, project, db):
 	""" Create a new section.
@@ -19,6 +20,16 @@ class Section(object):
 	def __init__(self, id, db):
 		self._db = db
 		self._data = db(db.Section.id == id).select().first()
+		self._transcriptions = None
+
+	def getTranscriptions(self):
+		# Lazy load transcriptions
+		if self._transcriptions == None:
+			self._transcriptions = list()
+			trans = self._db(self._db.Transcription.section == self._data.id).select()
+			for t in trans:
+				self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
+		return self._transcriptions
 
 	def getId(self):
 		return self._data.id
