@@ -7,7 +7,7 @@ def index():
 			default='', requires=[users.IS_NOT_IN_USE(db)]),
 		submit_button='Change Username')
 	#Change username if form is accepted
-	if unform.process().accepted:
+	if unform.process(message_onsuccess={'msg': 'Success!', 'class': 'success_flash'}).accepted:
 		current_user.setUsername(request.vars.username)
 	# Create form to change password
 	pwform = SQLFORM.factory(
@@ -18,7 +18,7 @@ def index():
 		submit_button='Change Password'
 		)
 	#Change password if form is accepted
-	if pwform.process().accepted:
+	if pwform.process(message_onsuccess={'msg': 'Success!', 'class': 'success_flash'}).accepted:
 		current_user.setPassword(pwform.vars.password)
 	# Return username and password forms to view
 	return dict(unform=unform, pwform=pwform)

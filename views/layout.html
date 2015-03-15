@@ -30,13 +30,17 @@
 			{{end}}
 		</header>
 		<main>
-			{{if response.flash:}}
+			{{if isinstance(response.flash, dict):}}
+				<div id="flash" class="{{= response.flash['class']}}">
+					{{= response.flash['msg']}}
+				</div>
+			{{elif response.flash:}}
 				<div id="flash">
-					FLASH! {{= response.flash}}
+					{{= response.flash}}
 				</div>
 			{{pass}}
 			{{include}}
-		</main>
+		</main>s
 		<div id="spacer"></div>
 		<footer>
 			{{block footer}}

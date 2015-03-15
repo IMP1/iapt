@@ -28,7 +28,7 @@ def new():
 			Field('image', 'upload', uploadfolder='documents', requires=IS_NOT_EMPTY()),
 			submit_button='Upload'
 			)
-		if form.process().accepted:
+		if form.process(message_onsuccess={'msg': 'Success!', 'class': 'success_flash'}).accepted:
 			# Save the image somewhere.
 			hash =  md5.new(request.vars.image.filename + str(time.time()))
 			iname = hash.hexdigest() + '.' + request.vars.image.filename.split('.')[-1]
