@@ -8,7 +8,7 @@ def index():
 def new():
 	# Create forms to create a project if a user is logged in
 	auth_required('You must be logged in to create a project.')
-	step = int(request.args[0]) if len(request.args) == 1 else 1
+	step = int(request.args[0]) if len(request.args) == 1 and session.new_project is not None else 1
 	if step == 1:
 		# First step, project title.
 		form = SQLFORM.factory(
