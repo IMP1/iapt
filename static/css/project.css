@@ -45,6 +45,7 @@ progress, p {
 
 #section-form input[type=submit] {
     margin-top: 128px;
+    margin-bottom: 32px;
     display: block;
     float: right;
 }

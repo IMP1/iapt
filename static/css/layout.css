@@ -190,6 +190,7 @@ header li {
 
 /* Footer */
 #spacer {
+    clear: both;
 	height: 220px;
 }
 
