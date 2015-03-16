@@ -26,7 +26,7 @@ def new():
 		form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			Field('image', 'upload', uploadfolder='documents', requires=IS_NOT_EMPTY()),
-			submit_button='Upload'
+			submit_button='Create Document'
 			)
 		if form.process(message_onsuccess={'msg': 'Document Added!', 'class': 'success_flash'}).accepted:
 			# Save the image somewhere.
@@ -43,6 +43,9 @@ def new():
 		# Return the current project, step 2 form and the current step to the view
 		return dict(new_project=session.new_project, form=form, step=step)
 	elif step == 3:
+		if len(session.new_project['documents']) == 0:
+			session.flash = {'msg': 'You must include at least one document.', 'class': 'error_flash'}
+			redirect(URL(args=[2]))
 		#Final step, project sections. N.b. must be at least 1 doc...
 		if request.env.request_method == 'POST':
 			# Create the project from the session.
