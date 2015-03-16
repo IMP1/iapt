@@ -43,6 +43,12 @@ progress, p {
 	width:330px;
 }
 
+#section-form input[type=submit] {
+    margin-top: 128px;
+    display: block;
+    float: right;
+}
+
 #section-editor {
 	list-style:none;
 }
