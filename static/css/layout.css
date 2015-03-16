@@ -61,6 +61,14 @@ a:hover {
 	color: #C7B18F;
 }
 
+a.external:after {
+	content: url(../External-Link.png);
+}
+
+a.external:hover:after {
+	content: url(../External-Link-Hover.png);
+}
+
 main {
 	padding: 30px;
 	height:100%;
