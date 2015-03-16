@@ -18,10 +18,15 @@ body {
 }
 
 input[type=submit], button {
+    cursor: pointer;
 	background-color: buttonface;
 	color: black;
 }
 
+input[type=submit]:hover, input[type=submit]:focus,
+button:hover, input[type=submit]:focus {
+    background-color: buttonHighlight;
+}
 
 input, button {
 	border: 1px solid #9A9A9A;
@@ -170,6 +175,9 @@ header li {
 	background-color: #F4E5C4;
 	color: #4C2811;
 	width: 100px;
+}
+#search input[type=submit]:hover, #search input[type=submit]:focus {
+    background-color: #E5D5B6;
 }
 
 /* Footer */
