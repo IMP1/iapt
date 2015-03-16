@@ -58,6 +58,7 @@ def new():
 				sections.create(request.vars['section-title[]'], request.vars['section-blurb[]'], proj, db)
 			# Clear the new project session
 			session.new_project = None
+			session.flash = {'msg': 'Project successfully created!', 'class': 'success_flash'}
 			redirect(URL(f='manage', args=[proj.getId()]))
 		# Return the current project and the current step to the view
 		return dict(new_project=session.new_project, step=step)
