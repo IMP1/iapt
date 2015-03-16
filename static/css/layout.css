@@ -56,6 +56,10 @@ a:hover {
 	color: #C7B18F;
 }
 
+a.external:after {
+	content: url(../External-Link.png);
+}
+
 main {
 	padding: 30px;
 	height:100%;
