@@ -7,7 +7,7 @@ def index():
 			default='', requires=[users.IS_NOT_IN_USE(db)]),
 		submit_button='Change Username')
 	#Change username if form is accepted
-	if unform.process(message_onsuccess={'msg': 'Success!', 'class': 'success_flash'}).accepted:
+	if unform.process(message_onsuccess={'msg': 'Username changed!', 'class': 'success_flash'}).accepted:
 		current_user.setUsername(request.vars.username)
 	# Create form to change password
 	pwform = SQLFORM.factory(
@@ -18,7 +18,7 @@ def index():
 		submit_button='Change Password'
 		)
 	#Change password if form is accepted
-	if pwform.process(message_onsuccess={'msg': 'Success!', 'class': 'success_flash'}).accepted:
+	if pwform.process(message_onsuccess={'msg': 'Password changed!', 'class': 'success_flash'}).accepted:
 		current_user.setPassword(pwform.vars.password)
 	# Return username and password forms to view
 	return dict(unform=unform, pwform=pwform)
@@ -51,7 +51,7 @@ def login():
 def logout():
 	# Logout the current user and return to homepage
 	if current_user != None:
-		session.flash = "You have been logged out."
+		session.flash = {'msg': 'You have been logged out.', 'class': 'success_flash'}
 		users.deauth(session)
 	redirect(URL(c='default', f='index'))
 
@@ -69,6 +69,7 @@ def register():
 			users.register(form.vars.username, form.vars.password, db)
 			# Log them in.
 			users.login(form.vars.username, form.vars.password, db, session)
+			session.flash = {'msg': 'You have succesfully registered!', 'class': 'success_flash'}
 			redirect(URL(c='default', f='index'))
 		return dict(form=form)
 	else:
