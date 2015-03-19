@@ -131,6 +131,10 @@ progress::-moz-progress-bar {
 	clear:both;
 }
 
+ol, ul {
+    padding-left: 2rem;
+}
+
 /* Header */
 header {
 	width: 100%;
@@ -228,7 +232,7 @@ footer h4 {
 	font-size: 18px;
 }
 footer li {
-	margin: 5px 0 5px 50px;
+	margin: 5px 0 5px 5px;
 }
 
 footer p {
