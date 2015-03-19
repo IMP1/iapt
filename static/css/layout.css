@@ -95,6 +95,13 @@ form input, form textarea, button {
 	font-size: 18px;
 }
 
+.error {
+	color: #db625a;
+}
+.string.invalidinput {
+	color: #db625a;
+}
+
 progress {
 	width:100%;
 	height: 30px;
