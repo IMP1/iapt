@@ -33,3 +33,9 @@ class Section(object):
 
 	def getId(self):
 		return self._data.id
+
+	def getTitle(self):
+		return self._data.title
+
+	def getBlurb(self):
+		return self._data.blurb
