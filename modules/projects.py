@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # ORM for Projects.
 import documents
+import sections
 
 def create(title, user, db):
 	""" Create a new project.
@@ -65,6 +66,7 @@ class Project(object):
 		self._db = db
 		self._data = db(db.Project.id == id).select().first()
 		self._documents = None
+		self._sections = None
 
 	def getId(self):
 		return self._data.id
@@ -87,3 +89,11 @@ class Project(object):
 			for d in docs:
 				self._documents.append(documents.Document(d.id, self._db))
 		return self._documents
+    
+	def getSections(self):
+		# Lazy load sections
+		if self._sections == None:
+			self._sections = list()
+			for s in self._db(self._db.Section.project == self._data.id).select():
+				self._sections.append(sections.Section(s.id, self._db))
+		return self._sections
