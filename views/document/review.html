@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 {{block head}}
-<link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/review.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/review.css')}}" />
 {{end}}
 <div>
 	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; {{=document.getTitle()}} Document</div>
@@ -8,7 +8,16 @@
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
     {{for section in document.getProject().getSections():}}
     <section>
-        {{=section.getTitle()}}
+        <h3>{{=section.getTitle()}}</h3>
+        <p>{{=section.getBlurb()}}</p>
+        <ul class="transcription-list">
+        {{for transcription in section.getTranscriptions():}}
+            <li>
+                <p>{{=transcription.getText()}}</p>
+                
+            </li>
+        {{pass}}
+        </ul>
     </section>
     {{pass}}
 </div>
