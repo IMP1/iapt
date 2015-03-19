@@ -1,10 +1,13 @@
 {{extend 'layout.html'}}
+{{block head}}
+<link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
+{{end}}
 <div>
 	<h2>{{= current_user.getUsername()}}'s Projects</h2>
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
-			<a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a>
+            <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
 			<ol class="documents-list">
 				{{for d in p.getDocuments():}}
 					<li>
