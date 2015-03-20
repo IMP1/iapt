@@ -39,3 +39,4 @@ class Section(object):
 
 	def getBlurb(self):
 		return self._data.blurb
+		
