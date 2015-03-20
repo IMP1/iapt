@@ -5,6 +5,7 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tempor sit amet lacus non mattis. In at feugiat nibh. Sed nec mi nec leo finibus interdum nec sed odio. Morbi sed sagittis augue, id vulputate est. Sed dignissim augue sit amet tellus euismod, non lacinia augue gravida. Maecenas faucibus lacus odio, sed dictum lacus euismod sed. Phasellus iaculis nec purus id porttitor. Fusce auctor sed justo eget interdum. Nullam faucibus dolor consequat, sodales odio et, tempus nibh.<br /><br />Aenean posuere viverra arcu et sodales. Phasellus tincidunt tellus fermentum, luctus dui ut, mattis dolor. Vestibulum tincidunt porttitor velit vitae congue. Suspendisse ac auctor nisi. Maecenas facilisis, felis sed consequat placerat, risus dolor vulputate sapien, at mollis lorem sapien vitae felis. Duis sit amet justo a enim varius dictum. Nunc purus odio, auctor et turpis venenatis, tincidunt euismod ex. Nulla hendrerit sollicitudin nibh, quis suscipit sapien euismod in. Curabitur ut sapien rutrum ex aliquet tristique. Nullam sit amet nisl hendrerit dolor aliquet hendrerit sed sed ligula. Suspendisse pellentesque ante eget leo ultrices volutpat. Nam consequat sollicitudin pharetra. Maecenas a dolor diam. Suspendisse potenti. Quisque arcu nibh, faucibus eu odio ut, viverra maximus urna. Duis eget arcu efficitur est dignissim condimentum.</p>
 	</div>
 	<h2>Recent Documents:</h2>
+	<ul class="document-list">
 	{{for r in recents: }}
 		{{if current_user == None:}}
 			{{method = 'transcribe'}}
@@ -13,9 +14,13 @@
 		{{else:}}
 			{{method = 'transcribe'}}
 		{{pass}}
-		
 		<li>
-			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">{{=r.getTitle()}}</a>
+			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
+			<h3>{{=r.getTitle()}}</h3>
+			</a>
+			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+			</li>
 		</li>
 	{{pass}}
+	</ul>
 </div>
