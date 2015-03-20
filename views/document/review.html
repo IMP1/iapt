@@ -3,7 +3,11 @@
 <link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/review.css')}}" />
 {{end}}
 <div>
-	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; {{=document.getTitle()}} Document</div>
+	<div class="breadcrumb">
+        <a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a> &gt; 
+        <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
+        {{=document.getTitle()}} Document
+    </div>
     <h2>{{=document.getTitle()}}</h2>
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
     {{if document.getTranscriptionCount() == 0:}}

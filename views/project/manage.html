@@ -1,5 +1,9 @@
 {{extend 'layout.html'}}
 <div>
+    <div class="breadcrumb">
+        <a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a> &gt; 
+        {{=project.getTitle()}} Project
+    </div>
 	<h2>{{=project.getTitle()}}</h2>
 	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
 	<ul>
