@@ -6,18 +6,34 @@
 	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; {{=document.getTitle()}} Document</div>
     <h2>{{=document.getTitle()}}</h2>
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
+    {{if document.getTranscriptionCount() == 0:}}
+    <div>
+        There have been no transcriptions for this document. You can go back to the 
+        <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">project's page</a> or 
+        <a href="{{= URL('project', 'index') }}" tabindex="3">view all your projects</a>.
+    </div>
+    {{else:}}
     {{for section in document.getProject().getSections():}}
     <section>
         <h3>{{=section.getTitle()}}</h3>
         <p>{{=section.getBlurb()}}</p>
         <ul class="transcription-list">
-        {{for transcription in section.getTranscriptions():}}
+        {{for transcription in section.getTranscriptions(document):}}
             <li>
-                <p>{{=transcription.getText()}}</p>
-                
+                <label>
+                    <p>{{=transcription.getText()}}</p>
+                    <input name="section{{=section.getId()}}" type="radio" id="section{{=section.getId()}}-transcription{{=transcription.getId()}}" />
+                </label>
             </li>
         {{pass}}
+            <li>
+                <label>
+                    <p>No transcription has been sufficient.</p>
+                    <input name="section{{=section.getId()}}" type="radio" id="section{{=section.getId()}}-none}}" checked="checked"/>
+                </label>
+            </li>
         </ul>
     </section>
+    {{pass}}
     {{pass}}
 </div>
