@@ -3,18 +3,13 @@
 <link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
 {{end}}
 <div>
-	<h2>{{= current_user.getUsername()}}'s Projects</h2>
-	<ul class="projects-list">
+	<h2>My Projects</h2>
+	<ul class="projects-list" style="display:table">
 	{{for p in projects: }}
-		<li>
+		<li style="display:table-row">
             <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
-			<ol class="documents-list">
-				{{for d in p.getDocuments():}}
-					<li>
-						<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">{{=d.getTitle()}}</a>
-					</li>
-				{{pass}}
-			</ol>
+			<span>{{="0"}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
+            <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
 		</li>
 	{{pass}}
 	</ul>

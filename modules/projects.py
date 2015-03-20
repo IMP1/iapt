@@ -80,7 +80,10 @@ class Project(object):
 
 	def getCreator(self):
 		return self._data.creator
-
+    
+	def getDocumentCount(self):
+		return self._db(self._db.Document.project == self._data.id).count()
+    
 	def getDocuments(self):
 		# Lazy load documents.
 		if self._documents == None:

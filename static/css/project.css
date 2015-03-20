@@ -24,6 +24,31 @@
     vertical-align: middle;
 }
 
+.projects-list {
+    display: table;
+    width: 70%;
+}
+.projects-list > li {
+    display: table-row;
+}
+.projects-list > li > h4,
+.projects-list > li > span,
+.projects-list > li > a {
+    display: table-cell;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+.projects-list > li > h4 {
+    width: 30%;
+}
+.projects-list > li > span {
+    width: 50%;
+}
+.projects-list > li > a {
+    width: 20%;
+}
+
 #progress {
 	position: absolute;
 	left: 50%;
