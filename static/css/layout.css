@@ -63,6 +63,7 @@ a:hover {
 
 a.external:after {
 	content: url(../External-Link.png);
+	margin-left: 3px;
 }
 
 a.external:hover:after {
