@@ -100,3 +100,6 @@ class Project(object):
 			for s in self._db(self._db.Section.project == self._data.id).select():
 				self._sections.append(sections.Section(s.id, self._db))
 		return self._sections
+
+	def getTotalTranscriptions(self):
+		return self._db((self._db.Transcription.document == self._db.Document.id) & (self._db.Document.project == self._data.id)).count()

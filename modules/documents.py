@@ -57,6 +57,7 @@ class Document(object):
 		self._db = db
 		self._data = db(db.Document.id == id).select().first()
 		self._project = None
+		self._transcriptions = None
 
 	def getTitle(self):
 		return self._data.title
@@ -73,3 +74,10 @@ class Document(object):
 			self._project = projects.Project(self._data.project, self._db)
 		return self._project
 
+	def getTranscriptions(self):
+		# Lazy load transcriptions.
+		if self._transcriptions == None:
+			self._transcriptions = list()
+			for t in self._db(self._db.Transcription.document == self._data.id).select():
+			    self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
+		return self._transcriptions
