@@ -37,7 +37,6 @@
     display: table-cell;
     margin-left: 1rem;
     margin-right: 1rem;
-    
 }
 .projects-list > li > h4 {
     width: 30%;
@@ -47,6 +46,12 @@
 }
 .projects-list > li > a {
     width: 20%;
+}
+.projects-list > li > a > button {
+    padding-bottom: 4px;
+    padding-top: 4px;
+    margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 #progress {

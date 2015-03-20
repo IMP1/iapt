@@ -6,7 +6,7 @@
 	<h2>My Projects</h2>
 	<ul class="projects-list" style="display:table">
 	{{for p in projects: }}
-		<li style="display:table-row">
+		<li>
             <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
 			<span>{{=p.getTotalTranscriptions()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
             <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
