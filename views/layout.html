@@ -12,16 +12,15 @@
 				<h1><a href="{{= URL('default', 'index') }}" tabindex="1">Transcriber</a></h1>
 				<nav>
 					<ul>
-						<li><a href="{{= URL('default', 'index') }}" tabindex="3">Home</a></li><!--
-						--><li><a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a></li><!--
-						--><li><a href="{{= URL('project', 'new') }}" tabindex="3">New Project</a></li><!--
+						<li{{if (request.controller == "default" and request.function == "index"):}} class="selected"{{pass}}><a href="{{= URL('default', 'index') }}" tabindex="3">Home</a></li><!--
+						--><li{{if (request.controller == "project" and request.function == "index"):}} class="selected"{{pass}}><a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a></li><!--
+						--><li{{if (request.controller == "project" and request.function == "new"):}} class="selected"{{pass}}><a href="{{= URL('project', 'new') }}" tabindex="3">New Project</a></li><!--
 						{{ if current_user: }}
-							--><li><a href="{{= URL('user', 'logout') }}" tabindex="3">Logout</a></li><!--
-							--><li><a href="{{= URL('user', 'index') }}" tabindex="3">Your Profile</a></li>
+							--><li{{if (request.controller == "user" and request.function == "index"):}} class="selected"{{pass}}><a href="{{= URL('user', 'index') }}" tabindex="3">Your Profile</a></li><!--
+							--><li><a href="{{= URL('user', 'logout') }}" tabindex="3">Logout</a></li>
 						{{ else: }}
-							--><li><a href="{{= URL('user', 'login') }}" tabindex="3">Login</a></li><!--
-							--><li><a href="{{= URL('user', 'register') }}" tabindex="3">Register</a></li>
-							
+							--><li{{if (request.controller == "user" and request.function == "login"):}} class="selected"{{pass}}><a href="{{= URL('user', 'login') }}" tabindex="3">Login</a></li><!--
+							--><li{{if (request.controller == "user" and request.function == "register"):}} class="selected"{{pass}}><a href="{{= URL('user', 'register') }}" tabindex="3">Register</a></li>
 						{{ pass }}
 					</ul>
 				</nav>
