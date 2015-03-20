@@ -36,6 +36,7 @@ db.define_table('Section',
 #Transcription
 db.define_table('Transcription',
 	Field('section', db.Section),
+	Field('document', db.Document),
 	Field('text', 'string'),
 	Field('accepted', 'boolean')
 	)
