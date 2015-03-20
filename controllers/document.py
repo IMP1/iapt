@@ -5,8 +5,10 @@ def review():
 	return dict(document=documents.Document(request.args[0], db))
 
 def transcribe():
-	# Return the document to the view
-	return dict(document=documents.Document(request.args[0], db))
+	document = documents.Document(request.args[0], db)
+	sections = document.getProject().getSections()
+	print(sections)
+	return dict(document=document, sections=sections)
 
 def image():
 	# Stream the image without using db.

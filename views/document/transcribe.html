@@ -2,17 +2,17 @@
 <div>
 	<h2>{{=document.getTitle()}}</h2>
 	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
+	{{=sections}}
 	<div class="transcribe-sections">
 		<form>
 			<ul>
+				{{for row in sections:}}
 				<li>
-				<h3>Section 1</h3>
-				<textarea></textarea>
+				<h3>{{row.getTitle()}}</h3>
+				{{row.getBlurb()}}
+				<input type="text" name="{{row.getId()}}">
 				</li>
-				<li>
-				<h3>Section 2</h3>
-				<textarea></textarea>
-				</li>
+				{{pass}}
 			</ul>
 			<input type="submit" value="Submit">
 		</form>
