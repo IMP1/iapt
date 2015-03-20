@@ -101,5 +101,8 @@ class Project(object):
 				self._sections.append(sections.Section(s.id, self._db))
 		return self._sections
 
-	def getTotalTranscriptions(self):
-		return self._db((self._db.Transcription.document == self._db.Document.id) & (self._db.Document.project == self._data.id)).count()
+	def getDocumentsTranscribed(self):
+		return len(self._db(
+						(self._db.Document.id == self._db.Transcription.document) 
+						& (self._db.Document.project == self._data.id)
+						).select(groupby=self._db.Document.id))

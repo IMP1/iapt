@@ -8,7 +8,7 @@
 	{{for p in projects: }}
 		<li>
             <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
-			<span>{{=p.getTotalTranscriptions()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
+			<span>{{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
             <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
 		</li>
 	{{pass}}
