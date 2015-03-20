@@ -74,10 +74,16 @@ class Document(object):
 			self._project = projects.Project(self._data.project, self._db)
 		return self._project
 
-	def getTranscriptions(self):
-		# Lazy load transcriptions.
+	def getTranscriptionCount(self):
+		return self._db(self._db.Transcription.document == self._data.id).count()
+
+	def getTranscriptions(self, section):
+		# Lazy load transcriptions
 		if self._transcriptions == None:
-			self._transcriptions = list()
-			for t in self._db(self._db.Transcription.document == self._data.id).select():
-			    self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
-		return self._transcriptions
+			self._transcriptions = dict()
+		if not section in self._transcriptions:
+			self._transcriptions[section] = list()
+			trans = self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.section == section.getId())).select()
+			for t in trans:
+				self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
+		return self._transcriptions[section]

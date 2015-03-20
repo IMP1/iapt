@@ -22,14 +22,16 @@ class Section(object):
 		self._data = db(db.Section.id == id).select().first()
 		self._transcriptions = None
 
-	def getTranscriptions(self):
+	def getTranscriptions(self, document):
 		# Lazy load transcriptions
 		if self._transcriptions == None:
-			self._transcriptions = list()
-			trans = self._db(self._db.Transcription.section == self._data.id).select()
+			self._transcriptions = dict()
+		if not document in self._transcriptions:
+			self._transcriptions[document] = list()
+			trans = self._db((self._db.Transcription.section == self._data.id) & (self._db.Transcription.document == document.getId())).select()
 			for t in trans:
 				self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
-		return self._transcriptions
+		return self._transcriptions[document]
 
 	def getId(self):
 		return self._data.id
