@@ -63,6 +63,7 @@ a:hover {
 
 a.external:after {
 	content: url(../External-Link.png);
+	margin-left: 3px;
 }
 
 a.external:hover:after {
@@ -156,17 +157,25 @@ header h1 a {
 }
 header a {
 	text-decoration: none;
+	display: block;
+}
+nav a {
+	margin-top: 10px;
 }
 header ul {
 	position: absolute;
 	right: 10px;
-	margin-left: 200px;
-	height: 38px;
 	list-style-type: none;
+	top: 0;
+	bottom: 0;
 }
 header li {
 	display: inline-block;
 	padding: 10px;
+	height: 100%;
+}
+header li.selected {
+	border-bottom: 5px solid;
 }
 
 /* Search */
