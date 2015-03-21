@@ -85,5 +85,5 @@ class Document(object):
 			self._transcriptions[section] = list()
 			trans = self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.section == section.getId())).select()
 			for t in trans:
-				self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
+				self._transcriptions[section].append(transcriptions.Transcription(t.id, self._db))
 		return self._transcriptions[section]

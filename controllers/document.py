@@ -5,10 +5,16 @@ def review():
 	return dict(document=documents.Document(request.args[0], db))
 
 def transcribe():
-	document = documents.Document(request.args[0], db)
-	sections = document.getProject().getSections()
-	print(sections)
-	return dict(document=document, sections=sections)
+	doc = documents.Document(request.args[0], db)
+	if request.env.request_method == 'POST':
+		# Process sections.
+		for section in doc.getProject().getSections():
+			transcriptions.create(section, doc, request.vars['section'+str(section.getId())], db)
+		# Redirect the user to wherever is appropriate.
+		session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
+						 'class': 'success_flash'}
+		redirect(URL(c='default', f='index'))
+	return dict(document=doc)
 
 def image():
 	# Stream the image without using db.
@@ -16,5 +22,4 @@ def image():
 	path=os.path.join(request.folder,'uploads',filename)
 	response.headers['ContentType'] ="application/octet-stream";
 	response.headers['Content-Disposition']="attachment; filename="+filename
-	print path
 	return response.stream(open(path, 'rb'),chunk_size=4096)

@@ -1,20 +1,20 @@
 {{extend 'layout.html'}}
+{{block head}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/document.css')}}" />
+{{end}}
 <div>
 	<h2>{{=document.getTitle()}}</h2>
 	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
-	{{=sections}}
-	<div class="transcribe-sections">
-		<form>
-			<ul>
-				{{for row in sections:}}
+		<form method="post" class="transcription-form">
+			<ul class="transcription-sections">
+				{{for section in document.getProject().getSections():}}
 				<li>
-				<h3>{{row.getTitle()}}</h3>
-				{{row.getBlurb()}}
-				<input type="text" name="{{row.getId()}}">
+				<h3>{{=section.getTitle()}}</h3>
+				<textarea name="section{{=section.getId()}}" 
+				placeholder="{{=section.getBlurb()}}"></textarea>
 				</li>
 				{{pass}}
 			</ul>
 			<input type="submit" value="Submit">
 		</form>
-	</div>
 </div>

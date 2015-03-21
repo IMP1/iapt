@@ -22,3 +22,6 @@ class Transcription(object):
 
 	def getId(self):
 		return self._data.id
+
+	def getText(self):
+		return self._data.text

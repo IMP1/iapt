@@ -30,7 +30,7 @@ class Section(object):
 			self._transcriptions[document] = list()
 			trans = self._db((self._db.Transcription.section == self._data.id) & (self._db.Transcription.document == document.getId())).select()
 			for t in trans:
-				self._transcriptions.append(transcriptions.Transcription(t.id, self._db))
+				self._transcriptions[document].append(transcriptions.Transcription(t.id, self._db))
 		return self._transcriptions[document]
 
 	def getId(self):
