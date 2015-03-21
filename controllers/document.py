@@ -1,11 +1,14 @@
 import os
 
 def review():
+	doc = documents.Document(request.args[0], db)
+	response.title = 'Review: ' + doc.getTitle()
 	# Return the document to the view
-	return dict(document=documents.Document(request.args[0], db))
+	return dict(document=doc)
 
 def transcribe():
 	doc = documents.Document(request.args[0], db)
+	response.title = 'Transcribe: ' + doc.getTitle()
 	if request.env.request_method == 'POST':
 		# Process sections.
 		for section in doc.getProject().getSections():

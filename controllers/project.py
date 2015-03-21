@@ -2,10 +2,12 @@ import md5, time, os
 
 def index():
 	# If there is a user logged in, return their projects to the view
+	response.title = 'Your Projects'
 	auth_required('You must be logged in to see your projects.')
 	return dict(projects=projects.users_projects(current_user, db))
 
 def new():
+	response.title = 'New Project'
 	# Create forms to create a project if a user is logged in
 	auth_required('You must be logged in to create a project.')
 	step = int(request.args[0]) if len(request.args) == 1 and session.new_project is not None else 1
@@ -74,6 +76,7 @@ def manage():
 	auth_required('You must be logged in to manage a project.')
 	# Retrieve project.
 	project = projects.Project(request.args[0], db)
+	response.title = 'Manage: ' + project.getTitle()
 	# Check project owner.
 	if current_user.getId() != project.getCreator():
 		session.flash = 'You can not manage this project.'
@@ -82,8 +85,10 @@ def manage():
 	return dict(project=project)
 
 def view():
+	project = projects.Project(request.args[0], db)
+	response.title = 'Project: ' + project.getTitle()
 	# Return the project to the view
-	return dict(project=projects.Project(request.args[0], db))
+	return dict(project=project)
 
 def image():
 	# Stream the image without using db.

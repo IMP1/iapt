@@ -1,4 +1,5 @@
 def index():
+	response.title = 'Your Profile'
 	#Create forms to change the current user's username or password
 	auth_required('You must be logged in to see your profile.')
 	# Create form to change username
@@ -24,6 +25,7 @@ def index():
 	return dict(unform=unform, pwform=pwform)
 
 def login():
+	response.title = 'Login'
 	# Create login form if there is no user currently logged in
 	if current_user == None:
 		form = SQLFORM.factory(
@@ -56,6 +58,7 @@ def logout():
 	redirect(URL(c='default', f='index'))
 
 def register():
+	response.title = 'Register'
 	# Create register form if there is no user currently logged in
 	if current_user == None:
 		form = SQLFORM.factory(db.User, 
