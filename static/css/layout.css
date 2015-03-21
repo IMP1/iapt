@@ -70,7 +70,7 @@ a.external:hover:after {
 }
 
 main {
-	padding: 30px;
+	padding: 50px 30px 30px 30px;
 	height:100%;
 }
 
@@ -137,10 +137,12 @@ ol, ul {
 
 /* Header */
 header {
-	width: 100%;
+	width:100%;
 	background-color:#fff;
 	box-shadow:0 2px 5px -2px #000;
+	position:fixed;
 }
+
 header > div {
 	position: relative;
 	padding: 10px;
