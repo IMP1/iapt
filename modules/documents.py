@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # ORM for Documents.
 import projects
+import transcriptions
 
 def create(title, project, image, db):
 	""" Create a new document and return document object.

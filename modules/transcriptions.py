@@ -15,6 +15,12 @@ def create(section, document, text, db):
 	id = db.Transcription.insert(section=section.getId(), document=document.getId(), text=text, accepted=False)
 	return Transcription(id, db)
 
+def accept(transcription_id, db):
+	db(db.Transcription.id == transcription_id).update(accepted=True)
+    
+def delete(transcription_id, db):
+	db(db.Transcription.id == transcription_id).delete()
+
 class Transcription(object):
 	def __init__(self, id, db):
 		self._db = db
@@ -25,3 +31,6 @@ class Transcription(object):
 
 	def getText(self):
 		return self._data.text
+
+	def isAccepted(self):
+		return self._data.accepted
