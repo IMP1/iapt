@@ -4,6 +4,8 @@ import transcriptions
 def review():
 	doc = documents.Document(request.args[0], db)
 	response.title = 'Review: ' + doc.getTitle()
+	if doc.isAccepted():
+		redirect(URL(c='document', f='view', args=[doc.getId()]))
 	if request.vars.action == "accept":
 		for section in doc.getProject().getSections():
 			# Accept chosen transcriptions
@@ -28,6 +30,13 @@ def review():
 	# Return the document to the view
 	return dict(document=doc)
 
+def view():
+	doc = documents.Document(request.args[0], db)
+	response.title = 'View: ' + doc.getTitle()
+	if not doc.isAccepted():
+		redirect(URL(c='document', f='review', args=[doc.getId()]))
+	return dict(document=doc)
+
 def transcribe():
 	doc = documents.Document(request.args[0], db)
 	response.title = 'Transcribe: ' + doc.getTitle()
@@ -48,10 +57,3 @@ def image():
 	response.headers['ContentType'] ="application/octet-stream";
 	response.headers['Content-Disposition']="attachment; filename="+filename
 	return response.stream(open(path, 'rb'),chunk_size=4096)
-
-def view():
-	doc = documents.Document(request.args[0], db)
-	response.title = 'View: ' + doc.getTitle()
-	if not doc.isAccepted():
-		redirect(URL(c='document', f='review', args=[doc.getId()]))
-	return dict(document=doc)
