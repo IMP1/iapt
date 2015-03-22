@@ -18,35 +18,38 @@
     </div>
     {{else:}}
     <form id="transcription-review" action="#" method="POST">
-    {{for section in document.getProject().getSections():}}
-    <section>
-        <h3>{{=section.getTitle()}}</h3>
-        <p>{{=section.getBlurb()}}</p>
-        <ul class="transcription-list">
-        {{for transcription in section.getTranscriptions(document):}}
-            <li>
-                <label>
-                    <p>{{=transcription.getText()}}</p>
-                    <div>
-                        <input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}">
-                    </div>
-                </label>
-            </li>
+        {{for section in document.getProject().getSections():}}
+        <section>
+            <h3>{{=section.getTitle()}}</h3>
+            <p>{{=section.getBlurb()}}</p>
+            <ul class="transcription-list">
+            {{checked = False}}
+            {{for transcription in section.getTranscriptions(document):}}
+                <li>
+                    <label>
+                        <p>{{=transcription.getText()}}</p>
+                        <div>
+                            <input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}" {{="checked" if not checked else ""}}>
+                            {{checked = True}}
+                        </div>
+                    </label>
+                </li>
+            {{pass}}
+            </ul>
+        </section>
         {{pass}}
-            <hr />
-            <li>
-                <label>
-                    <p>No transcription has been sufficient.</p>
-                    <div>
-                        <input name="section{{=section.getId()}}" type="radio" value="None" id="section{{=section.getId()}}-None" checked="checked">
-                    </div>
-                </label>
-            </li>
-        </ul>
-        
-    </section>
-    {{pass}}
-    <input type=submit value="Accept Transcriptions and Reopen" />
+        <input type=submit value="Accept Transcriptions" onclick="setAction('accept');" />
+        <input type=submit value="Reject All and Reopen" onclick="setAction('reject');" />
+        <div style="display: hidden;">
+            <input type=hidden id="action" name="action" value="None" />
+        </div>
     </form>
     {{pass}}
 </div>
+{{block script}}
+<script type="text/javascript">
+    function setAction(action) {
+        document.getElementById("action").value = action;
+    }
+</script>
+{{end}}
