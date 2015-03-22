@@ -24,6 +24,7 @@ ul.transcription-list > hr {
     border: 0;
     border-top: 1px solid #4C2811;
 }
+p.accepted-transcription ,
 ul.transcription-list > li {
     width: 544px;
     border: 1px solid #4C2811;
@@ -32,6 +33,9 @@ ul.transcription-list > li {
     padding: 8px;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+p.accepted-transcription {
+    margin-left: 2rem;
 }
 ul.transcription-list > li > label {
     display: table-row;
@@ -47,6 +51,11 @@ ul.transcription-list label > div {
     text-align: right;
     width: 32px;
     vertical-align: middle;
+}
+
+h3.accepted-transcription-title {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 form.transcription-form {

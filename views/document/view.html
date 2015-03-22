@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+{{block head}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/document.css')}}" />
+{{end}}
+<div>
+    <div class="breadcrumb">
+        <a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
+        <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
+        {{=document.getTitle()}} Document
+    </div>
+    <h2>{{=document.getTitle()}}</h2>
+    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
+    <h3 class="accepted-transcription-title">These are the transcriptions you have accepted for this document.</h3>
+    {{for section in document.getProject().getSections():}}
+    <section>
+        <h3>{{=section.getTitle()}}</h3>
+        <p>{{=section.getBlurb()}}</p>
+        <p class="accepted-transcription">{{=document.getAcceptedTranscription(section).text}}</p>
+        </ul>
+    </section>
+    {{pass}}
+</div>

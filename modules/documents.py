@@ -75,6 +75,9 @@ class Document(object):
 			self._project = projects.Project(self._data.project, self._db)
 		return self._project
 
+	def isAccepted(self):
+		return self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.accepted == True)).count() > 0
+
 	def getTranscriptionCount(self):
 		return self._db(self._db.Transcription.document == self._data.id).count()
 
@@ -88,3 +91,6 @@ class Document(object):
 			for t in trans:
 				self._transcriptions[section].append(transcriptions.Transcription(t.id, self._db))
 		return self._transcriptions[section]
+
+	def getAcceptedTranscription(self, section):
+		return self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.section == section.getId()) & (self._db.Transcription.accepted == True)).select().first()

@@ -51,4 +51,7 @@ def image():
 
 def view():
 	doc = documents.Document(request.args[0], db)
+	response.title = 'View: ' + doc.getTitle()
+	if not doc.isAccepted():
+		redirect(URL(c='document', f='review', args=[doc.getId()]))
 	return dict(document=doc)
