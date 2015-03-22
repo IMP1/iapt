@@ -8,6 +8,10 @@ form#transcription-review {
     font-size: initial;
 }
 
+form#transcription-review input[type=submit] {
+    margin-top: 2rem;
+}
+
 ul.transcription-list {
     list-style: none;
     width: 100%;

@@ -17,7 +17,7 @@
         <a href="{{= URL('project', 'index') }}">view all your projects</a>.
     </div>
     {{else:}}
-    <form id="transcription-review">
+    <form id="transcription-review" action="#" method="POST">
     {{for section in document.getProject().getSections():}}
     <section>
         <h3>{{=section.getTitle()}}</h3>
@@ -28,7 +28,7 @@
                 <label>
                     <p>{{=transcription.getText()}}</p>
                     <div>
-                        <input name="section{{=section.getId()}}" type="radio" id="section{{=section.getId()}}-transcription{{=transcription.getId()}}">
+                        <input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}">
                     </div>
                 </label>
             </li>
@@ -38,7 +38,7 @@
                 <label>
                     <p>No transcription has been sufficient.</p>
                     <div>
-                        <input name="section{{=section.getId()}}" type="radio" id="section{{=section.getId()}}-none" checked="checked">
+                        <input name="section{{=section.getId()}}" type="radio" value="None" id="section{{=section.getId()}}-None" checked="checked">
                     </div>
                 </label>
             </li>
