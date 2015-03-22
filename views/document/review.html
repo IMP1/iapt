@@ -4,7 +4,7 @@
 {{end}}
 <div>
 	<div class="breadcrumb">
-        <a href="{{= URL('project', 'index') }}" tabindex="3">Your Projects</a> &gt; 
+        <a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
         {{=document.getTitle()}} Document
     </div>
@@ -14,7 +14,7 @@
     <div>
         There have been no transcriptions for this document. You can go back to the 
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">project's page</a> or 
-        <a href="{{= URL('project', 'index') }}" tabindex="3">view all your projects</a>.
+        <a href="{{= URL('project', 'index') }}">view all your projects</a>.
     </div>
     {{else:}}
     {{for section in document.getProject().getSections():}}
