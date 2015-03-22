@@ -2,6 +2,7 @@ import os
 import transcriptions
 
 def review():
+	auth_required('You must be logged in to review a document.')
 	doc = documents.Document(request.args[0], db)
 	response.title = 'Review: ' + doc.getTitle()
 	if doc.isAccepted():

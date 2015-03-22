@@ -10,7 +10,7 @@
     </div>
     <h2>{{=document.getTitle()}}</h2>
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
-    <h3 class="accepted-transcription-title">These are the transcriptions you have accepted for this document.</h3>
+    <h3 class="accepted-transcription-title">These are the transcriptions {{="you have" if current_user != None and current_user.getId() == document.getProject().getCreator() else "the project creator has" }} accepted for this document.</h3>
     {{for section in document.getProject().getSections():}}
     <section>
         <h3>{{=section.getTitle()}}</h3>
