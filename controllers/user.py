@@ -35,6 +35,7 @@ def login():
 			)
 		if form.process().accepted:
 			if users.login(form.vars.username, form.vars.password, db, session):
+				session.flash = {'msg': 'You have been logged in.', 'class': 'success_flash'}
 				if session.back:
 					# Extract session.back and clear it. Redirect to wherever the user was.
 					tmp = session.back
