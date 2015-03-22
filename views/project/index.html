@@ -4,6 +4,10 @@
 {{end}}
 <div>
 	<h2>My Projects</h2>
+	{{if len(projects) == 0:}}
+    <br />
+    <div>You have not made any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
+    {{else:}}
 	<ul class="projects-list" style="display:table">
 	{{for p in projects: }}
 		<li>
@@ -12,5 +16,6 @@
             <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
 		</li>
 	{{pass}}
+    {{pass}}
 	</ul>
 </div>
