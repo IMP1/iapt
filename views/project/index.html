@@ -8,7 +8,7 @@
     <br />
     <div>You have not made any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
     {{else:}}
-	<ul class="projects-list" style="display:table">
+	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
             <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
