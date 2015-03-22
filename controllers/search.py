@@ -1,6 +1,6 @@
 def index():
 	response.title = 'Search'
-	if request.vars.searchterm == "":
+	if request.vars.searchterm == None or request.vars.searchterm == "":
 		session.flash = "Please enter a term"
 		redirect(URL(c='default', f='index'))
 	results = documents.search_results(db, request.vars.searchterm)
