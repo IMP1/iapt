@@ -3,8 +3,46 @@ img.docimage-large {
     margin-bottom: 2rem;
 }
 
+form#transcription-review {
+    width: 90%;
+    font-size: initial;
+}
+
 ul.transcription-list {
+    list-style: none;
+    width: 100%;
     margin-left: 64px;
+    display: table;
+}
+ul.transcription-list > hr {
+    width: 544px;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #4C2811;
+}
+ul.transcription-list > li {
+    width: 544px;
+    border: 1px solid #4C2811;
+    background-color: #C7B18F;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+ul.transcription-list > li > label {
+    display: table-row;
+}
+ul.transcription-list label > p,
+ul.transcription-list label > div {
+    display: table-cell;
+}
+ul.transcription-list label > p {
+    width: 512px;
+}
+ul.transcription-list label > div {
+    text-align: right;
+    width: 32px;
+    vertical-align: middle;
 }
 
 form.transcription-form {
