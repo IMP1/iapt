@@ -3,6 +3,7 @@ import os
 def review():
 	doc = documents.Document(request.args[0], db)
 	response.title = 'Review: ' + doc.getTitle()
+	print(request.vars)
 	# Return the document to the view
 	return dict(document=doc)
 
