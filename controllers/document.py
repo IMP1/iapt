@@ -49,7 +49,7 @@ def transcribe():
 		session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
 						 'class': 'success_flash'}
 		redirect(URL(c='default', f='index'))
-	return dict(document=doc)
+	return dict(document=doc, project=doc.getProject())
 
 def image():
 	# Stream the image without using db.

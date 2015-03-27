@@ -3,18 +3,26 @@
 <link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/document.css')}}" />
 {{end}}
 <div>
-	<h2>{{=document.getTitle()}}</h2>
-	<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
-		<form method="post" class="transcription-form">
-			<ul class="transcription-sections">
-				{{for section in document.getProject().getSections():}}
-				<li>
-				<h3>{{=section.getTitle()}}</h3>
-				<textarea name="section{{=section.getId()}}" 
-				placeholder="{{=section.getBlurb()}}"></textarea>
-				</li>
-				{{pass}}
-			</ul>
-			<input type="submit" value="Submit">
-		</form>
+	<h2>Transcribe {{=document.getTitle()}}</h2>
+	<div class="breadcrumb"><a href="{{=URL(c='project', f='manage', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
+	<div id="scrollImage">
+		<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
+	</div>
+	<div class = "rightSide">
+		<div class="scrollBox">
+			<form method="post" class="transcription-form">
+				<ul class="transcription-sections">
+					{{for section in document.getProject().getSections():}}
+					<li>
+					<h3>{{=section.getTitle()}}</h3>
+					<p>{{=section.getBlurb()}}</p>
+					<textarea name="section{{=section.getId()}}" 
+					placeholder="Enter transcription"></textarea>
+					</li>
+					{{pass}}
+				</ul>
+				<input type="submit" value="Submit this transcription">
+			</form>
+		</div>
+	</div>
 </div>

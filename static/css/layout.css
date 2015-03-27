@@ -48,6 +48,10 @@ main > div, footer > div {
 	background-color: #5ADB62 !important;
 }
 
+.rightSide {
+	margin-left: 50%
+}
+
 h2 {
 	margin: 30px 0 10px;
 }
@@ -131,6 +135,10 @@ progress::-moz-progress-bar {
 	clear:both;
 }
 
+.scrollBox {
+	overflow-y: auto;
+}
+
 ol, ul {
     padding-left: 2rem;
 }
@@ -207,6 +215,13 @@ header li.selected {
 }
 #search input[type=submit]:hover, #search input[type=submit]:focus {
     background-color: #E5D5B6;
+}
+
+#scrollImage {
+	width:50%;
+	overflow: auto;
+	float:left;
+	border-style: solid;
 }
 
 /* Footer */
