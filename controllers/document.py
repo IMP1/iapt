@@ -48,7 +48,7 @@ def transcribe():
 		# Redirect the user to wherever is appropriate.
 		session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
 						 'class': 'success_flash'}
-		redirect(URL(c='default', f='index'))
+		redirect(URL(c='project', f='view', args=doc.getProject().getId()))
 	return dict(document=doc, project=doc.getProject())
 
 def image():

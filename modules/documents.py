@@ -42,8 +42,10 @@ def search_results(db, searchterm):
 	term = "%"+searchterm+"%"
 	results = db((db.Document.title.like(term))).select()
 	for r in results:
-		ret_list.append(Document(r.id, db))
-	return ret_list
+		doc = Document(r.id, db)
+		if doc.getTranscriptionCount() < 3:
+			ret_list.append(doc)
+	return ret_list	
 
 class Document(object):
 	def __init__(self, id, db):
