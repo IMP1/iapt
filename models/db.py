@@ -15,6 +15,7 @@ db.define_table('User',
 db.define_table('Project',
     Field('creator', db.User),
     Field('title', length=128),
+    Field('open', 'boolean')
     )
 
 #Document

@@ -13,7 +13,7 @@ def create(title, user, db):
 	db -- Instance of db (DAL) in use.
 
 	"""
-	id = db.Project.insert(creator=user.getId(), title=title)
+	id = db.Project.insert(creator=user.getId(), title=title, open=False)
 	return Project(id, db)
 
 def users_projects(user, db):
@@ -106,3 +106,10 @@ class Project(object):
 						(self._db.Document.id == self._db.Transcription.document) 
 						& (self._db.Document.project == self._data.id)
 						).select(groupby=self._db.Document.id))
+
+	def isOpen(self):
+		return self._data.open
+
+	def setOpen(self, value):
+		self._db(self._db.Project.id == self._data.id).update(open=value)
+		self._data.open = value
