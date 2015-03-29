@@ -43,13 +43,21 @@ def transcribe():
 	doc = documents.Document(request.args[0], db)
 	response.title = 'Transcribe: ' + doc.getTitle()
 	if request.env.request_method == 'POST':
-		# Process sections.
+		# Check there is at least one transcription.
+		count = 0
 		for section in doc.getProject().getSections():
-			transcriptions.create(section, doc, request.vars['section'+str(section.getId())], db)
-		# Redirect the user to wherever is appropriate.
-		session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
-						 'class': 'success_flash'}
-		redirect(URL(c='project', f='view', args=doc.getProject().getId()))
+			if request.vars['section'+str(section.getId())] != '':
+				count += 1
+		if count == 0:
+			response.flash = "You must transcribe at least one section."
+		else:
+			# Process sections.
+			for section in doc.getProject().getSections():
+				transcriptions.create(section, doc, request.vars['section'+str(section.getId())], db)
+			# Redirect the user to wherever is appropriate.
+			session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
+							 'class': 'success_flash'}
+			redirect(URL(c='project', f='view', args=doc.getProject().getId()))
 	return dict(document=doc, project=doc.getProject())
 
 def image():
