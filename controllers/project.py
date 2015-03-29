@@ -90,6 +90,18 @@ def view():
 	# Return the project to the view
 	return dict(project=project)
 
+def toggle():
+	auth_required('You must be logged in to open or close a project.')
+	project = projects.Project(request.args[0], db)
+	if (project.getCreator() != current_user.getId()):
+		session.flash = 'You can not open or close a project that you did not create.'
+	else:
+		project.setOpen(not project.isOpen())
+		session.flash = {'msg': 'Project successfully ' + 
+						('opened.' if project.isOpen() else 'closed.'),
+						 'class': 'success_flash'}
+	redirect(URL(f='index'))
+
 def image():
 	# Stream the image without using db.
 	filename=request.args[0]

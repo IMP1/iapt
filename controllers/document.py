@@ -22,8 +22,9 @@ def review():
 		redirect(URL(c='document', f='view', args=[doc.getId()]))
 	elif request.vars.action == "reject":
 		# Delete all the transcriptions
-		for transcription in doc.getTranscriptions():
-			transcriptions.delete(transcription.getId(), db)
+		for section in doc.getProject().getSections():
+			for transcription in doc.getTranscriptions(section):
+				transcriptions.delete(transcription.getId(), db)
 		# Redirect to the project page.
 		session.flash = {'msg': "The document has been reopened without any transcriptions.",
 						 'class': 'success_flash'}

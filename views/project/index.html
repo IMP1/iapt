@@ -6,13 +6,18 @@
 	<h2>My Projects</h2>
 	{{if len(projects) == 0:}}
     <br />
-    <div>You have not made any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
+    <div>You have not created any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
     {{else:}}
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
             <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
 			<span>{{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
+			{{if p.isOpen(): }}
+				<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
+			{{else:}}
+				<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
+			{{pass}}
             <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
 		</li>
 	{{pass}}

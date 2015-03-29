@@ -40,7 +40,10 @@ def search_results(db, searchterm):
 	"""
 	ret_list = list()
 	term = "%"+searchterm+"%"
-	results = db((db.Document.title.like(term))).select()
+	results = db(db.Document.title.like(term)
+				& (db.Document.project == db.Project.id)
+				& (db.Project.open == True)
+				).select(db.Document.ALL)
 	for r in results:
 		doc = Document(r.id, db)
 		if doc.getTranscriptionCount() < 3:
@@ -81,7 +84,8 @@ class Document(object):
 		return self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.accepted == True)).count() > 0
 
 	def getTranscriptionCount(self):
-		return self._db(self._db.Transcription.document == self._data.id).count()
+		section_count = len(self.getProject().getSections())
+		return self._db(self._db.Transcription.document == self._data.id).count() / section_count
 
 	def getTranscriptions(self, section):
 		# Lazy load transcriptions
@@ -95,4 +99,6 @@ class Document(object):
 		return self._transcriptions[section]
 
 	def getAcceptedTranscription(self, section):
-		return self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.section == section.getId()) & (self._db.Transcription.accepted == True)).select().first()
+		return self._db((self._db.Transcription.document == self._data.id) 
+						& (self._db.Transcription.section == section.getId()) 
+						& (self._db.Transcription.accepted == True)).select().first()

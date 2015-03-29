@@ -32,6 +32,7 @@ def users_projects(user, db):
 	return ret_list
 
 def recent_projects(db):
+	# Can this be removed?
 	""" Get the 9 most recent projects
 		Returns list of 9 recent projects
 
@@ -46,6 +47,7 @@ def recent_projects(db):
 	return ret_list
 
 def search_results(db, searchterm):
+	# Can this be removed?
 	""" Get the projects with titles like searchterm
 		Returns a list of projects
 
@@ -56,7 +58,8 @@ def search_results(db, searchterm):
 	"""
 	ret_list = list()
 	term = "%"+searchterm+"%"
-	results = db((db.Project.title.like(term))).select()
+	results = db((db.Project.title.like(term))
+				& (db.Project.open == True)).select()
 	for r in results:
 		ret_list.append(Project(r.id, db))
 	return ret_list
