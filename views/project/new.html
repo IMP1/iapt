@@ -10,62 +10,51 @@
 		{{=form}}
 	{{elif step == 2:}}
 		<h3>Upload Documents</h3>
-		<p>Add documents you want to be transcribed to your project.</p>
+		<p>Add documents you want to be transcribed to your project. When you've uploaded all the documents you require, press next to continue.</p>
 		<ul class="document-list">
-		{{for doc in new_project['documents']: }}
+		{{for idx, doc in enumerate(new_project['documents']): }}
 			<li>
-			<h3>{{=doc['title']}}</h3>
-			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
+				<h3>{{=doc['title']}}</h3>
+				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
+				<a href="{{=URL(args=[2, 'delete', idx])}}">Remove</a>
 			</li>
 		{{pass}}
 		</ul>
 		{{=form}}
-		<form action="{{=URL(args=[3])}}" id="next-form"><input type="submit" value="Next &gt;" /></form>
-	{{else:}}
-		<ul class="document-list document-list-left">
-		{{for doc in new_project['documents']: }}
-			<li>
-			<h3>{{=doc['title']}}</h3>
-			<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
-			</li>
-		{{pass}}
+		<a href="{{=URL(args=[1])}}">
+			<button type="button" class="new-back">&lt; Back</button>
+		</a>
+		<a href="{{=URL(args=[3])}}">
+			<button type="button" class="new-next">Next &gt;</button>
+		</a>
+	{{elif step == 3:}}
+		<form id="section-editor" method="post">
+			<ul class="document-list document-list-left">
+			{{for doc in new_project['documents']: }}
+				<li>
+				<h3>{{=doc['title']}}</h3>
+				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
+				</li>
+			{{pass}}
 		</ul>
-		<form id="section-form" method='post'>
-			<ul id="section-editor">
+			<ul id="section-list">
+				{{for i,s in enumerate(new_project['sections']):}}
+				<li>
+					<label for="section-title{{=i}}">Title</label>
+					<button class="section-delete" type="submit" formaction="{{=URL(args=[3, 'remove', i])}}">Remove</button>
+					<input name="section-title{{=i}}" type="text" value="{{=s['title']}}">
+					<label for="section-blurb{{=i}}">Short Description</label>
+					<textarea rows="3" name="section-blurb{{=i}}">{{=s['blurb']}}</textarea>
+				</li>
+				{{pass}}
+				<li>
+				<button id="section-add" type="submit" formaction="{{=URL(args=[3, 'add'])}}">Add Section</button>
+				</li>
 			</ul>
-			<button type="button" id="add-section">Add New Section</button>
-			<input type="submit" value="Submit Project">
+			<div class="clear"></div>
+			<button class="new-back" type="submit" formaction="{{=URL(args=[3, 'back'])}}">&lt; Back</button>
+			<button class="new-next" type="submit" formaction="{{=URL(args=[3, 'finish'])}}">Finish &gt;</button>
 		</form>
 	{{pass}}
 </div>
-
-{{block script}}
-{{if step == 3:}}
-	<script type="text/javascript" src="{{= URL('static', 'js/jquery.js') }}"></script>
-	<script type="text/javascript">
-		sections = [];
-
-		$(document).ready(function() {
-			// Add preliminary section
-			add_section();
-			// Setup event handler
-			$("#add-section").click(add_section);
-		});
-
-		function add_section() {
-			$("#section-editor").append(
-				$("<li>").append(
-					$('<input>').attr(
-						'name', 'section-title[]').attr( 
-						'placeholder', 'Section Name').attr(
-						'type','text')).append(
-					"<br>").append(
-					$('<textarea>').attr(
-						'name', 'section-blurb[]').attr(
-						'cols', '24').attr(
-						'rows', '3').attr(
-						'placeholder', 'Section Description')));
-		}
-	</script>
-{{pass}}
 {{end}}

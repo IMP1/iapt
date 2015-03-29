@@ -281,6 +281,7 @@ footer a {
 	border:1px solid black;
 	padding:0;
 	margin:0 0 10px 0;
+	vertical-align:middle;
 }
 
 .document-list li h3 {
@@ -292,7 +293,6 @@ footer a {
 	max-width: 180px;
 	max-height: 150px;
     margin: auto;
-    vertical-align: middle;
 }
 
 /* Responsive search */

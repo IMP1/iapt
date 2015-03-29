@@ -10,16 +10,27 @@ def new():
 	response.title = 'New Project'
 	# Create forms to create a project if a user is logged in
 	auth_required('You must be logged in to create a project.')
-	step = int(request.args[0]) if len(request.args) == 1 and session.new_project is not None else 1
+	if len(request.args) > 0:
+		step = int(request.args[0])
+	else:
+		# Clear existing session, the user probably doesn't want it if they've revisited...
+		session.new_project = None
+		step = 1
+	# Do each step.
 	if step == 1:
 		# First step, project title.
 		form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			submit_button='Next >'
 			)
+		# Either create or prefill.
+		if session.new_project == None:
+			session.new_project = { 'documents' : [], 'sections' : [] }
+		else:
+			form.custom.widget.title['_value'] = session.new_project['title']
+
 		if form.process().accepted:
-			session.new_project = {	'title' : request.vars.title,
-									'documents' : [] }
+			session.new_project['title'] = request.vars.title
 			redirect(URL(args=[2]))
 		# Return the step 1 form and the current step to the view
 		return dict(form=form, step=step)
@@ -28,9 +39,14 @@ def new():
 		form = SQLFORM.factory(
 			Field('title', 'string', requires=IS_NOT_EMPTY()),
 			Field('image', 'upload', uploadfolder='documents', requires=IS_NOT_EMPTY()),
-			submit_button='Create Document'
+			submit_button='Add Document'
 			)
-		if form.process(message_onsuccess={'msg': 'Document Added!', 'class': 'success_flash'}).accepted:
+		# User deleted a document?
+		if (len(request.args) == 3) and (request.args[1] == 'delete'):
+			# we could delete the image here, if we wanted.
+			del session.new_project['documents'][int(request.args[2])]
+		# User added a new document?
+		elif form.process(message_onsuccess={'msg': 'Document Added!', 'class': 'success_flash'}).accepted:
 			# Save the image somewhere.
 			hash =  md5.new(request.vars.image.filename + str(time.time()))
 			iname = hash.hexdigest() + '.' + request.vars.image.filename.split('.')[-1]
@@ -50,21 +66,42 @@ def new():
 			redirect(URL(args=[2]))
 		#Final step, project sections. N.b. must be at least 1 doc...
 		if request.env.request_method == 'POST':
-			# Create the project from the session.
-			proj = projects.create(session.new_project['title'], current_user, db)
-			# Create documents.
-			docs = map(lambda x: documents.create(x['title'], proj, x['image'], db), session.new_project['documents'])
-			# Create section(s)
-			if isinstance(request.vars['section-title[]'], list):
-				for s in range(len(request.vars['section-title[]'])):
-					sections.create(request.vars['section-title[]'][s], request.vars['section-blurb[]'][s], proj, db)
-			else:
-				# Only one section.
-				sections.create(request.vars['section-title[]'], request.vars['section-blurb[]'], proj, db)
-			# Clear the new project session
-			session.new_project = None
-			session.flash = {'msg': 'Project successfully created!', 'class': 'success_flash'}
-			redirect(URL(f='manage', args=[proj.getId()]))
+			# Update the session to be current field values.
+			for i, s in enumerate(session.new_project['sections']):
+				s['title'] = request.vars['section-title'+str(i)]
+				s['blurb'] = request.vars['section-blurb'+str(i)]
+			# Perform task based on url
+			if request.args[1] == 'finish':
+				# Check they have sections.
+				if len(session.new_project['sections']) == 0:
+					response.flash = "A project must have at least one section."
+					return dict(new_project=session.new_project, step=step)
+				# Check what they've entered.
+				empty = False
+				for s in session.new_project['sections']:
+					empty |= (s['title'] == '') or (s['blurb'] == '')
+				if empty:
+					response.flash = "A title and description must be provided for all sections."
+					return dict(new_project=session.new_project, step=step)
+				# Create the project from the session.
+				proj = projects.create(session.new_project['title'], current_user, db)
+				# Create documents.
+				docs = map(lambda d: documents.create(d['title'], proj, d['image'], db), session.new_project['documents'])
+				# Create sections.
+				secs = map(lambda s: sections.create(s['title'], s['blurb'], proj, db), session.new_project['sections'])
+				# Clear the new project session
+				session.new_project = None
+				session.flash = {'msg': 'Project successfully created!', 'class': 'success_flash'}
+				redirect(URL(f='manage', args=[proj.getId()]))
+			elif request.args[1] == 'back':
+				# Redirect the user back, now we've saved their data.
+				redirect(URL(args=[2]))
+			elif request.args[1] == 'remove':
+				# Delete requested section.
+				del session.new_project['sections'][int(request.args[2])]
+			elif request.args[1] == 'add':
+				# Add a blank section.
+				session.new_project['sections'].append({'title':'','blurb':''})
 		# Return the current project and the current step to the view
 		return dict(new_project=session.new_project, step=step)
 	else:

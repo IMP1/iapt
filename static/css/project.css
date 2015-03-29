@@ -41,6 +41,15 @@
 progress, p {
 	margin-bottom: 30px
 }
+
+.new-back {
+    float:left;
+}
+
+.new-next {
+    float:right;
+}
+
 #next-form {
 	width: auto;
 }
@@ -49,33 +58,49 @@ progress, p {
 }
 
 /* Final step */
+#section-editor {
+    width:100%;
+}
 
 .document-list-left {
 	float:left;
 	width:650px;
 }
 
-#section-form {
-	float:right;
-	width:330px;
-}
-
-#section-form input[type=submit] {
-    margin-top: 128px;
-    margin-bottom: 32px;
-    display: block;
-    float: right;
-}
-
-#section-editor {
+#section-editor  {
 	list-style:none;
 }
 
-#section-editor li {
-	padding:10px;
-	border-bottom:1px solid black;
+#section-list {
+    float:right;
+    width:350px;
+    list-style:none;
+    margin-bottom:5px;
 }
 
-#section-editor li:last-child {
-	border:none;
+#section-list li {
+    border-bottom:1px solid black;
+    padding:7px;
+}
+
+#section-list li:last-child {
+    border:none;
+}
+
+#section-list li textarea, #section-list li input[type=text] {
+    width:300px;
+}
+
+.section-delete {
+    float:right;
+    font-size:12pt;
+    margin:0 4px 3px 0;
+}
+
+#section-list li label {
+    line-height:24pt;
+}
+
+#section-add {
+    width:100%;
 }

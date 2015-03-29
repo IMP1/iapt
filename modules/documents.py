@@ -12,7 +12,7 @@ def create(title, project, image, db):
 	db -- Instance of db (DAL) in use.
 	"""
 	id = db.Document.insert(title=title, project=project.getId(),
-							 image=image, status=1)
+							 image=image)
 	return Document(id, db)
 
 def recent_documents(db):

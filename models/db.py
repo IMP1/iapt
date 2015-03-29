@@ -19,12 +19,10 @@ db.define_table('Project',
     )
 
 #Document
-doc_statuses = ('Closed', 'Open')
 db.define_table('Document',
 	Field('project', db.Project),
 	Field('image', 'upload'),
 	Field('title'),
-	Field('status', requires=IS_IN_SET(range(2), doc_statuses))
 	)
 
 #Section
