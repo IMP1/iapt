@@ -85,7 +85,7 @@ class Document(object):
 
 	def getTranscriptionCount(self):
 		section_count = len(self.getProject().getSections())
-		return self._db(self._db.Transcription.document == self._data.id).count() / section_count
+		return self._db(self._db.Transcription.document == self._data.id).count() // section_count
 
 	def getTranscriptions(self, section):
 		# Lazy load transcriptions

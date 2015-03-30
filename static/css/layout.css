@@ -219,6 +219,7 @@ header li.selected {
 
 #scrollImage {
 	width:50%;
+	height: 550px;
 	overflow: auto;
 	float:left;
 	border-style: solid;
