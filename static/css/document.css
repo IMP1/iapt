@@ -96,3 +96,11 @@ ul.transcription-sections li textarea {
 	height:50px;
 	border: none;
 }
+
+#scrollImage {
+    max-width: 50%;
+    max-height: 550px;
+    overflow: auto;
+    float:left;
+    border-style: solid;
+}

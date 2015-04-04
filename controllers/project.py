@@ -64,7 +64,7 @@ def new():
 		if len(session.new_project['documents']) == 0:
 			session.flash = {'msg': 'You must include at least one document.', 'class': 'error_flash'}
 			redirect(URL(args=[2]))
-		#Final step, project sections. N.b. must be at least 1 doc...
+		#Final step, project sections. N.B. must be at least 1 doc...
 		if request.env.request_method == 'POST':
 			# Update the session to be current field values.
 			for i, s in enumerate(session.new_project['sections']):

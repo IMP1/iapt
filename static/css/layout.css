@@ -217,14 +217,6 @@ header li.selected {
     background-color: #E5D5B6;
 }
 
-#scrollImage {
-	width:50%;
-	height: 550px;
-	overflow: auto;
-	float:left;
-	border-style: solid;
-}
-
 /* Footer */
 #spacer {
     clear: both;
