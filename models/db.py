@@ -14,22 +14,22 @@ db.define_table('User',
 #Project
 db.define_table('Project',
     Field('creator', db.User),
-    Field('title', length=128),
+    Field('title', length=128, requires=[IS_NOT_EMPTY(), IS_LENGTH(128)]),
     Field('open', 'boolean')
     )
 
 #Document
 db.define_table('Document',
 	Field('project', db.Project),
-	Field('image', 'upload'),
-	Field('title'),
+	Field('image', 'upload', requires=[IS_IMAGE()]),
+	Field('title', length=64, requires=[IS_NOT_EMPTY(), IS_LENGTH(64)]),
 	)
 
 #Section
 db.define_table('Section',
 	Field('project', db.Project),
-	Field('title'),
-	Field('blurb')
+	Field('title', length=64, requires=[IS_NOT_EMPTY(), IS_LENGTH(64)]),
+	Field('blurb', length=140, requires=[IS_NOT_EMPTY(), IS_LENGTH(140)])
 	)
 
 #Transcription
