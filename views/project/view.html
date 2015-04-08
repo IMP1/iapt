@@ -2,11 +2,14 @@
 <div>
 	<h2>{{=project.getTitle()}}</h2>
 	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
-	<ul>
-		{{for d in project.getDocuments():}}
-			<li>
-			<a href="{{=URL(c='document', f='transcribe', args=[d.getId()])}}">{{=d.getTitle()}}</a>
-			</li>
+	<ul class="document-list">
+		{{for r in project.getDocuments():}}
+		<li>
+            <a href="{{=URL(c='document', f='method', args=[r.getId()])}}">
+			<h3>{{=r.getTitle()}}</h3>
+			</a>
+			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+		</li>
 		{{pass}}
 	</ul>
 </div>
