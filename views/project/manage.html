@@ -21,7 +21,7 @@
 		{{for d in project.getDocuments():}}
         <li>
             <h4><a href="{{=URL(c='document', f='review', args=[d.getId()])}}">{{=d.getTitle()}}</a></h4>
-            {{transcription_count = d.getTranscriptionCount() / len(d.getProject().getSections())}}
+            {{transcription_count = d.getTranscriptionCount()}}
             <span>{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
             <a href="{{=URL(c='document', f='review', args=[d.getId()])}}"><button>Review</button></a>
         </li>

@@ -60,7 +60,7 @@ a {
 	color: #4C2811;
 }
 
-a:hover {
+a[href]:hover {
 	color: #C7B18F;
 }
 
