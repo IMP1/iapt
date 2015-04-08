@@ -8,6 +8,14 @@
         {{=project.getTitle()}} Project
     </div>
 	<h2>{{=project.getTitle()}}</h2>
+    <section class="project-open-status">
+        This project is currently {{="open" if project.isOpen() else "closed"}}.
+        {{if project.isOpen():}}
+        <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Close</button></a>	
+        {{else:}}
+        <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Open</button></a>	
+        {{pass}}
+    </section>
 	<span>There are {{=len(project.getDocuments())}} document(s) in this project.</span>
 	<ul class="projects-list">
 		{{for d in project.getDocuments():}}

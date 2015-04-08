@@ -31,6 +31,13 @@
     margin-bottom: 4px;
     margin-top: 4px;
 }
+.project-open-status {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+.project-open-status button {
+    margin-left: 64px;
+}
 
 #progress {
 	position: absolute;
