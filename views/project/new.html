@@ -3,13 +3,13 @@
 <link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
 {{end}}
 <div>
-	<h2>New Project</h2>
+	<h1>New Project</h1>
 	<p id="progress">{{=((step-1)*100)/3}}% complete</p>
 	<progress max="3" value="{{=step-1}}"></progress>
 	{{if step == 1:}}
 		{{=form}}
 	{{elif step == 2:}}
-		<h3>Upload Documents</h3>
+		<h2>Upload Documents</h2>
 		<p>Add documents you want to be transcribed to your project. When you've uploaded all the documents you require, press next to continue.</p>
 		<ul class="document-list">
 		{{for idx, doc in enumerate(new_project['documents']): }}

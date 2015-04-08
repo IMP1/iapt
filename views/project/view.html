@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <div>
-	<h2>{{=project.getTitle()}}</h2>
+	<h1>{{=project.getTitle()}}</h1>
 	<span>{{=project.getOpenDocumentCount()}} document(s) in this project.</span>
 	<ul class="document-list">
 		{{for r in project.getDocuments():}}
