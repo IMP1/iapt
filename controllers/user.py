@@ -5,7 +5,7 @@ def index():
 	# Create form to change username
 	unform = SQLFORM.factory(
 		Field('username', length=128, label="New Username", 
-			default='', requires=[users.IS_NOT_IN_USE(db)]),
+			default='', requires=[users.IS_NOT_IN_USE(db), IS_NOT_EMPTY()]),
 		submit_button='Change Username')
 	#Change username if form is accepted
 	if unform.process(message_onsuccess={'msg': 'Username changed!', 'class': 'success_flash'}).accepted:
