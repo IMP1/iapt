@@ -1,7 +1,8 @@
 {{extend 'layout.html'}}
 <div>
-	<h2>Search Results for {{=term}}:</h2>
-	{{=str(resultnum) + resulttext}}
+	<h2>{{=str(resultnum)}} Search Results for '{{=term}}':</h2>
+    <br />
+    <ul class="document-list">
 	{{for r in results: }}
 		{{if current_user == None:}}
 			{{method = 'transcribe'}}
@@ -10,9 +11,12 @@
 		{{else:}}
 			{{method = 'transcribe'}}
 		{{pass}}
-		
 		<li>
-			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">{{=r.getTitle()}}</a>
+            <a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
+			<h3>{{=r.getTitle()}}</h3>
+			</a>
+			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 		</li>
 	{{pass}}
+    </ul>
 </div>
