@@ -1,9 +1,10 @@
 {{extend 'layout.html'}}
 <div>
 	<h2>{{=project.getTitle()}}</h2>
-	<span>{{=len(project.getDocuments())}} document(s) in this project.</span>
+	<span>{{=project.getOpenDocumentCount()}} document(s) in this project.</span>
 	<ul class="document-list">
 		{{for r in project.getDocuments():}}
+        {{if r.isOpen():}}
 		<li>
             <a {{if r.isOpen():}}
             href="{{=URL(c='document', f='transcribe', args=[r.getId()])}}"
@@ -12,6 +13,7 @@
 			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 			</a>
 		</li>
+        {{pass}}
 		{{pass}}
 	</ul>
 </div>

@@ -54,6 +54,13 @@ class Project(object):
 	def getDocumentCount(self):
 		return self._db(self._db.Document.project == self._data.id).count()
     
+	def getOpenDocumentCount(self):
+		count = 0
+		for doc in self.getDocuments():
+			if doc.isOpen():
+				count += 1
+		return count
+
 	def getDocuments(self):
 		# Lazy load documents.
 		if self._documents == None:
