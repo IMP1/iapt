@@ -44,6 +44,14 @@ main > div, footer > div {
 	line-height: 300%;
 	text-align: center;
 }
+
+#title {
+	font-weight: bold;
+	position: absolute;
+	left: 10px;
+	padding: 4px 0 3px;
+	font-size: 26px;
+}
 .success_flash {
 	background-color: #5ADB62 !important;
 }
@@ -154,15 +162,6 @@ header {
 header > div {
 	position: relative;
 	padding: 10px;
-}
-header h1 {
-	font-weight: bold;
-	position: absolute;
-	left: 10px;
-	padding: 4px 0 3px;
-}
-header h1 a {
-	font-size: 26px;
 }
 header a {
 	text-decoration: none;

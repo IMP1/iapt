@@ -9,7 +9,7 @@
 		<header>
 			{{block header}}
 			<div>
-				<h1><a href="{{= URL('default', 'index') }}" tabindex="1">Transcriber</a></h1>
+				<a id="title" href="{{= URL('default', 'index') }}" tabindex="1">Transcriber</a>
 				<nav>
 					<ul>
 						<li{{if (request.controller == "default" and request.function == "index"):}} class="selected"{{pass}}><a href="{{= URL('default', 'index') }}" tabindex="3">Home</a></li><!--
