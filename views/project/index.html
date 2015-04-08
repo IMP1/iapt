@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
 {{end}}
 <div>
-	<h2>My Projects</h2>
+	<h1>My Projects</h1>
 	{{if len(projects) == 0:}}
     <br />
     <div>You have not created any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
@@ -11,7 +11,7 @@
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
-            <h4><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h4>
+            <h3><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h3>
 			<span>{{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
 			{{if p.isOpen(): }}
 				<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	

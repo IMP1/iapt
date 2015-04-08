@@ -8,9 +8,9 @@
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
         {{=document.getTitle()}} Document
     </div>
-    <h2>{{=document.getTitle()}}</h2>
+    <h1>{{=document.getTitle()}}</h1>
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
-    <h3 class="accepted-transcription-title">These are the transcriptions {{="you have" if current_user != None and current_user.getId() == document.getProject().getCreator() else "the project creator has" }} accepted for this document.</h3>
+    <h2 class="accepted-transcription-title">These are the transcriptions {{="you have" if current_user != None and current_user.getId() == document.getProject().getCreator() else "the project creator has" }} accepted for this document.</h2>
     {{for section in document.getProject().getSections():}}
     <section>
         <h3>{{=section.getTitle()}}</h3>
