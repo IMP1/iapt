@@ -5,9 +5,9 @@ def index():
 		redirect(URL(c='default', f='index'))
 	results = documents.search_results(db, request.vars.searchterm)
 	resultnum = len(results)
-	resulttext = " results"
+	resulttext = " Results"
 	if resultnum == 1:
-		resulttext = " result"
+		resulttext = " Result"
 	term = request.vars.searchterm
 	request.vars.searchterm == None
     #Returns search results as well as the number of results

@@ -46,7 +46,7 @@ def search_results(db, searchterm):
 				).select(db.Document.ALL)
 	for r in results:
 		doc = Document(r.id, db)
-		if doc.getTranscriptionCount() < 3:
+		if doc.isOpen():
 			ret_list.append(doc)
 	return ret_list	
 
@@ -102,3 +102,7 @@ class Document(object):
 		return self._db((self._db.Transcription.document == self._data.id) 
 						& (self._db.Transcription.section == section.getId()) 
 						& (self._db.Transcription.accepted == True)).select().first()
+    
+	def isOpen(self):
+		return self.getTranscriptionCount() < 3 and not self.isAccepted() and self.getProject().isOpen()
+        
