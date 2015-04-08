@@ -24,9 +24,13 @@ def recent_documents(db):
 
 	"""	
 	ret_list = list()
-	results = db(db.Document).select(orderby=~db.Document.id,limitby=(0,9))
+	results = db(db.Document).select(orderby=~db.Document.id)
+	limit = 9
 	for r in results:
-		ret_list.append(Document(r.id, db))
+		doc = Document(r.id, db)
+		if limit > 0 and doc.isOpen():
+			ret_list.append(doc)
+			limit -= 1
 	return ret_list
 
 def search_results(db, searchterm):
