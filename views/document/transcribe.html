@@ -3,7 +3,9 @@
 <link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/document.css')}}" />
 {{end}}
 <div>
-    <div class="breadcrumb"><a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
+    <div class="breadcrumb">
+    	<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
+    	<a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
 	<h2>Transcribe {{=document.getTitle()}}</h2>
 	<div id="scrollImage">
 		<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">

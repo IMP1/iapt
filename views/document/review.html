@@ -4,6 +4,7 @@
 {{end}}
 <div>
 	<div class="breadcrumb">
+        <a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
         <a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
         {{=document.getTitle()}} Document
