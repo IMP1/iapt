@@ -38,8 +38,8 @@
             </ul>
         </section>
         {{pass}}
-        <input type=submit value="Accept Transcriptions" onclick="setAction('accept');" />
-        <input type=submit value="Reject All and Reopen" onclick="setAction('reject');" />
+        <input type=submit value="Accept Transcriptions" onclick="return setAction('accept');" />
+        <input type=submit value="Reject All and Reopen" onclick="return setAction('reject');" />
         <div style="display: hidden;">
             <input type=hidden id="action" name="action" value="None" />
         </div>
@@ -50,6 +50,10 @@
 <script type="text/javascript">
     function setAction(action) {
         document.getElementById("action").value = action;
+        if (action === 'reject') {
+            return confirm('are you sure you want to remove all the transcriptions?');
+        }
+        return true;
     }
 </script>
 {{end}}
