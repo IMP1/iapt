@@ -138,7 +138,10 @@ def toggle():
 		session.flash = {'msg': 'Project successfully ' + 
 						('opened.' if project.isOpen() else 'closed.'),
 						 'class': 'success_flash'}
-	redirect(URL(f='index'))
+	if request.env.http_referer:
+		redirect(request.env.http_referer)
+	else:
+		redirect(URL(f='index'))
 
 def image():
 	# Stream the image without using db.
