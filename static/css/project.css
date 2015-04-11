@@ -111,3 +111,16 @@ progress, p {
 #section-add {
     width:100%;
 }
+
+.document-list > li {
+    height: 256px;
+    position: relative;
+}
+
+.document-list .transcription-count {
+    padding: 8px;
+    display: block;
+    vertical-align: bottom;
+    position: absolute;
+    bottom: 0px;
+}

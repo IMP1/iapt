@@ -18,14 +18,16 @@
         {{pass}}
     </section>
 	<span>There are {{=len(project.getDocuments())}} document(s) in this project.</span>
-	<ul class="projects-list">
+	<ul class="document-list">
 		{{for d in project.getDocuments():}}
         <li>
-            <h3><a href="{{=URL(c='document', f='review', args=[d.getId()])}}">{{=d.getTitle()}}</a></h3>
-            {{transcription_count = d.getTranscriptionCount()}}
-            <span>{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
-            <a href="{{=URL(c='document', f='review', args=[d.getId()])}}"><button>Review</button></a>
-        </li>
+			<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">
+                <h3>{{=d.getTitle()}}</h3>
+                <img alt="{{=d.getTitle()}} image." src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
+                {{transcription_count = d.getTranscriptionCount()}}
+                <span class="transcription-count">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
+			</a>
+		</li>
 		{{pass}}
 	</ul>
 </div>
