@@ -74,7 +74,14 @@ def register():
 			# Log them in.
 			users.login(form.vars.username, form.vars.password, db, session)
 			session.flash = {'msg': 'You have succesfully registered!', 'class': 'success_flash'}
-			redirect(URL(c='default', f='index'))
+			if session.back:
+				# Extract session.back and clear it. Redirect to wherever the user was.
+				tmp = session.back
+				session.back = None
+				redirect(tmp)
+			else:
+				# Redirect to home as fallback.
+				redirect(URL(c='default', f='index'))
 		return dict(form=form)
 	else:
 		# This should never happen, redirect them home if it does.
