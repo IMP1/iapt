@@ -16,8 +16,8 @@ def create(title, project, image, db):
 	return Document(id, db)
 
 def recent_documents(db):
-	""" Get the 9 most recent documents
-		Returns list of 9 recent documents
+	""" Get the 10 most recent documents
+		Returns list of 10 recent documents
 
 	Keyword arguments:
 	db -- Instance of db (DAL) in use.
@@ -25,7 +25,7 @@ def recent_documents(db):
 	"""	
 	ret_list = list()
 	results = db(db.Document).select(orderby=~db.Document.id)
-	limit = 9
+	limit = 10
 	for r in results:
 		doc = Document(r.id, db)
 		if limit > 0 and doc.isOpen():
