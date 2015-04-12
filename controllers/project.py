@@ -25,7 +25,7 @@ def new():
 			)
 		# Either create or prefill.
 		if session.new_project == None:
-			session.new_project = { 'documents' : [], 'sections' : [] }
+			session.new_project = { 'documents' : [], 'sections' : [{'title':'', 'blurb':''}] }
 		else:
 			form.custom.widget.title['_value'] = session.new_project['title']
 
