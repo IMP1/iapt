@@ -123,3 +123,7 @@
     bottom: 0px;
     text-align: center;
 }
+
+label:after {
+    content: '*';
+}
