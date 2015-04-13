@@ -11,14 +11,15 @@
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li>
-            <h3><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h3>
-			<span>{{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions</span>
-			{{if p.isOpen(): }}
-				<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
-			{{else:}}
-				<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
-			{{pass}}
-            <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}"><button>View</button></a>
+            <span>
+                <h3><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h3>
+                {{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions
+            </span>
+        {{if p.isOpen(): }}
+            <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
+        {{else:}}
+            <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
+        {{pass}}
 		</li>
 	{{pass}}
     {{pass}}
