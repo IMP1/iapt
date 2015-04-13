@@ -7,7 +7,7 @@
 	<p id="progress">Step {{=step}} of 3</p>
 	<progress max="3" value="{{=step-1}}"></progress>
 	{{if step == 1:}}
-        <p class="clarification">Enter a title for your project.</p>
+        <p class="clarification">Enter a title for your project.<br/>This will be used to identify your project.</p>
 		{{=form}}
 	{{elif step == 2:}}
 		<h2>Upload Documents</h2>
@@ -33,8 +33,8 @@
 	{{elif step == 3:}}
         <div class="page-explanation">
             <p>
-                Now you can add the sections of the documents that you would like transcribing. 
-                When you've described all the sections you'd like people to fill out for you, press finish to complete your project.
+                Add the sections of the documents that you would like transcribing. 
+                When you've described all the sections you'd like filled out for you, press finish to complete your project.
             </p>
         </div>
 		<form id="section-editor" method="post">
@@ -47,6 +47,7 @@
 			{{pass}}
 		</ul>
 			<ul id="section-list">
+				<p>Add a section title and description below. Ensure you are decriptive to ensure you get the transcriptions you want.</p>
 				{{for i,s in enumerate(new_project['sections']):}}
 				<li>
 					<label for="section-title{{=i}}">Title</label>
