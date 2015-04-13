@@ -156,6 +156,9 @@ ol, ul {
     width: 800px;
     margin: 32px auto 32px auto;
 }
+.page-explanation p {
+    margin-bottom: 16px;
+}
 
 .clarification {
     text-align: center;
