@@ -7,16 +7,19 @@
 	<p id="progress">Step {{=step}} of 3</p>
 	<progress max="3" value="{{=step-1}}"></progress>
 	{{if step == 1:}}
+        <p class="clarification">Enter a title for your project.</p>
 		{{=form}}
 	{{elif step == 2:}}
 		<h2>Upload Documents</h2>
-		<p>Add documents you want to be transcribed to your project. When you've uploaded all the documents you require, press next to continue.</p>
+        <div class="page-explanation">
+            <p>Add the documents you want to be transcribed to your project. When you've uploaded all the documents for this project, press next to continue.</p>
+        </div>
 		<ul class="document-list">
 		{{for idx, doc in enumerate(new_project['documents']): }}
 			<li>
 				<h3>{{=doc['title']}}</h3>
 				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
-				<a href="{{=URL(args=[2, 'delete', idx])}}">Remove</a>
+				<a href="{{=URL(args=[2, 'delete', idx])}}" class="bottom"><button>Remove</button></a>
 			</li>
 		{{pass}}
 		</ul>
@@ -28,6 +31,12 @@
 			<button type="button" class="new-next">Next &gt;</button>
 		</a>
 	{{elif step == 3:}}
+        <div class="page-explanation">
+            <p>
+                Now you can add the sections of the documents that you would like transcribing. 
+                When you've described all the sections you'd like people to fill out for you, press finish to complete your project.
+            </p>
+        </div>
 		<form id="section-editor" method="post">
 			<ul class="document-list document-list-left">
 			{{for doc in new_project['documents']: }}

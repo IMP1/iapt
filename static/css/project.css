@@ -45,9 +45,6 @@
 	transform: translateX(-50%);
 	margin-top: 5px;
 }
-progress, p {
-	margin-bottom: 30px
-}
 
 .new-back {
     float:left;
@@ -117,10 +114,21 @@ progress, p {
     position: relative;
 }
 
-.document-list .transcription-count {
+.document-list > li > a:first-child {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.document-list > li > a:first-child:hover {
+    border: 1px solid #000;
+}
+
+.document-list .bottom {
     padding: 8px;
     display: block;
+    width: 100%;
     vertical-align: bottom;
     position: absolute;
     bottom: 0px;
+    text-align: center;
 }

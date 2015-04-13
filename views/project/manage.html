@@ -25,7 +25,7 @@
                 <h3>{{=d.getTitle()}}</h3>
                 <img alt="{{=d.getTitle()}} image." src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
                 {{transcription_count = d.getTranscriptionCount()}}
-                <span class="transcription-count">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
+                <span class="bottom">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
 			</a>
 		</li>
 		{{pass}}
