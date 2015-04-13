@@ -64,6 +64,12 @@ h3.accepted-transcription-title {
     margin-bottom: 2rem;
 }
 
+.instructions {
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 form.transcription-form {
 	width:400px;
 	background-color:#eee;
