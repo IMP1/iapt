@@ -61,7 +61,7 @@ main > div, footer > div {
 }
 
 h1, h2 {
-	margin: 30px 0 10px;
+	margin: 30px 0 30px;
 }
 
 a {
@@ -149,6 +149,17 @@ progress::-moz-progress-bar {
 
 ol, ul {
     padding-left: 2rem;
+}
+
+.page-explanation {
+    display: block;
+    width: 800px;
+    margin: 32px auto 32px auto;
+}
+
+.clarification {
+    text-align: center;
+    margin-top: 32px;
 }
 
 /* Header */
