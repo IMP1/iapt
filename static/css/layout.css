@@ -299,6 +299,15 @@ footer a {
     margin: auto;
 }
 
+.document-list > li > a:first-child {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.document-list > li > a:first-child:hover {
+    border: 1px solid #000;
+}
+
 /* Responsive search */
 @media (max-width: 1520px)	{
 	#search {
