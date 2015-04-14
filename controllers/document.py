@@ -26,7 +26,7 @@ def review():
 			for transcription in doc.getTranscriptions(section):
 				transcriptions.delete(transcription.getId(), db)
 		# Redirect to the project page.
-		session.flash = {'msg': "The document has been reopened without any transcriptions.",
+		session.flash = {'msg': "The document has been reopened, rejecting all transcriptions.",
 						 'class': 'success_flash'}
 		redirect(URL(c='project', f='index'))
 	# Return the document to the view

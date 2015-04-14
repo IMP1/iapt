@@ -309,8 +309,10 @@ footer a {
     width: 100%;
     height: 100%;
 }
-.document-list > li > a:first-child:hover {
-    border: 1px solid #000;
+.document-list > li > a:first-child:hover { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 5px #000000;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */

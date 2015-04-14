@@ -16,8 +16,10 @@
                 {{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions
             </span>
         {{if p.isOpen(): }}
+            <p class="open_notification">This project is currently open and accepting transcriptions.</p>
             <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
         {{else:}}
+            <p class="open_notification"><strong>This project is currently closed</strong>. Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
             <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
         {{pass}}
 		</li>
