@@ -7,11 +7,11 @@
     	<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
     	<a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
 	<h1>Transcribe {{=document.getTitle()}}</h1>
-    <div class="transciption-image">
-        Click to see full sized image.
-        <a target="_blank" href="{{=URL(c='document', f='image_full', args=[document.getId()])}}" title="full-size document image">
-          <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
-        </a>
+    <div class="transcription-image">
+    Click on the image to zoom in/out.
+    <div id="image-container" class="transciption-image">
+        <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
+    </div>
     </div>
 	<div class = "rightSide">
 		<div class="scrollBox">
@@ -32,3 +32,6 @@
 		</div>
 	</div>
 </div>
+{{block script}}
+<script type="text/javascript" src="{{=URL('static', 'js/image_zoom.js')}}"></script>
+{{end}}

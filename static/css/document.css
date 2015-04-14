@@ -104,11 +104,16 @@ ul.transcription-sections li textarea {
 	border: none;
 }
 
-.transciption-image {
+.transcription-image {
     width: 50%;
     float:left;
 }
-.transciption-image img {
-    width: 100%;
+#image-container {
+    max-height: 550px;
     border-style: solid;
+}
+#image-container img {
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+    width: 100%;
 }
