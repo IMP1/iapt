@@ -25,13 +25,14 @@
 		{{pass}}
 		</ul>
 		{{=form}}
+        <p class="clarification">*: This field is mandatory.</p>
+        <br /><br /><br />
 		<a href="{{=URL(args=[1])}}">
 			<button type="button" class="new-back">&lt; Back</button>
 		</a>
 		<a href="{{=URL(args=[3])}}">
 			<button type="button" class="new-next">Next &gt;</button>
 		</a>
-        <p class="clarification">*: This field is mandatory.</p>
 	{{elif step == 3:}}
         <div class="page-explanation">
             <p>
