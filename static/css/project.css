@@ -1,49 +1,43 @@
 .projects-list {
 	list-style:none;
+    width: 80%;
+    margin:0 auto;
 }
-
-.projects-list {
-    display: table;
-    width: 70%;
-    margin: auto;
-}
-.projects-list > li {
-    display: table-row;
+.project {
     width: 100%;
-}
-.projects-list > li > span,
-.projects-list > li > a {
-    display: table-cell;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-bottom: 32px;
-}
-.projects-list > li h3 {
-    margin-bottom: 8px;
-}
-.projects-list > li > span {
-    width: 100px;
-}
-.projects-list > li > a {
-    width: 96px;
-}
-.projects-list > li > a > button {
-    padding-bottom: 4px;
-    padding-top: 4px;
-    margin-bottom: 4px;
-    margin-top: 4px;
-}
-.project-open-status {
-    text-align: left;
-    margin-top: 8px;
-    margin-bottom: 24px;
-}
-.project-open-status button {
-    margin-top: 8px;
+    padding:20px 0 20px 0;
+    border-bottom:1px solid #C7B18F;
 }
 
-p.open_notification {
-    text-align: center;
+.project:last-child {
+    border:none;
+}
+
+/* First line of project, with title and transcription count */
+.project-primary h3 {
+    float:left;
+    text-decoration:underline;
+}
+
+.project-primary div {
+    float:right;
+}
+
+/* Second line of project, notification and button */
+
+.project-secondary {
+    margin-top:20px;
+}
+
+.project-secondary p {
+    text-align:center;
+    float:left;
+    width:85%;
+    font-size:11pt;
+}
+
+.project-secondary a {
+    float:right;
 }
 
 #progress {

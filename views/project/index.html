@@ -10,18 +10,27 @@
     {{else:}}
 	<ul class="projects-list">
 	{{for p in projects: }}
-		<li>
-            <span>
-                <h3><a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">{{=p.getTitle()}}</a></h3>
-                {{=p.getDocumentsTranscribed()}} / {{=p.getDocumentCount()}} documents have transcriptions
-            </span>
-        {{if p.isOpen(): }}
-            <p class="open_notification">This project is currently open and accepting transcriptions.</p>
-            <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
-        {{else:}}
-            <p class="open_notification"><strong>This project is currently closed</strong>. Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
-            <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
-        {{pass}}
+		<li class="project">
+            <div class="project-primary">
+                    <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">
+                        <h3>{{=p.getTitle()}}</h3>
+                    </a>
+
+                <div>
+                {{=p.getDocumentsTranscribed()}} of {{=p.getDocumentCount()}} documents have transcriptions.
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="project-secondary">
+                {{if p.isOpen(): }}
+                    <p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
+                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
+                {{else:}}
+                    <p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
+                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
+                {{pass}}
+            </div>
+            <div class="clear"></div>
 		</li>
 	{{pass}}
     {{pass}}
