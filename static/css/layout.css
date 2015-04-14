@@ -111,9 +111,6 @@ form input, form textarea, button {
 .error {
 	color: #db625a;
 }
-.string.invalidinput {
-	color: #db625a;
-}
 
 progress {
 	width:100%;
