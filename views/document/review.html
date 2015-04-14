@@ -26,6 +26,7 @@
             <ul class="transcription-list">
             {{checked = False}}
             {{for transcription in section.getTranscriptions(document):}}
+                {{if transcription.getText().strip():}}
                 <li>
                     <label>
                         <p>{{=transcription.getText()}}</p>
@@ -35,6 +36,7 @@
                         </div>
                     </label>
                 </li>
+                {{pass}}
             {{pass}}
             </ul>
         </section>

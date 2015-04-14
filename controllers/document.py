@@ -46,7 +46,7 @@ def transcribe():
 		# Check there is at least one transcription.
 		count = 0
 		for section in doc.getProject().getSections():
-			if request.vars['section'+str(section.getId())] != '':
+			if request.vars['section'+str(section.getId())].strip():
 				count += 1
 		if count == 0:
 			response.flash = "You must transcribe at least one section."
