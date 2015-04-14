@@ -9,17 +9,16 @@
         {{=project.getTitle()}} Project
     </div>
 	<h1>{{=project.getTitle()}}</h1>
-    <section class="project-open-status">
-        {{if project.isOpen():}}
-        <strong>This project is currently open</strong>. <br/>
-        It is accepting transcriptions which you can review below.
-        <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Close</button></a>	
+    <div class="project-open-status">
+        {{if project.isOpen(): }}
+            <p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
+            <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Close</button></a>    
         {{else:}}
-        <strong>This project is currently closed</strong>. <br/>
-        Only you are able to see it. To allow people to make transcriptions, you must open it first.
-        <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Open</button></a>	
+            <p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
+            <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Open</button></a> 
         {{pass}}
-    </section>
+    </div>
+    <div class="clear"></div>
 	<span>There are {{=len(project.getDocuments())}} document(s) in this project.</span>
 	<ul class="document-list">
 		{{for d in project.getDocuments():}}

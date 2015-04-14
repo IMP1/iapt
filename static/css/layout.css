@@ -277,6 +277,7 @@ footer a {
 
 /* Document lists */
 .document-list {
+	margin-top:5px;
 	list-style:none;
 }
 
