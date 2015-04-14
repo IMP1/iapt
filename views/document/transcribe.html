@@ -7,9 +7,12 @@
     	<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
     	<a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
 	<h1>Transcribe {{=document.getTitle()}}</h1>
-	<div id="scrollImage">
-		<img src="{{=URL(c='document', f='image', args=[document.getImage()])}}">
-	</div>
+    <div class="transciption-image">
+        Click to see full sized image.
+        <a target="_blank" href="{{=URL(c='document', f='image_full', args=[document.getId()])}}" title="full-size document image">
+          <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
+        </a>
+    </div>
 	<div class = "rightSide">
 		<div class="scrollBox">
 			<div class="instructions">Transcribe one or more sections below. <br/> (Note: not all sections may apply to this document.)</div>

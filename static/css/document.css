@@ -104,10 +104,11 @@ ul.transcription-sections li textarea {
 	border: none;
 }
 
-#scrollImage {
-    max-width: 50%;
-    max-height: 550px;
-    overflow: auto;
+.transciption-image {
+    width: 50%;
     float:left;
+}
+.transciption-image img {
+    width: 100%;
     border-style: solid;
 }

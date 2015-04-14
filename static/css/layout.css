@@ -105,6 +105,7 @@ form table {
 form input, form textarea, button {
 	padding: 8px;
 	font-size: 18px;
+    font-family: Arial, Sans-serif;
 }
 
 .error {
