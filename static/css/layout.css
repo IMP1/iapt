@@ -172,6 +172,7 @@ header {
 	background-color:#fff;
 	box-shadow:0 2px 5px -2px #000;
 	position:fixed;
+    z-index: 999;
 }
 
 header > div {
