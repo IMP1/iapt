@@ -67,3 +67,7 @@ def image():
 	response.headers['ContentType'] ="application/octet-stream";
 	response.headers['Content-Disposition']="attachment; filename="+filename
 	return response.stream(open(path, 'rb'),chunk_size=4096)
+
+def browse():
+    response.title = 'All Documents'
+    return dict(docs=documents.search_results(db, ""))
