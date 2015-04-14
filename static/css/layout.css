@@ -312,6 +312,19 @@ footer a {
     border: 1px solid #000;
 }
 
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: Arial, Sans-serif;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: Arial, Sans-serif;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: Arial, Sans-serif;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-family: Arial, Sans-serif;
+}
+
 /* Responsive search */
 @media (max-width: 1520px)	{
 	#search {
@@ -336,3 +349,4 @@ footer a {
 		margin: 10px 0 0 278px;
 	}
 }
+
