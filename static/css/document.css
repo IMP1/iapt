@@ -72,8 +72,9 @@ h3.accepted-transcription-title {
 
 form.transcription-form {
 	width:400px;
-	background-color:#eee;
-	border:1px solid #aaa;
+    margin-top: 16px;
+	border-top:1px solid #C7B18F;
+    padding-top: 8px;
 }
 
 form.transcription-form input[type=submit] {
@@ -87,11 +88,11 @@ ul.transcription-sections {
 	padding:0;
 }
 
-ul li {
+ul.transcription-sections li {
     margin-bottom: 20px;
 }
 
-ul li p {
+ul.transcription-sections li p {
     font-size: 14px;
 }
 
