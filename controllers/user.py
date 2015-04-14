@@ -62,10 +62,16 @@ def register():
 	response.title = 'Register'
 	# Create register form if there is no user currently logged in
 	if current_user == None:
-		form = SQLFORM.factory(db.User, 
+		form = SQLFORM.factory(
+			Field('username', 'string',
+				required=True),
+			Field('password', 'password',
+				requires=IS_LENGTH(minsize=6, error_message='Password must be more than 6 characters'),
+				required=True), 
 			Field('cpassword', 'password', 
-			label="Confirm Password",
-			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
+				label="Confirm Password",
+				requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.'),
+				required=True),
 		    submit_button='Register'
 			)
 		if form.process().accepted:
