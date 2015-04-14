@@ -7,7 +7,6 @@ def index():
 		Field('username', length=128, label="New Username", 
 			default='', requires=[users.IS_NOT_IN_USE(db), IS_NOT_EMPTY()]),
 		submit_button='Change Username')
-	print unform
 	# Create form to change password
 	pwform = SQLFORM.factory(
 		Field('password', 'password', 
