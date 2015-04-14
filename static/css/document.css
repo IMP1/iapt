@@ -109,9 +109,9 @@ ul.transcription-sections li textarea {
     float:left;
 }
 #image-container {
-    max-height: 550px;
     border-style: solid;
 }
+
 #image-container img {
     cursor: -moz-zoom-in;
     cursor: -webkit-zoom-in;
