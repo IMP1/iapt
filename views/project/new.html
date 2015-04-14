@@ -7,8 +7,9 @@
 	<p id="progress">Step {{=step}} of 3</p>
 	<progress max="3" value="{{=step-1}}"></progress>
 	{{if step == 1:}}
-        <p class="clarification">Enter a title for your project.<br/>This will be used to identify your project.</p>
+        <p class="clarification">Enter a title for your project.<br/>(This will be used to identify your project.)</p>
 		{{=form}}
+        <p class="clarification">*: This field is mandatory.</p>
 	{{elif step == 2:}}
 		<h2>Upload Documents</h2>
         <div class="page-explanation">
@@ -30,6 +31,7 @@
 		<a href="{{=URL(args=[3])}}">
 			<button type="button" class="new-next">Next &gt;</button>
 		</a>
+        <p class="clarification">*: This field is mandatory.</p>
 	{{elif step == 3:}}
         <div class="page-explanation">
             <p>
@@ -58,13 +60,14 @@
 				</li>
 				{{pass}}
 				<li>
-				<button id="section-add" type="submit" formaction="{{=URL(args=[3, 'add'])}}">Add Section</button>
+				<button id="section-add" type="submit" formaction="{{=URL(args=[3, 'add'])}}">Add Another Section</button>
 				</li>
 			</ul>
 			<div class="clear"></div>
 			<button class="new-back" type="submit" formaction="{{=URL(args=[3, 'back'])}}">&lt; Back</button>
 			<button class="new-next" type="submit" formaction="{{=URL(args=[3, 'finish'])}}">Finish &gt;</button>
 		</form>
+        <p class="clarification">*: This field is mandatory.</p>
 	{{pass}}
 </div>
 {{end}}

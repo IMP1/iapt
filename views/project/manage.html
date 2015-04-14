@@ -10,10 +10,13 @@
     </div>
 	<h1>{{=project.getTitle()}}</h1>
     <section class="project-open-status">
-        This project is currently {{="open" if project.isOpen() else "closed"}}.
         {{if project.isOpen():}}
+        This project is currently open.        
+        <br />
         <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Close</button></a>	
         {{else:}}
+        <strong>This project is currently closed</strong>. Only you are able to see it. For people to be able to transcibe it, you must open it first. 
+        <br />
         <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Open</button></a>	
         {{pass}}
     </section>

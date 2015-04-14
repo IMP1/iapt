@@ -68,6 +68,10 @@ def image():
 	response.headers['Content-Disposition']="attachment; filename="+filename
 	return response.stream(open(path, 'rb'),chunk_size=4096)
 
+def image_full():
+    doc = documents.Document(request.args[0], db)
+    return dict(image_source=doc.getImage())
+
 def browse():
     response.title = 'All Documents'
     return dict(docs=documents.search_results(db, ""))
