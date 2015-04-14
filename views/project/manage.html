@@ -11,12 +11,12 @@
 	<h1>{{=project.getTitle()}}</h1>
     <section class="project-open-status">
         {{if project.isOpen():}}
-        This project is currently open.        
-        <br />
+        <strong>This project is currently open</strong>. <br/>
+        It is accepting transcriptions which you can review below.
         <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Close</button></a>	
         {{else:}}
-        <strong>This project is currently closed</strong>. Only you are able to see it. For people to be able to transcibe it, you must open it first. 
-        <br />
+        <strong>This project is currently closed</strong>. <br/>
+        Only you are able to see it. To allow people to make transcriptions, you must open it first.
         <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}"><button>Open</button></a>	
         {{pass}}
     </section>

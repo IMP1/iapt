@@ -34,12 +34,16 @@
     margin-top: 4px;
 }
 .project-open-status {
-    text-align: center;
+    text-align: left;
     margin-top: 8px;
     margin-bottom: 24px;
 }
 .project-open-status button {
     margin-top: 8px;
+}
+
+p.open_notification {
+    text-align: center;
 }
 
 #progress {
