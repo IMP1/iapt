@@ -10,6 +10,10 @@
         {{=document.getTitle()}} Document
     </div>
     <h1>{{=document.getTitle()}}</h1>
+    <p>
+        Review the transcriptions for this document below. Select your preferred transcriptions and click Accept Transcriptions to finalise them. Alternatively, reject the proposed transcriptions and reopen the document for new transcriptions. 
+    </p>
+    <br/>
     <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
     {{if document.getTranscriptionCount() == 0:}}
     <div>
