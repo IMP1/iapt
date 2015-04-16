@@ -68,6 +68,7 @@ def register():
 	if current_user == None:
 		form = SQLFORM.factory(
 			Field('username', 'string',
+				requires=[users.IS_NOT_IN_USE(db), IS_NOT_EMPTY()],
 				required=True),
 			Field('password', 'password',
 				requires=IS_LENGTH(minsize=6, error_message='Password must be more than 6 characters'),
