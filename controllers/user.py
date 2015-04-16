@@ -16,7 +16,7 @@ def index():
         Field('oldpassword', 'password', 
 				length=64, 
 				label="Old Password", 
-				requires=IS_NOT_EMPTY()),
+				requires=IS_NOT_EMPTY()), # Validity of this password is checked on form process
 		Field('password', 'password', 
 				length=64, 
 				label="New Password", 
