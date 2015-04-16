@@ -107,7 +107,12 @@ ul.transcription-sections li textarea {
 .transcription-image {
 	width: 510px;
 	float:left;
-	position: fixed;
+    position: -webkit-sticky;
+	position:    -moz-sticky;
+    position:     -ms-sticky;
+    position:      -o-sticky;
+    position:         sticky;
+    top: 220px;
 }
 #image-container {
 	border-style: solid;

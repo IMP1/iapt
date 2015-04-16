@@ -14,22 +14,20 @@
         </div>
     </div>
 	<div class = "rightSide">
-		<div class="scrollBox">
-			<div class="instructions">Transcribe one or more sections below. <br/> (Note: not all sections may apply to this document.)</div>
-			<form method="post" class="transcription-form">
-				<ul class="transcription-sections">
-					{{for section in document.getProject().getSections():}}
-					<li>
-					<h3>{{=section.getTitle()}}</h3>
-					<p>{{=section.getBlurb()}}</p>
-					<textarea name="section{{=section.getId()}}" 
-					placeholder="Enter transcription"></textarea>
-					</li>
-					{{pass}}
-				</ul>
-				<input type="submit" value="Submit this transcription">
-			</form>
-		</div>
+        <div class="instructions">Transcribe one or more sections below. <br/> (Note: not all sections may apply to this document.)</div>
+        <form method="post" class="transcription-form">
+            <ul class="transcription-sections">
+                {{for section in document.getProject().getSections():}}
+                <li>
+                <h3>{{=section.getTitle()}}</h3>
+                <p>{{=section.getBlurb()}}</p>
+                <textarea name="section{{=section.getId()}}" 
+                placeholder="Enter transcription"></textarea>
+                </li>
+                {{pass}}
+            </ul>
+            <input type="submit" value="Submit this transcription">
+        </form>
 	</div>
 </div>
 {{block script}}
