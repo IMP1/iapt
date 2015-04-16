@@ -61,14 +61,14 @@
 				</li>
 				{{pass}}
 				<li>
-				<button id="section-add" type="submit" formaction="{{=URL(args=[3, 'add'])}}">Add Another Section</button>
+				<button id="section-add" type="submit" formaction="{{=URL(args=[3, 'add'], anchor='bottom')}}">Add Another Section</button>
 				</li>
 			</ul>
 			<div class="clear"></div>
 			<button class="new-back" type="submit" formaction="{{=URL(args=[3, 'back'])}}">&lt; Back</button>
 			<button class="new-next" type="submit" formaction="{{=URL(args=[3, 'finish'])}}">Finish &gt;</button>
 		</form>
-        <p class="clarification">*: This field is mandatory.</p>
+        <p class="clarification" id="bottom">*: This field is mandatory.</p>
 	{{pass}}
 </div>
 {{end}}
