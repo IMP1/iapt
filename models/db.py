@@ -8,7 +8,7 @@ db.define_table('User',
         requires=[IS_NOT_EMPTY(), IS_LENGTH(128),
         IS_NOT_IN_DB(db, 'User.username' , error_message='Sorry! This username is in use.')]),
     Field('password', 'password', length=64, readable=False,
-        requires=[IS_NOT_EMPTY(), IS_LENGTH(64)]),
+        requires=[IS_NOT_EMPTY(), IS_LENGTH(64, minsize=6, error_message="Your password must be at least 6 characters.")]),
 )
 
 #Project

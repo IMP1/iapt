@@ -1,3 +1,7 @@
+def correct_password(form):
+    if not users.correct_password(current_user.getUsername(), form.vars.oldpassword, db):
+        form.errors.oldpassword = "Incorrect password"
+
 def index():
 	response.title = 'Your Profile'
 	#Create forms to change the current user's username or password
@@ -5,14 +9,18 @@ def index():
 	# Create form to change username
 	unform = SQLFORM.factory(
 		Field('username', length=128, label="New Username", 
-			default='', requires=[users.IS_NOT_IN_USE(db), IS_NOT_EMPTY()]),
+			default='', requires=db.User.username.requires),
 		submit_button='Change Username')
 	# Create form to change password
 	pwform = SQLFORM.factory(
+        Field('oldpassword', 'password', 
+				length=64, 
+				label="Old Password", 
+				requires=IS_NOT_EMPTY()),
 		Field('password', 'password', 
 				length=64, 
 				label="New Password", 
-				requires=IS_LENGTH(minsize=6, error_message='Password must be more than 6 characters')),
+				requires=db.User.password.requires),
 		Field('cpassword', 'password', 
 			label="Confirm Password",
 			requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.')),
@@ -23,7 +31,7 @@ def index():
 	if unform.process(formname='unform', message_onsuccess={'msg': 'Username changed!', 'class': 'success_flash'}).accepted:
 		current_user.setUsername(request.vars.username)
 	#Change password if form is accepted
-	if pwform.process(formname='pwform', message_onsuccess={'msg': 'Password changed!', 'class': 'success_flash'}).accepted:
+	if pwform.process(formname='pwform', message_onsuccess={'msg': 'Password changed!', 'class': 'success_flash'}, onvalidation=correct_password).accepted:
 		current_user.setPassword(pwform.vars.password)
 	# Return username and password forms to view
 	return dict(unform=unform, pwform=pwform)
@@ -68,10 +76,10 @@ def register():
 	if current_user == None:
 		form = SQLFORM.factory(
 			Field('username', 'string',
-				requires=[users.IS_NOT_IN_USE(db), IS_NOT_EMPTY()],
+				requires=db.User.username.requires,
 				required=True),
 			Field('password', 'password',
-				requires=IS_LENGTH(minsize=6, error_message='Password must be more than 6 characters'),
+				requires=db.User.password.requires,
 				required=True), 
 			Field('cpassword', 'password', 
 				label="Confirm Password",

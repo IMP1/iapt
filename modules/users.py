@@ -29,6 +29,10 @@ def login(uname, password, db, session):
 		return True
 	else:
 		return False
+    
+def correct_password(username, password, db):
+    query = db((db.User.username == username) & (db.User.password == password))
+    return query.count() > 0
 
 def auth(session, db):
 	""" Authenticate a user in database and return a user object.
