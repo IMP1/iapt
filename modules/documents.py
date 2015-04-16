@@ -44,11 +44,8 @@ def search_results(db, searchterm):
 	"""
 	ret_list = list()
 	term = "%"+searchterm+"%"
-	results = db(db.Document.title.like(term)
-				& (db.Document.project == db.Project.id)
-				& (db.Project.open == True)
-				).select(db.Document.ALL)
-	for r in results:
+	document_results = db(db.Document.title.like(term) | ((db.Project.title.like(term)) & (db.Document.project == db.Project.id))).select(db.Document.ALL, distinct=True)
+	for r in document_results:
 		doc = Document(r.id, db)
 		if doc.isOpen():
 			ret_list.append(doc)
