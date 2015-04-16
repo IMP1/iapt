@@ -10,18 +10,20 @@
         {{=document.getTitle()}} Document
     </div>
     <h1>{{=document.getTitle()}}</h1>
-    <p>
-        Review the transcriptions for this document below. Select your preferred transcriptions and click Accept Transcriptions to finalise them. Alternatively, reject the proposed transcriptions and reopen the document for new transcriptions. 
-    </p>
-    <br/>
-    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
     {{if document.getTranscriptionCount() == 0:}}
-    <div>
+    <p>
         There have been no transcriptions for this document. You can go back to the 
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">project's page</a> or 
         <a href="{{= URL('project', 'index') }}">view all your projects</a>.
-    </div>
+    </p>
     {{else:}}
+    <p>
+        Review the transcriptions for this document below. Select your preferred transcriptions and click Accept Transcriptions to finalise them. Alternatively, reject the proposed transcriptions and reopen the document for new transcriptions. 
+    </p>
+    {{pass}}
+    <br/>
+    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
+    {{if document.getTranscriptionCount() > 0:}}
     <form id="transcription-review" action="#" method="POST">
         {{for section in document.getProject().getSections():}}
         <section>
