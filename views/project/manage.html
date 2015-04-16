@@ -19,7 +19,10 @@
         {{pass}}
     </div>
     <div class="clear"></div>
-	<span>There are {{=len(project.getDocuments())}} document(s) in this project.</span>
+	<p>
+        There are {{=len(project.getDocuments())}} document(s) in this project.
+        Click on a document to review it.
+    </p>
 	<ul class="document-list">
 		{{for d in project.getDocuments():}}
         <li>
