@@ -20,7 +20,7 @@ def new():
 	if step == 1:
 		# First step, project title.
 		form = SQLFORM.factory(
-			Field('title', 'string', requires=IS_NOT_EMPTY()),
+			Field('title', 'string', requires=db.Project.title.requires),
 			submit_button='Next >'
 			)
 		# Either create or prefill.
@@ -37,8 +37,8 @@ def new():
 	elif step == 2:
 		# Second step, document uploads.
 		form = SQLFORM.factory(
-			Field('title', 'string', requires=IS_NOT_EMPTY()),
-			Field('image', 'upload', uploadfolder='documents', requires=IS_NOT_EMPTY()),
+			Field('title', 'string', requires=db.Document.title.requires),
+			Field('image', 'upload', uploadfolder='documents', requires=db.Document.image.requires),
 			submit_button='Add Document'
 			)
 		# User deleted a document?
