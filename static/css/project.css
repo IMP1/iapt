@@ -133,17 +133,6 @@
 
 .document-list > li {
     height: 256px;
-    position: relative;
-}
-
-.document-list .bottom {
-    padding: 8px;
-    display: block;
-    width: 100%;
-    vertical-align: bottom;
-    position: absolute;
-    bottom: 0px;
-    text-align: center;
 }
 
 label:after {

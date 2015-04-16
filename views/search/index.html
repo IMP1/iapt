@@ -13,8 +13,9 @@
 		{{pass}}
 		<li>
             <a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
-			<h3>{{=r.getTitle()}}</h3>
-			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+                <h3>{{=r.getTitle()}}</h3>
+                <img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+                <span class="bottom">in {{ =r.getProject().getTitle() }}</span>
 			</a>
 		</li>
 	{{pass}}

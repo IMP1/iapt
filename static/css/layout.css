@@ -290,6 +290,7 @@ footer a {
 	padding:0;
 	margin:0 0 10px 0;
 	vertical-align:middle;
+    position: relative;
 }
 
 .document-list li h3 {
@@ -312,6 +313,15 @@ footer a {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 5px #000000;
+}
+.document-list .bottom {
+    padding: 8px;
+    display: block;
+    width: 100%;
+    vertical-align: bottom;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
