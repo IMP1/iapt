@@ -24,10 +24,10 @@
             <div class="project-secondary">
                 {{if p.isOpen(): }}
                     <p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
-                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Close</button></a>	
+                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Close</a>
                 {{else:}}
                     <p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
-                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}"><button>Open</button></a>	
+                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Open</a>	
                 {{pass}}
             </div>
             <div class="clear"></div>

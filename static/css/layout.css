@@ -82,6 +82,22 @@ a.external:hover:after {
 	content: url(../External-Link-Hover.png);
 }
 
+a.button {
+    display: inline-block;
+    cursor: pointer;
+	background-color: buttonface;
+    border: 1px solid #9A9A9A;
+	color: black;
+    padding: 8px;
+	font-size: 18px;
+    font-family: Arial, Sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+a.button:hover {
+    background-color: buttonHighlight;
+}
+
 main {
 	padding:85px 30px 30px 30px;
 	height:100%;

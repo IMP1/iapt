@@ -42,14 +42,13 @@
 /* Project status on manage view */
 .project-open-status {
     width:70%;
-    margin:0 auto;
+    margin:0 auto 64px;
 }
 
 .project-open-status p {
     width:85%;
     float:left;
     text-align:center;
-    font-size:11pt;
 }
 
 .project-open-status button {

@@ -20,18 +20,18 @@
 			<li>
 				<h3>{{=doc['title']}}</h3>
 				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
-				<a href="{{=URL(args=[2, 'delete', idx])}}" class="bottom"><button>Remove</button></a>
+				<div class="bottom"><a href="{{=URL(args=[2, 'delete', idx])}}" class="button">Remove</a></div>
 			</li>
 		{{pass}}
 		</ul>
 		{{=form}}
         <p class="clarification">*: This field is mandatory.</p>
         <br /><br /><br />
-		<a href="{{=URL(args=[1])}}">
-			<button type="button" class="new-back">&lt; Back</button>
+		<a href="{{=URL(args=[1])}}" class="button new-back">
+			&lt; Back
 		</a>
-		<a href="{{=URL(args=[3])}}">
-			<button type="button" class="new-next">Next &gt;</button>
+		<a href="{{=URL(args=[3])}}" class="button new-next">
+			Next &gt;
 		</a>
 	{{elif step == 3:}}
         <div class="page-explanation">
