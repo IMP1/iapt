@@ -14,7 +14,7 @@
 	<div class="transcription-image">
         Click on the image to zoom in/out.
         <div id="image-container" class="transciption-image">
-            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
+            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="{{=document.getAlt()}}">
         </div>
 	</div>
 	<div class="rightSide">
@@ -25,7 +25,6 @@
         <h3>{{=section.getTitle()}}</h3>
         <p>{{=section.getBlurb()}}</p>
         <p class="accepted-transcription">{{=document.getAcceptedTranscription(section).text}}</p>
-        </ul>
     </section>
 	
     {{pass}}

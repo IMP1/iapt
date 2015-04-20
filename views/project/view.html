@@ -3,6 +3,7 @@
 	<div class="breadcrumb">
         <a href="{{=URL(c='default', f='index')}}">Home</a> &gt;  
         {{=project.getTitle()}} Project
+    </div>
 	<h1>{{=project.getTitle()}}</h1>
 	<span>{{=project.getOpenDocumentCount()}} document(s) in this project.</span>
 	<ul class="document-list">
@@ -13,7 +14,7 @@
             href="{{=URL(c='document', f='transcribe', args=[r.getId()])}}"
             {{pass}}>
 			<h3>{{=r.getTitle()}}</h3>
-			<img alt="{{=r.getTitle()}} image." src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+			<img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 			</a>
 		</li>
         {{pass}}
