@@ -1,10 +1,12 @@
 def correct_password(form):
+	# Check whether the user has entered the correct password
     if not users.correct_password(current_user.getUsername(), form.vars.oldpassword, db):
         form.errors.oldpassword = "Incorrect password"
 
 def index():
+	# Title the page
 	response.title = 'Your Profile'
-	#Create forms to change the current user's username or password
+	# Require login
 	auth_required('You must be logged in to see your profile.')
 	# Create form to change username
 	unform = SQLFORM.factory(
@@ -37,6 +39,7 @@ def index():
 	return dict(unform=unform, pwform=pwform)
 
 def login():
+	# Title the page
 	response.title = 'Login'
 	# Create login form if there is no user currently logged in
 	if current_user == None:
@@ -71,6 +74,7 @@ def logout():
 	redirect(URL(c='default', f='index'))
 
 def register():
+	# Title the page
 	response.title = 'Register'
 	# Create register form if there is no user currently logged in
 	if current_user == None:
