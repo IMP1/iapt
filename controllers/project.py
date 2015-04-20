@@ -7,6 +7,7 @@ def index():
 	return dict(projects=projects.users_projects(current_user, db))
 
 def new():
+	# Title the page
 	response.title = 'New Project'
 	# Create forms to create a project if a user is logged in
 	auth_required('You must be logged in to create a project.')
@@ -114,6 +115,7 @@ def manage():
 	auth_required('You must be logged in to manage a project.')
 	# Retrieve project.
 	project = projects.Project(request.args[0], db)
+	# Title the page
 	response.title = 'Manage: ' + project.getTitle()
 	# Check project owner.
 	if current_user.getId() != project.getCreator():
@@ -123,16 +125,22 @@ def manage():
 	return dict(project=project)
 
 def view():
+	# Get project
 	project = projects.Project(request.args[0], db)
+	# Title the page
 	response.title = 'Project: ' + project.getTitle()
 	# Return the project to the view
 	return dict(project=project)
 
 def toggle():
+	# Require login
 	auth_required('You must be logged in to open or close a project.')
+	# Get project
 	project = projects.Project(request.args[0], db)
+	# If user logged in is not creator, throw error
 	if (project.getCreator() != current_user.getId()):
 		session.flash = 'You can not open or close a project that you did not create.'
+	# Change an open project to closed or vice versa
 	else:
 		project.setOpen(not project.isOpen())
 		session.flash = {'msg': 'Project successfully ' + 
