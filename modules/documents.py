@@ -70,6 +70,10 @@ class Document(object):
 		# Returns the document's title
 		return self._data.title
 
+	def getAlt(self):
+		# Generate alt text for document.
+		return "Image for document '" + self._data.title + "'."
+
 	def getId(self):
 		# Returns the document's ID
 		return self._data.id
