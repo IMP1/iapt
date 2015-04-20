@@ -82,7 +82,6 @@ form.transcription-form {
 
 form.transcription-form input[type=submit] {
 	width:100%;
-	border: none;
 	margin-top: -20px;
 }
 
