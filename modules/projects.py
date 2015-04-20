@@ -39,19 +39,24 @@ class Project(object):
 		self._sections = None
 
 	def getId(self):
+		# Returns the project's ID
 		return self._data.id
 
 	def getTitle(self):
+		# Returns the project's title
 		return self._data.title
 
 	def setTitle(self, title):
+		# Updates the project's title
 		self._db(self._db.Project.id == self._data.id).update(title=title)
 		self._data.title = title
 
 	def getCreator(self):
+		# Returns the user who created the project
 		return self._data.creator
     
 	def getDocumentCount(self):
+		# Returns the number of documents in the project
 		return self._db(self._db.Document.project == self._data.id).count()
     
 	def getOpenDocumentCount(self):
@@ -59,6 +64,7 @@ class Project(object):
 		for doc in self.getDocuments():
 			if doc.isOpen():
 				count += 1
+		# Returns the number of open documents in the project
 		return count
 
 	def getDocuments(self):
@@ -68,6 +74,7 @@ class Project(object):
 			docs = self._db(self._db.Document.project == self._data.id).select()
 			for d in docs:
 				self._documents.append(documents.Document(d.id, self._db))
+		# Returns the project's documents
 		return self._documents
     
 	def getSections(self):
@@ -76,17 +83,21 @@ class Project(object):
 			self._sections = list()
 			for s in self._db(self._db.Section.project == self._data.id).select():
 				self._sections.append(sections.Section(s.id, self._db))
+		# Returns the project's sections
 		return self._sections
 
 	def getDocumentsTranscribed(self):
+		# Returns the number of documents transcribed
 		return len(self._db(
 						(self._db.Document.id == self._db.Transcription.document) 
 						& (self._db.Document.project == self._data.id)
 						).select(groupby=self._db.Document.id))
 
 	def isOpen(self):
+		# Returns whether or not the project is open
 		return self._data.open
 
 	def setOpen(self, value):
+		# updates whether or not the project is open
 		self._db(self._db.Project.id == self._data.id).update(open=value)
 		self._data.open = value

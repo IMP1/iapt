@@ -11,3 +11,6 @@ uploads
 # inherit https://github.com/github/gitignore/blob/master/Python.gitignore
  
 *.py[co] 
+*.pyc
+
+languages/plural-en.py
