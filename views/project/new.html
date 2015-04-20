@@ -36,8 +36,8 @@
 	{{elif step == 3:}}
         <div class="page-explanation">
             <p>
-                Add the sections of the documents that you would like transcribing. 
-                When you've described all the sections you'd like filled out for you, press finish to complete your project.
+                Add the sections of the documents that you would like transcribing. For each section, make sure that the information is descriptive enough, to ensure you get correct transcriptions.
+                When you've described all the sections you would like to be filled, press finish to complete your project.
             </p>
         </div>
 		<form id="section-editor" method="post">
@@ -48,16 +48,15 @@
 				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}">
 				</li>
 			{{pass}}
-		</ul>
+			</ul>
 			<ul id="section-list">
-				<p>Add a section title and description below. Ensure you are decriptive to ensure you get the transcriptions you want.</p>
 				{{for i,s in enumerate(new_project['sections']):}}
 				<li>
 					<label for="section-title{{=i}}">Title</label>
 					<button class="section-delete" type="submit" formaction="{{=URL(args=[3, 'remove', i])}}">Remove</button>
-					<input name="section-title{{=i}}" type="text" value="{{=s['title']}}">
+					<input id="section-title{{=i}}" name="section-title{{=i}}" type="text" value="{{=s['title']}}">
 					<label for="section-blurb{{=i}}">Short Description</label>
-					<textarea rows="3" name="section-blurb{{=i}}">{{=s['blurb']}}</textarea>
+					<textarea rows="3" id="section-blurb{{=i}}" name="section-blurb{{=i}}">{{=s['blurb']}}</textarea>
 				</li>
 				{{pass}}
 				<li>
