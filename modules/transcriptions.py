@@ -16,17 +16,9 @@ def create(section, document, text, db):
 	return Transcription(id, db)
 
 def accept(transcription_id, db):
-	""" Accept a transcription.
-
-	Keyword arguments:
-	transcription_id -- Transcription to accept.
-	db -- Instance of db (DAL) in use.
-
-	"""
 	db(db.Transcription.id == transcription_id).update(accepted=True)
     
 def delete(transcription_id, db):
-	# Removes a transcription
 	db(db.Transcription.id == transcription_id).delete()
 
 class Transcription(object):
@@ -35,13 +27,10 @@ class Transcription(object):
 		self._data = db(db.Transcription.id == id).select().first()
 
 	def getId(self):
-		# Returns the transcription's ID
 		return self._data.id
 
 	def getText(self):
-		# Returns the transcription's text
 		return self._data.text
 
 	def isAccepted(self):
-		# Returns whether or not the transcription has been accepted
 		return self._data.accepted

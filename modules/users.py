@@ -9,6 +9,7 @@ def register(uname, password, db):
 	uname -- The username for the new user.
 	password -- The password for the new user.
 	db -- Instance of db (DAL) in use.
+
 	"""
 	id = db.User.insert(username=uname, password=password)
 	return User(id, db)
@@ -30,13 +31,6 @@ def login(uname, password, db, session):
 		return False
     
 def correct_password(username, password, db):
-	""" Checks whether the username/password combination exists in the database.
-
-	Keyword arguments:
-	usernamename -- The username for the user.
-	password -- The password for the user.
-	db -- Instance of db (DAL) in use.
-	"""
     query = db((db.User.username == username) & (db.User.password == password))
     return query.count() > 0
 
@@ -62,7 +56,6 @@ def deauth(session):
 	session.auth = None
 
 class IS_NOT_IN_USE(Validator):
-	# Error class used to return useful error messages.
 	def __init__(self, other, error_message='Username already in use'):
 	    self.db = other
 	    self.error_message = error_message
@@ -79,20 +72,16 @@ class User(object):
 		self._data = db(db.User.id == id).select().first()
 
 	def getId(self):
-		# Returns the user's ID
 		return self._data.id
 
 	def getUsername(self):
-		# Returns the user's username
 		return self._data.username
 
 	def setUsername(self, uname):
-		# Changes the user's username
 		self._db(self._db.User.id == self._data.id).update(username=uname)
 		self._data.username = uname
 
 	def setPassword(self, pword):
-		# Changes the user's password
 		self._db(self._db.User.id == self._data.id).update(password=pword)
 		self._data.password = pword
 	

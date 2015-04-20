@@ -31,18 +31,14 @@ class Section(object):
 			trans = self._db((self._db.Transcription.section == self._data.id) & (self._db.Transcription.document == document.getId())).select()
 			for t in trans:
 				self._transcriptions[document].append(transcriptions.Transcription(t.id, self._db))
-		# Returns the transcriptions made to a particular section in a particular document
 		return self._transcriptions[document]
 
 	def getId(self):
-		# Returns the section's ID
 		return self._data.id
 
 	def getTitle(self):
-		# Returns the section's title
 		return self._data.title
 
 	def getBlurb(self):
-		# Returns the section's blurb/description
 		return self._data.blurb
 		

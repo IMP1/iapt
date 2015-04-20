@@ -67,31 +67,25 @@ class Document(object):
 		self._transcriptions = None
 
 	def getTitle(self):
-		# Returns the document's title
 		return self._data.title
 
 	def getId(self):
-		# Returns the document's ID
 		return self._data.id
 
 	def getImage(self):
-		# Returns the document's image
 		return self._data.image
 
 	def getProject(self):
 		# Lazy load project.
 		if self._project == None:
 			self._project = projects.Project(self._data.project, self._db)
-		# Returns the project that the document is part of
 		return self._project
 
 	def isAccepted(self):
-		# Returns whether or not the document's transcriptions have been accepted
 		return self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.accepted == True)).count() > 0
 
 	def getTranscriptionCount(self):
 		section_count = len(self.getProject().getSections())
-		# Returns the number of transcriptions made to the document
 		return self._db(self._db.Transcription.document == self._data.id).count() // section_count
 
 	def getTranscriptions(self, section):
@@ -103,16 +97,13 @@ class Document(object):
 			trans = self._db((self._db.Transcription.document == self._data.id) & (self._db.Transcription.section == section.getId())).select()
 			for t in trans:
 				self._transcriptions[section].append(transcriptions.Transcription(t.id, self._db))
-		# Returns the transcriptions made to the document
 		return self._transcriptions[section]
 
 	def getAcceptedTranscription(self, section):
-		# Returns the transcription that has been accepted
 		return self._db((self._db.Transcription.document == self._data.id) 
 						& (self._db.Transcription.section == section.getId()) 
 						& (self._db.Transcription.accepted == True)).select().first()
     
 	def isOpen(self):
-		# Returns whether ot not the document is open for transcriptions
 		return self.getTranscriptionCount() < 3 and not self.isAccepted() and self.getProject().isOpen()
         
