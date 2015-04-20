@@ -16,7 +16,7 @@
 		<li>
 			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
                 <h3>{{=r.getTitle()}}</h3>
-                <img alt="image for document {{=document.getTitle()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+                <img alt="image for document {{=r.getTitle()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 			</a>
 		</li>
     {{pass}}

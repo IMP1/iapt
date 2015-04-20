@@ -19,7 +19,7 @@
 		{{for idx, doc in enumerate(new_project['documents']): }}
 			<li>
 				<h3>{{=doc['title']}}</h3>
-				<img alt="image for document {{=document.getTitle()}}" src="{{=URL(f='image', args=[doc['image']])}}">
+				<img alt="image for document {{=doc['title']}}" src="{{=URL(f='image', args=[doc['image']])}}">
 				<div class="bottom"><a href="{{=URL(args=[2, 'delete', idx])}}" class="button">Remove</a></div>
 			</li>
 		{{pass}}
@@ -45,7 +45,7 @@
 			{{for doc in new_project['documents']: }}
 				<li>
 				<h3>{{=doc['title']}}</h3>
-				<img alt="{{=doc['title']}} image." src="{{=URL(f='image', args=[doc['image']])}}" alt="image for document {{=document.getTitle()}}">
+				<img src="{{=URL(f='image', args=[doc['image']])}}" alt="image for document {{=doc['title']}}">
 				</li>
 			{{pass}}
 			</ul>
