@@ -101,9 +101,11 @@ def new():
 			elif request.args[1] == 'remove':
 				# Delete requested section.
 				del session.new_project['sections'][int(request.args[2])]
+				redirect(URL(args=[3]))
 			elif request.args[1] == 'add':
 				# Add a blank section.
 				session.new_project['sections'].append({'title':'','blurb':''})
+				redirect(URL(args=[3]))
 		# Return the current project and the current step to the view
 		return dict(new_project=session.new_project, step=step)
 	else:
