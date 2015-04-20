@@ -4,7 +4,7 @@ def index():
 	# Handle blank input
 	if request.vars.searchterm == None or request.vars.searchterm == "":
 		session.flash = "Please enter a term"
-		redirect(URL(c='default', f='index'))
+		redirect(request.env.http_referer)
 	# Get results from db
 	results = documents.search_results(db, request.vars.searchterm)
 	# Calculate number of results
