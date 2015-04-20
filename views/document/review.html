@@ -22,7 +22,7 @@
     </p>
     {{pass}}
     <br/>
-    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large">
+    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large" alt="image for document {{=document.getTitle()}}">
     {{if document.getTranscriptionCount() > 0:}}
     <form id="transcription-review" action="#" method="POST">
         {{for section in document.getProject().getSections():}}

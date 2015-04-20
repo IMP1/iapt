@@ -28,7 +28,7 @@
         <li>
 			<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">
                 <h3>{{=d.getTitle()}}</h3>
-                <img alt="{{=d.getTitle()}} image." src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
+                <img alt="image for document {{=document.getTitle()}}" src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
                 {{transcription_count = d.getTranscriptionCount()}}
                 <span class="bottom">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
 			</a>
