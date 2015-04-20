@@ -183,6 +183,7 @@ ol, ul {
 
 /* Header */
 header {
+	min-width:1090px;
 	width:100%;
 	background-color:#fff;
 	box-shadow:0 2px 5px -2px #000;
