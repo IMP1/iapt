@@ -38,7 +38,7 @@ main > div, footer > div {
 
 #flash {
 	height: 50px;
-	background-color: #db625a;
+	background-color: #eb827a;
 	border-radius: 5px;
 	border: 1px solid;
 	line-height: 300%;
@@ -126,7 +126,7 @@ form input, form textarea, button {
 }
 
 .error {
-	color: #db625a;
+	color: #BB121a;
 }
 
 progress {
