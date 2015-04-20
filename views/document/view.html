@@ -10,9 +10,16 @@
         {{=document.getTitle()}} Document
     </div>
     <h1>{{=document.getTitle()}}</h1>
-    <p class="clarification">You have accepted a transcription for this document. Scroll down to see it.</p>
-    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large" alt="image for document {{=document.getTitle()}}">
+    
+	<div class="transcription-image">
+        Click on the image to zoom in/out.
+        <div id="image-container" class="transciption-image">
+            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
+        </div>
+	</div>
+	<div class="rightSide">
     <h2 class="accepted-transcription-title">These are the transcriptions {{="you have" if current_user != None and current_user.getId() == document.getProject().getCreator() else "the project creator has" }} accepted for this document.</h2>
+	
     {{for section in document.getProject().getSections():}}
     <section>
         <h3>{{=section.getTitle()}}</h3>
@@ -20,5 +27,7 @@
         <p class="accepted-transcription">{{=document.getAcceptedTranscription(section).text}}</p>
         </ul>
     </section>
+	
     {{pass}}
+	</div>
 </div>

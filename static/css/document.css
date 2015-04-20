@@ -15,7 +15,7 @@ form#transcription-review input[type=submit] {
 ul.transcription-list {
 	list-style: none;
 	width: 100%;
-	margin-left: 64px;
+/*	margin-left: 64px;*/
 	display: table;
 }
 ul.transcription-list > hr {
@@ -24,10 +24,13 @@ ul.transcription-list > hr {
 	border: 0;
 	border-top: 1px solid #4C2811;
 }
+div.rightSide > * {
+	margin-left: 24px;
+}
 
 p.accepted-transcription ,
 ul.transcription-list > li {
-	width: 544px;
+/*	width: 544px;*/
 	border: 1px solid #4C2811;
 	background-color: #C7B18F;
 	border-radius: 4px;

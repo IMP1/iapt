@@ -9,7 +9,7 @@
         <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
         {{=document.getTitle()}} Document
     </div>
-    <h1>{{=document.getTitle()}}</h1>
+    <h1>Review {{=document.getTitle()}}</h1>
     {{if document.getTranscriptionCount() == 0:}}
     <p>
         There have been no transcriptions for this document. You can go back to the 
@@ -22,37 +22,47 @@
     </p>
     {{pass}}
     <br/>
-    <img src="{{=URL(c='document', f='image', args=[document.getImage()])}}" class="docimage-large" alt="image for document {{=document.getTitle()}}">
-    {{if document.getTranscriptionCount() > 0:}}
-    <form id="transcription-review" action="#" method="POST">
-        {{for section in document.getProject().getSections():}}
-        <section>
-            <h3>{{=section.getTitle()}}</h3>
-            <p>{{=section.getBlurb()}}</p>
-            <ul class="transcription-list">
-            {{checked = False}}
-            {{for transcription in section.getTranscriptions(document):}}
-                {{if transcription.getText().strip():}}
-                <li>
-                    <label>
-                        <p>{{=transcription.getText()}}</p>
-                        <div>
-                            <input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}" {{="checked" if not checked else ""}}>
-                            {{checked = True}}
-                        </div>
-                    </label>
-                </li>
-                {{pass}}
-            {{pass}}
-            </ul>
-        </section>
-        {{pass}}
-        <input type=submit value="Accept Transcriptions" onclick="return setAction('accept');" />
-        <input type=submit value="Reject All and Reopen" onclick="return setAction('reject');" />
-        <div style="display: hidden;">
-            <input type=hidden id="action" name="action" value="None" />
+	
+	<div class="transcription-image">
+        Click on the image to zoom in/out.
+        <div id="image-container" class="transciption-image">
+            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="image for document {{=document.getTitle()}}">
         </div>
-    </form>
+    </div>
+	
+    {{if document.getTranscriptionCount() > 0:}}
+	<div class="rightSide">
+		<form id="transcription-review" action="#" method="POST">
+			{{for section in document.getProject().getSections():}}
+			<section>
+				<h3>{{=section.getTitle()}}</h3>
+				<p>{{=section.getBlurb()}}</p>
+				<ul class="transcription-list">
+				{{checked = False}}
+				{{for transcription in section.getTranscriptions(document):}}
+					{{if transcription.getText().strip():}}
+					<li>
+						<label>
+							<p>{{=transcription.getText()}}</p>
+							<div>
+								<input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}" {{="checked" if not checked else ""}}>
+								{{checked = True}}
+							</div>
+						</label>
+					</li>
+					{{pass}}
+				{{pass}}
+				</ul>
+			</section>
+			{{pass}}
+			<input type=submit value="Accept Transcriptions" onclick="return setAction('accept');" />
+			<input type=submit value="Reject All and Reopen" onclick="return setAction('reject');" />
+			<div style="display: hidden;">
+				<input type=hidden id="action" name="action" value="None" />
+			</div>
+		</form>
+	</div>
+
     {{pass}}
 </div>
 {{block script}}
@@ -65,4 +75,5 @@
         return true;
     }
 </script>
+<script type="text/javascript" src="{{=URL('static', 'js/image_zoom.js')}}"></script>
 {{end}}
