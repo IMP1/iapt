@@ -8,8 +8,9 @@ img.onclick = function(e) {
         img.style.cssText = "cursor: -moz-zoom-in; cursor: -webkit-zoom-in" 
         img.style.width = "100%";
     } else {
-        var x = (e.pageX - container.offsetLeft) / img.offsetWidth;
-        var y = (e.pageY - container.offsetTop)  / img.offsetHeight;
+		var rect = container.getBoundingClientRect();
+		var x = (e.clientX - rect.left) / img.offsetWidth;
+        var y = (e.clientY - rect.top)  / img.offsetHeight;
         container.style.overflow = "auto";
         container.style.maxHeight = "550px";
         img.style.cssText = "cursor: -moz-zoom-out; cursor: -webkit-zoom-out" 
