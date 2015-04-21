@@ -18,10 +18,10 @@ def review():
 			if ("section" + str(section.getId())) in request.vars:
 				tid = int(request.vars["section" + str(section.getId())])
 				transcriptions.accept(tid, db)
-				# Delete the others
-				for transcription in doc.getTranscriptions(section):
-					if not transcription.isAccepted():
-						transcriptions.delete(transcription.getId(), db)
+			# Delete the others
+			for transcription in doc.getTranscriptions(section):
+				if not transcription.isAccepted():
+					transcriptions.delete(transcription.getId(), db)
 		# Redirect to view
 		session.flash = {'msg': "You've accepted the following transcriptions and the document has been closed.",
 		                 'class': 'success_flash'}
@@ -68,7 +68,7 @@ def transcribe():
 			for section in doc.getProject().getSections():
 				transcriptions.create(section, doc, request.vars['section'+str(section.getId())], db)
 			# Redirect the user to wherever is appropriate.
-			session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
+			session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'. You might be interested in other documents in this project.",
 							 'class': 'success_flash'}
 			redirect(URL(c='project', f='view', args=doc.getProject().getId()))
 	# Return the document and project to the view
