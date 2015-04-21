@@ -13,6 +13,7 @@ def index():
 		Field('username', length=128, label="New Username", 
 			default='', requires=db.User.username.requires),
 		submit_button='Change Username')
+	unform.custom.widget.username['_autofocus'] = True
 	# Create form to change password
 	pwform = SQLFORM.factory(
 		Field('oldpassword', 'password', 
@@ -48,6 +49,7 @@ def login():
 			Field('password', 'password', length=64),
 			submit_button='Login'
 			)
+		form.custom.widget.username['_autofocus'] = True
 		if form.process().accepted:
 			if users.login(form.vars.username, form.vars.password, db, session):
 				session.flash = {'msg': 'You have been logged in.', 'class': 'success_flash'}
@@ -91,6 +93,7 @@ def register():
 				required=True),
 			submit_button='Register'
 			)
+		form.custom.widget.username['_autofocus'] = True
 		if form.process().accepted:
 			# Register the new user.
 			users.register(form.vars.username, form.vars.password, db)

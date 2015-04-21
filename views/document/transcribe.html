@@ -21,8 +21,13 @@
 				<li>
 				<h3>{{=section.getTitle()}}</h3>
 				<p>{{=section.getBlurb()}}</p>
-				<textarea name="section{{=section.getId()}}" 
-				placeholder="Enter transcription"></textarea>
+				{{if section == document.getProject().getSections()[0]:}}
+                    <textarea name="section{{=section.getId()}}" 
+                    placeholder="Enter transcription" autofocus></textarea>
+                {{else:}}
+                    <textarea name="section{{=section.getId()}}" 
+                    placeholder="Enter transcription"></textarea>
+                {{pass}}
 				</li>
 				{{pass}}
 			</ul>

@@ -24,6 +24,7 @@ def new():
 			Field('title', 'string', requires=db.Project.title.requires),
 			submit_button='Next >'
 			)
+		form.custom.widget.title['_autofocus'] = True
 		# Either create or prefill.
 		if session.new_project == None:
 			session.new_project = { 'documents' : [], 'sections' : [{'title':'', 'blurb':''}] }
@@ -40,8 +41,9 @@ def new():
 		form = SQLFORM.factory(
 			Field('title', 'string', requires=db.Document.title.requires),
 			Field('image', 'upload', uploadfolder='documents', requires=db.Document.image.requires),
-			submit_button='Add Document'
+			submit_button='Add Document', _autofocus='autofocus'
 			)
+		form.custom.widget.title['_autofocus'] = True
 		# User deleted a document?
 		if (len(request.args) == 3) and (request.args[1] == 'delete'):
 			# we could delete the image here, if we wanted.

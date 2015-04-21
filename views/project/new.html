@@ -54,7 +54,7 @@
 				<li>
 					<label for="section-title{{=i}}">Title</label>
 					<button class="section-delete" type="submit" formaction="{{=URL(args=[3, 'remove', i])}}">Remove</button>
-					<input id="section-title{{=i}}" name="section-title{{=i}}" type="text" value="{{=s['title']}}">
+					<input id="section-title{{=i}}" name="section-title{{=i}}" type="text" value="{{=s['title']}}" autofocus>
 					<label for="section-blurb{{=i}}">Short Description</label>
 					<textarea rows="3" id="section-blurb{{=i}}" name="section-blurb{{=i}}">{{=s['blurb']}}</textarea>
 				</li>
