@@ -44,22 +44,13 @@ p.accepted-transcription {
 }
 
 ul.transcription-list > li > label {
-	display: table-row;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
-ul.transcription-list label > p,
-ul.transcription-list label > div {
-	display: table-cell;
-}
-
-ul.transcription-list label > p {
-	width: 512px;
-}
-
-ul.transcription-list label > div {
-	text-align: right;
-	width: 32px;
-	vertical-align: middle;
+ul.transcription-list input[type=radio] {
+	float: right;
 }
 
 h3.accepted-transcription-title {
