@@ -1,8 +1,8 @@
 {{extend 'layout.html'}}
 <div>
 	<h1>{{=str(resultnum)}} Search {{=resulttext}} for '{{=term}}':</h1>
-    <br />
-    <ul class="document-list">
+	<br />
+	<ul class="document-list">
 	{{for r in results: }}
 		{{if current_user == None:}}
 			{{method = 'transcribe'}}
@@ -12,12 +12,12 @@
 			{{method = 'transcribe'}}
 		{{pass}}
 		<li>
-            <a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
-                <h3>{{=r.getTitle()}}</h3>
-                <img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
-                <span class="bottom">in {{ =r.getProject().getTitle() }}</span>
+			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
+				<h3>{{=r.getTitle()}}</h3>
+				<img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+				<span class="bottom">in {{ =r.getProject().getTitle() }}</span>
 			</a>
 		</li>
 	{{pass}}
-    </ul>
+	</ul>
 </div>
