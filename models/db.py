@@ -4,19 +4,19 @@ db = DAL('sqlite://storage.db')
 
 #User
 db.define_table('User',
-    Field('username', length=128, default='', unique=True,
-        requires=[IS_NOT_EMPTY(), IS_LENGTH(128),
-        IS_NOT_IN_DB(db, 'User.username' , error_message='Sorry! This username is in use.')]),
-    Field('password', 'password', length=64, readable=False,
-        requires=[IS_NOT_EMPTY(), IS_LENGTH(64, minsize=6, error_message="Your password must be at least 6 characters.")]),
+	Field('username', length=128, default='', unique=True,
+		requires=[IS_NOT_EMPTY(), IS_LENGTH(128),
+		IS_NOT_IN_DB(db, 'User.username' , error_message='Sorry! This username is in use.')]),
+	Field('password', 'password', length=64, readable=False,
+		requires=[IS_NOT_EMPTY(), IS_LENGTH(64, minsize=6, error_message="Your password must be at least 6 characters.")]),
 )
 
 #Project
 db.define_table('Project',
-    Field('creator', db.User),
-    Field('title', length=128, requires=[IS_NOT_EMPTY(), IS_LENGTH(128)]),
-    Field('open', 'boolean')
-    )
+	Field('creator', db.User),
+	Field('title', length=128, requires=[IS_NOT_EMPTY(), IS_LENGTH(128)]),
+	Field('open', 'boolean')
+	)
 
 #Document
 db.define_table('Document',
