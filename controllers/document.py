@@ -15,12 +15,13 @@ def review():
 	if request.vars.action == "accept":
 		for section in doc.getProject().getSections():
 			# Accept chosen transcriptions
-			tid = int(request.vars["section" + str(section.getId())])
-			transcriptions.accept(tid, db)
-			# Delete the others
-			for transcription in doc.getTranscriptions(section):
-				if not transcription.isAccepted():
-					transcriptions.delete(transcription.getId(), db)
+			if ("section" + str(section.getId())) in request.vars:
+				tid = int(request.vars["section" + str(section.getId())])
+				transcriptions.accept(tid, db)
+				# Delete the others
+				for transcription in doc.getTranscriptions(section):
+					if not transcription.isAccepted():
+						transcriptions.delete(transcription.getId(), db)
 		# Redirect to view
 		session.flash = {'msg': "You've accepted the following transcriptions and the document has been closed.",
 		                 'class': 'success_flash'}

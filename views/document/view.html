@@ -24,7 +24,11 @@
     <section>
         <h3>{{=section.getTitle()}}</h3>
         <p>{{=section.getBlurb()}}</p>
-        <p class="accepted-transcription">{{=document.getAcceptedTranscription(section).text}}</p>
+        {{if document.getAcceptedTranscription(section):}}
+            <p class="accepted-transcription">{{=document.getAcceptedTranscription(section).text}}</p>
+        {{else:}}
+            <p class="accepted-transcription">No transcription available.</p>
+        {{pass}}
     </section>
 	
     {{pass}}

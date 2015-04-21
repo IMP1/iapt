@@ -48,9 +48,14 @@
 								<input name="section{{=section.getId()}}" type="radio" value="{{=transcription.getId()}}" {{="checked" if not checked else ""}}>
 								{{checked = True}}
 							</div>
-						</label>
+					</label>
 					</li>
 					{{pass}}
+				{{pass}}
+				{{if not checked:}}
+				<li>
+					No transcriptions provided.
+				</li>
 				{{pass}}
 				</ul>
 			</section>
