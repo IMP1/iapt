@@ -46,6 +46,7 @@ def new():
 		if (len(request.args) == 3) and (request.args[1] == 'delete'):
 			# we could delete the image here, if we wanted.
 			del session.new_project['documents'][int(request.args[2])]
+			session.flash = {'msg': 'Document Removed.', 'class': 'success_flash'}
 			redirect(URL(args=[2]))
 		# User added a new document?
 		elif form.process(message_onsuccess={'msg': 'Document Added!', 'class': 'success_flash'}).accepted:
