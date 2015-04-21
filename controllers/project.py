@@ -111,6 +111,8 @@ def new():
 		return dict(new_project=session.new_project, step=step)
 	else:
 		# Return the step to the view
+		session.flash = {'msg': 'Please follow the stepped process.', 'class': 'error_flash'}
+		redirect(URL(c='project', f='new'))
 		return dict(step=step)
 
 # TODO: Handle errors.
