@@ -1,58 +1,58 @@
 .projects-list {
 	list-style:none;
-    width: 80%;
-    margin:0 auto;
+	width: 80%;
+	margin:0 auto;
 }
 .project {
-    width: 100%;
-    padding:20px 0 20px 0;
-    border-bottom:1px solid #C7B18F;
+	width: 100%;
+	padding:20px 0 20px 0;
+	border-bottom:1px solid #C7B18F;
 }
 
 .project:last-child {
-    border:none;
+	border:none;
 }
 
 /* First line of project, with title and transcription count */
 .project-primary h3 {
-    float:left;
-    text-decoration:underline;
+	float:left;
+	text-decoration:underline;
 }
 
 .project-primary div {
-    float:right;
+	float:right;
 }
 
 /* Second line of project, notification and button */
 
 .project-secondary {
-    margin-top:20px;
+	margin-top:20px;
 }
 
 .project-secondary p {
-    text-align:left;
-    float:left;
-    width:85%;
+	text-align:left;
+	float:left;
+	width:85%;
 }
 
 .project-secondary a {
-    float:right;
+	float:right;
 }
 
 /* Project status on manage view */
 .project-open-status {
-    width:70%;
-    margin:0 auto 64px;
+	width:70%;
+	margin:0 auto 64px;
 }
 
 .project-open-status p {
-    width:85%;
-    float:left;
-    text-align:center;
+	width:85%;
+	float:left;
+	text-align:center;
 }
 
 .project-open-status button {
-    float:right;
+	float:right;
 }
 
 #progress {
@@ -63,11 +63,11 @@
 }
 
 .new-back {
-    float:left;
+	float:left;
 }
 
 .new-next {
-    float:right;
+	float:right;
 }
 
 #next-form {
@@ -79,7 +79,7 @@
 
 /* Final step */
 #section-editor {
-    width:100%;
+	width:100%;
 }
 
 .document-list-left {
@@ -92,47 +92,47 @@
 }
 
 #section-list {
-    float:right;
-    width:350px;
-    list-style:none;
-    margin-bottom:5px;
+	float:right;
+	width:350px;
+	list-style:none;
+	margin-bottom:5px;
 }
 
 #section-list li {
-    border-bottom:1px solid black;
-    padding:7px;
+	border-bottom:1px solid black;
+	padding:7px;
 }
 
 #section-list li:last-child {
-    border:none;
+	border:none;
 }
 
 #section-list li textarea, #section-list li input[type=text] {
-    width:300px;
+	width:300px;
 }
 
 .section-delete {
-    float:right;
-    font-size:12pt;
-    margin:0 4px 3px 0;
+	float:right;
+	font-size:12pt;
+	margin:0 4px 3px 0;
 }
 
 #section-list li label {
-    line-height:24pt;
+	line-height:24pt;
 }
 
 #section-add {
-    width:100%;
+	width:100%;
 }
 
 #section-list p {
-    font-size:12pt;
+	font-size:12pt;
 }
 
 .document-list > li {
-    height: 256px;
+	height: 256px;
 }
 
 label:after {
-    content: '*';
+	content: '*';
 }

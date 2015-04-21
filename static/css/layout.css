@@ -17,7 +17,7 @@ body {
 }
 
 input[type=submit], button {
-    cursor: pointer;
+	cursor: pointer;
 	background-color: buttonface;
 	color: black;
 }
@@ -83,19 +83,20 @@ a.external:hover:after {
 }
 
 a.button {
-    display: inline-block;
-    cursor: pointer;
+	display: inline-block;
+	cursor: pointer;
 	background-color: buttonface;
-    border: 1px solid #9A9A9A;
+	border: 1px solid #9A9A9A;
 	color: black;
-    padding: 8px;
+	padding: 8px;
 	font-size: 18px;
-    font-family: Arial, Sans-serif;
-    text-align: center;
-    text-decoration: none;
+	font-family: Arial, Sans-serif;
+	text-align: center;
+	text-decoration: none;
 }
+
 a.button:hover {
-    background-color: buttonHighlight;
+	background-color: buttonHighlight;
 }
 
 main {
@@ -108,21 +109,24 @@ form {
 	margin: auto;
 	font-size: 20px;
 }
+
 form table {
 	width: 100%;
 }
+
 .w2p_fl {
 	text-align: right;
 	height: 50px;
 	padding-right: 10px;
 }
+
 .w2p_fw, form input[type=text], form input[type=password] {
 	width: 300px;
 }
 form input, form textarea, button {
 	padding: 8px;
 	font-size: 18px;
-    font-family: Arial, Sans-serif;
+	font-family: Arial, Sans-serif;
 }
 
 .error {
@@ -141,15 +145,18 @@ progress {
 	border-radius: 5px;
 	background-color: #eee;
 }
+
 progress::-webkit-progress-bar {
 	background-color: #eee;
 	border-radius: 5px;
 }
+
 progress::-webkit-progress-value {
 	background-color: #5ADB62;
 	border-radius: 5px 0 0 5px;
 	background-size: 70px 40px, 100% 100%, 100% 100%;
 }
+
 progress::-moz-progress-bar {
 	background-color: #5ADB62;
 }
@@ -163,22 +170,22 @@ progress::-moz-progress-bar {
 }
 
 ol, ul {
-    padding-left: 2rem;
+	padding-left: 2rem;
 }
 
 .page-explanation {
-    display: block;
-    width: 800px;
-    margin: 32px auto 32px auto;
+	display: block;
+	width: 800px;
+	margin: 32px auto 32px auto;
 }
 .page-explanation p {
-    margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 .clarification {
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 8px;
+	text-align: center;
+	margin-top: 32px;
+	margin-bottom: 8px;
 }
 
 /* Header */
@@ -188,20 +195,23 @@ header {
 	background-color:#fff;
 	box-shadow:0 2px 5px -2px #000;
 	position:fixed;
-    z-index: 999;
+	z-index: 999;
 }
 
 header > div {
 	position: relative;
 	padding: 10px;
 }
+
 header a {
 	text-decoration: none;
 	display: block;
 }
+
 nav a {
 	margin-top: 10px;
 }
+
 header ul {
 	position: absolute;
 	right: 10px;
@@ -209,6 +219,7 @@ header ul {
 	top: 0;
 	bottom: 0;
 }
+
 header li {
 	display: inline-block;
 	padding: 10px;
@@ -225,32 +236,37 @@ header li.selected {
 	margin: 0 auto;
 	box-shadow: 0 0 5px -2px #000;
 }
+
 #search input {
 	padding: 8px;
 	font-size: 18px;
 	border: 0;
 }
+
 #search input[type=search] {
 	width: 448px;
 }
+
 #search .arrow {
 	border: 10px solid transparent;
 	border-right: 10px solid #F4E5C4;
 	position: absolute;
 	margin: 10px 0 0 428px;
 }
+
 #search input[type=submit] {
 	background-color: #F4E5C4;
 	color: #4C2811;
 	width: 100px;
 }
+
 #search input[type=submit]:hover, #search input[type=submit]:focus {
-    background-color: #E5D5B6;
+	background-color: #E5D5B6;
 }
 
 /* Footer */
 #spacer {
-    clear: both;
+	clear: both;
 	height: 292px;
 }
 
@@ -261,6 +277,7 @@ footer .section:nth-child(1) {
 footer > div {
 	height: 180px;
 }
+
 footer .section {
 	width: 330px;
 	vertical-align: top;
@@ -269,6 +286,7 @@ footer .section {
 	border-left: 1px solid #4C2811;
 	padding: 20px;
 }
+
 footer {
 	position: absolute;
 	bottom: 0;
@@ -301,57 +319,61 @@ footer a {
 
 .document-list li {
 	width: 190px;
-    height: 200px;
+	height: 200px;
 	display:inline-block;
 	border:1px solid black;
 	padding:0;
 	margin:0 0 10px 0;
 	vertical-align:middle;
-    position: relative;
+	position: relative;
 }
 
 .document-list li h3 {
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .document-list li img {
-    display: block;
+	display: block;
 	max-width: 180px;
 	max-height: 130px;
-    margin: auto;
+	margin: auto;
 }
 
 .document-list > li > a:first-child {
-    display: block;
-    width: 100%;
-    height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
+
 .document-list > li > a:first-child:hover { 
-    outline: none;
-    border-color: #9ecaed;
-    box-shadow: 0 0 5px #000000;
+	outline: none;
+	border-color: #9ecaed;
+	box-shadow: 0 0 5px #000000;
 }
 .document-list .bottom {
-    padding: 8px;
-    display: block;
-    width: 100%;
-    vertical-align: bottom;
-    position: absolute;
-    bottom: 0px;
-    text-align: center;
+	padding: 8px;
+	display: block;
+	width: 100%;
+	vertical-align: bottom;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    font-family: Arial, Sans-serif;
+	font-family: Arial, Sans-serif;
 }
+
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    font-family: Arial, Sans-serif;
+	font-family: Arial, Sans-serif;
 }
+
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    font-family: Arial, Sans-serif;
+	font-family: Arial, Sans-serif;
 }
+
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    font-family: Arial, Sans-serif;
+	font-family: Arial, Sans-serif;
 }
 
 /* Responsive search */
