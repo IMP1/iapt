@@ -3,34 +3,34 @@
 <link rel="stylesheet" type="text/css" href="{{= URL('static', 'css/project.css') }}" />
 {{end}}
 <div>
-    <div class="breadcrumb">
-        <a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
-        <a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
-        {{=project.getTitle()}} Project
-    </div>
+	<div class="breadcrumb">
+		<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
+		<a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
+		{{=project.getTitle()}} Project
+	</div>
 	<h1>{{=project.getTitle()}}</h1>
-    <div class="project-open-status">
-        {{if project.isOpen(): }}
-            <p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
-            <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}" class="button">Close</a>    
-        {{else:}}
-            <p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
-            <a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}" class="button">Open</a> 
-        {{pass}}
-    </div>
-    <div class="clear"></div>
+	<div class="project-open-status">
+		{{if project.isOpen(): }}
+			<p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
+			<a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}" class="button">Close</a>    
+		{{else:}}
+			<p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
+			<a href="{{=URL(c='project', f='toggle', args=[project.getId()])}}" class="button">Open</a> 
+		{{pass}}
+	</div>
+	<div class="clear"></div>
 	<p>
-        There are {{=len(project.getDocuments())}} document(s) in this project.
-        Click on a document to review it.
-    </p>
+		There are {{=len(project.getDocuments())}} document(s) in this project.
+		Click on a document to review it.
+	</p>
 	<ul class="document-list">
 		{{for d in project.getDocuments():}}
-        <li>
+		<li>
 			<a href="{{=URL(c='document', f='review', args=[d.getId()])}}">
-                <h3>{{=d.getTitle()}}</h3>
-                <img alt="{{=d.getAlt()}}" src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
-                {{transcription_count = d.getTranscriptionCount()}}
-                <span class="bottom">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
+				<h3>{{=d.getTitle()}}</h3>
+				<img alt="{{=d.getAlt()}}" src="{{=URL(c='document', f='image', args=[d.getImage()])}}">
+				{{transcription_count = d.getTranscriptionCount()}}
+				<span class="bottom">{{=transcription_count}} transcription{{=" has" if transcription_count == 1 else "s have"}} been made.</span>
 			</a>
 		</li>
 		{{pass}}

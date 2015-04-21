@@ -7,14 +7,14 @@
 	<p id="progress">Step {{=step}} of 3</p>
 	<progress max="3" value="{{=step-1}}"></progress>
 	{{if step == 1:}}
-        <p class="clarification">Enter a title for your project.<br/>(This will be used to identify your project.)</p>
+		<p class="clarification">Enter a title for your project.<br/>(This will be used to identify your project.)</p>
 		{{=form}}
-        <p class="clarification">*: This field is mandatory.</p>
+		<p class="clarification">*: This field is mandatory.</p>
 	{{elif step == 2:}}
 		<h2>Upload Documents</h2>
-        <div class="page-explanation">
-            <p>Add the documents you want to be transcribed to your project. When you've uploaded all the documents for this project, press next to continue.</p>
-        </div>
+		<div class="page-explanation">
+			<p>Add the documents you want to be transcribed to your project. When you've uploaded all the documents for this project, press next to continue.</p>
+		</div>
 		<ul class="document-list">
 		{{for idx, doc in enumerate(new_project['documents']): }}
 			<li>
@@ -25,8 +25,8 @@
 		{{pass}}
 		</ul>
 		{{=form}}
-        <p class="clarification">*: This field is mandatory.</p>
-        <br /><br /><br />
+		<p class="clarification">*: This field is mandatory.</p>
+		<br /><br /><br />
 		<a href="{{=URL(args=[1])}}" class="button new-back">
 			&lt; Back
 		</a>
@@ -34,12 +34,12 @@
 			Next &gt;
 		</a>
 	{{elif step == 3:}}
-        <div class="page-explanation">
-            <p>
-                Add the sections of the documents that you would like transcribing. For each section, make sure that the information is descriptive enough, to ensure you get correct transcriptions.
-                When you've described all the sections you would like to be filled, press finish to complete your project.
-            </p>
-        </div>
+		<div class="page-explanation">
+			<p>
+				Add the sections of the documents that you would like transcribing. For each section, make sure that the information is descriptive enough, to ensure you get correct transcriptions.
+				When you've described all the sections you would like to be filled, press finish to complete your project.
+			</p>
+		</div>
 		<form id="section-editor" method="post">
 			<ul class="document-list document-list-left">
 			{{for doc in new_project['documents']: }}
@@ -67,7 +67,7 @@
 			<button class="new-back" type="submit" formaction="{{=URL(args=[3, 'back'])}}">&lt; Back</button>
 			<button class="new-next" type="submit" formaction="{{=URL(args=[3, 'finish'])}}">Finish &gt;</button>
 		</form>
-        <p class="clarification" id="bottom">*: This field is mandatory.</p>
+		<p class="clarification" id="bottom">*: This field is mandatory.</p>
 	{{pass}}
 </div>
 {{end}}

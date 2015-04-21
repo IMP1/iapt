@@ -5,34 +5,34 @@
 <div>
 	<h1>My Projects</h1>
 	{{if len(projects) == 0:}}
-    <br />
-    <div>You have not created any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
-    {{else:}}
+	<br />
+	<div>You have not created any projects yet. Why not <a href="{{= URL('project', 'new') }}">Create a Project</a> now?</div>
+	{{else:}}
 	<ul class="projects-list">
 	{{for p in projects: }}
 		<li class="project">
-            <div class="project-primary">
-                    <a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">
-                        <h3>{{=p.getTitle()}}</h3>
-                    </a>
+			<div class="project-primary">
+					<a href="{{=URL(c='project', f='manage', args=[p.getId()])}}">
+						<h3>{{=p.getTitle()}}</h3>
+					</a>
 
-                <div>
-                {{=p.getDocumentsTranscribed()}} of {{=p.getDocumentCount()}} documents have transcriptions.
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="project-secondary">
-                {{if p.isOpen(): }}
-                    <p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
-                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Close</a>
-                {{else:}}
-                    <p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
-                    <a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Open</a>	
-                {{pass}}
-            </div>
-            <div class="clear"></div>
+				<div>
+				{{=p.getDocumentsTranscribed()}} of {{=p.getDocumentCount()}} documents have transcriptions.
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="project-secondary">
+				{{if p.isOpen(): }}
+					<p class="open_notification">This project is currently <strong>open</strong> and accepting transcriptions.</p>
+					<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Close</a>
+				{{else:}}
+					<p class="open_notification">This project is currently <strong>closed.</strong> Only you are able to see it. To allow people to make transcriptions, you must open it first.</p>
+					<a href="{{=URL(c='project', f='toggle', args=[p.getId()])}}" class="button">Open</a>	
+				{{pass}}
+			</div>
+			<div class="clear"></div>
 		</li>
 	{{pass}}
-    </ul>
-    {{pass}}
+	</ul>
+	{{pass}}
 </div>

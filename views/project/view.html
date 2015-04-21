@@ -1,23 +1,23 @@
 {{extend 'layout.html'}}
 <div>
 	<div class="breadcrumb">
-        <a href="{{=URL(c='default', f='index')}}">Home</a> &gt;  
-        {{=project.getTitle()}} Project
-    </div>
+		<a href="{{=URL(c='default', f='index')}}">Home</a> &gt;  
+		{{=project.getTitle()}} Project
+	</div>
 	<h1>{{=project.getTitle()}}</h1>
 	<span>{{=project.getOpenDocumentCount()}} document(s) in this project.</span>
 	<ul class="document-list">
 		{{for r in project.getDocuments():}}
-        {{if r.isOpen():}}
+		{{if r.isOpen():}}
 		<li>
-            <a {{if r.isOpen():}}
-            href="{{=URL(c='document', f='transcribe', args=[r.getId()])}}"
-            {{pass}}>
+			<a {{if r.isOpen():}}
+			href="{{=URL(c='document', f='transcribe', args=[r.getId()])}}"
+			{{pass}}>
 			<h3>{{=r.getTitle()}}</h3>
 			<img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 			</a>
 		</li>
-        {{pass}}
+		{{pass}}
 		{{pass}}
 	</ul>
 </div>
