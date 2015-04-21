@@ -55,7 +55,7 @@ def transcribe():
 	doc = documents.Document(request.args[0], db)
 	if not doc.isOpen():
 		session.flash = "This document is unavailable for transcriptions."
-		redirect(request.env.http_referer)
+		redirect(URL('default', 'index'))
 	# Title the page
 	response.title = 'Transcribe: ' + doc.getTitle()
 	if request.env.request_method == 'POST':
