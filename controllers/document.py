@@ -24,7 +24,7 @@ def review():
 					transcriptions.delete(transcription.getId(), db)
 		# Redirect to view
 		session.flash = {'msg': "You've accepted the following transcriptions and the document has been closed.",
-		                 'class': 'success_flash'}
+						 'class': 'success_flash'}
 		redirect(URL(c='document', f='view', args=[doc.getId()]))
 	# If user selects to reject transcriptions, reject them
 	elif request.vars.action == "reject":
@@ -84,6 +84,6 @@ def image():
 
 def browse():
 	# Title page
-    response.title = 'All Documents'
-    # Return all documents to the view
-    return dict(docs=documents.search_results(db, ""))
+	response.title = 'All Documents'
+	# Return all documents to the view
+	return dict(docs=documents.search_results(db, ""))

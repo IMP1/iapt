@@ -16,5 +16,5 @@ def index():
 	term = request.vars.searchterm
 	# Clear search term
 	request.vars.searchterm == None
-    # Return search results as well as the number of results
+	# Return search results as well as the number of results
 	return dict(resultnum=resultnum, results=results, term=term, resulttext=resulttext)

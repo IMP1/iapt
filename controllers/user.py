@@ -1,7 +1,7 @@
 def correct_password(form):
 	# Check whether the user has entered the correct password
-    if not users.correct_password(current_user.getUsername(), form.vars.oldpassword, db):
-        form.errors.oldpassword = "Incorrect password"
+	if not users.correct_password(current_user.getUsername(), form.vars.oldpassword, db):
+		form.errors.oldpassword = "Incorrect password"
 
 def index():
 	# Title the page
@@ -15,7 +15,7 @@ def index():
 		submit_button='Change Username')
 	# Create form to change password
 	pwform = SQLFORM.factory(
-        Field('oldpassword', 'password', 
+		Field('oldpassword', 'password', 
 				length=64, 
 				label="Old Password", 
 				requires=IS_NOT_EMPTY()), # Validity of this password is checked on form process
@@ -89,7 +89,7 @@ def register():
 				label="Confirm Password",
 				requires=IS_EQUAL_TO(request.vars.password, error_message='Passwords do not match.'),
 				required=True),
-		    submit_button='Register'
+			submit_button='Register'
 			)
 		if form.process().accepted:
 			# Register the new user.
