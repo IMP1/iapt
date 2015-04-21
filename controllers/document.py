@@ -53,6 +53,9 @@ def view():
 def transcribe():
 	# Get document
 	doc = documents.Document(request.args[0], db)
+	if not doc.isOpen():
+		session.flash = "This document is unavailable for transcriptions."
+		redirect(request.env.http_referer)
 	# Title the page
 	response.title = 'Transcribe: ' + doc.getTitle()
 	if request.env.request_method == 'POST':
@@ -68,7 +71,7 @@ def transcribe():
 			for section in doc.getProject().getSections():
 				transcriptions.create(section, doc, request.vars['section'+str(section.getId())], db)
 			# Redirect the user to wherever is appropriate.
-			session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'",
+			session.flash = {'msg': "Thank you for transcribing '" + doc.getTitle() + "'. You might be interested in other documents in this project.",
 							 'class': 'success_flash'}
 			redirect(URL(c='project', f='view', args=doc.getProject().getId()))
 	# Return the document and project to the view
