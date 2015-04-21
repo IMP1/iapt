@@ -45,4 +45,3 @@ class Section(object):
 	def getBlurb(self):
 		# Returns the section's blurb/description
 		return self._data.blurb
-		

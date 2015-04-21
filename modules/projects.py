@@ -54,11 +54,11 @@ class Project(object):
 	def getCreator(self):
 		# Returns the user who created the project
 		return self._data.creator
-    
+
 	def getDocumentCount(self):
 		# Returns the number of documents in the project
 		return self._db(self._db.Document.project == self._data.id).count()
-    
+
 	def getOpenDocumentCount(self):
 		count = 0
 		for doc in self.getDocuments():
@@ -76,7 +76,7 @@ class Project(object):
 				self._documents.append(documents.Document(d.id, self._db))
 		# Returns the project's documents
 		return self._documents
-    
+
 	def getSections(self):
 		# Lazy load sections
 		if self._sections == None:

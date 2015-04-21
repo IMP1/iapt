@@ -115,8 +115,7 @@ class Document(object):
 		return self._db((self._db.Transcription.document == self._data.id) 
 						& (self._db.Transcription.section == section.getId()) 
 						& (self._db.Transcription.accepted == True)).select().first()
-    
+
 	def isOpen(self):
 		# Returns whether ot not the document is open for transcriptions
 		return self.getTranscriptionCount() < 3 and not self.isAccepted() and self.getProject().isOpen()
-        

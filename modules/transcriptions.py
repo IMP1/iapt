@@ -7,7 +7,7 @@ def create(section, document, text, db):
 
 	Keyword arguments:
 	section -- Object for corresponding section.
-    document -- Object for corresponding document.
+	document -- Object for corresponding document.
 	text -- Transcription text.
 	db -- Instance of db (DAL) in use.
 
