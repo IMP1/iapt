@@ -4,33 +4,33 @@
 {{end}}
 <div>
 	<div class="breadcrumb">
-        <a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
-        <a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
-        <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
-        {{=document.getTitle()}} Document
-    </div>
-    <h1>Review {{=document.getTitle()}}</h1>
-    {{if document.getTranscriptionCount() == 0:}}
-    <p>
-        There have been no transcriptions for this document. You can go back to the 
-        <a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">project's page</a> or 
-        <a href="{{= URL('project', 'index') }}">view all your projects</a>.
-    </p>
-    {{else:}}
-    <p>
-        Review the transcriptions for this document below.<br>Select your preferred transcriptions and click Accept Transcriptions to finalise them.<br>Alternatively, reject the proposed transcriptions and reopen the document for new transcriptions. 
-    </p>
-    {{pass}}
-    <br/>
+		<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
+		<a href="{{= URL('project', 'index') }}">Your Projects</a> &gt; 
+		<a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">{{=document.getProject().getTitle()}}</a> &gt; 
+		{{=document.getTitle()}} Document
+	</div>
+	<h1>Review {{=document.getTitle()}}</h1>
+	{{if document.getTranscriptionCount() == 0:}}
+	<p>
+		There have been no transcriptions for this document. You can go back to the 
+		<a href="{{=URL(c='project', f='manage', args=[document.getProject().getId()])}}">project's page</a> or 
+		<a href="{{= URL('project', 'index') }}">view all your projects</a>.
+	</p>
+	{{else:}}
+	<p>
+		Review the transcriptions for this document below.<br>Select your preferred transcriptions and click Accept Transcriptions to finalise them.<br>Alternatively, reject the proposed transcriptions and reopen the document for new transcriptions. 
+	</p>
+	{{pass}}
+	<br/>
 	
 	<div class="transcription-image">
-        Click on the image to zoom in/out.
-        <div id="image-container" class="transciption-image">
-            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="{{=document.getAlt()}}">
-        </div>
-    </div>
+		Click on the image to zoom in/out.
+		<div id="image-container" class="transciption-image">
+			<img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="{{=document.getAlt()}}">
+		</div>
+	</div>
 	
-    {{if document.getTranscriptionCount() > 0:}}
+	{{if document.getTranscriptionCount() > 0:}}
 	<div class="rightSide">
 		<form id="transcription-review" action="#" method="POST">
 			{{for section in document.getProject().getSections():}}
@@ -68,17 +68,17 @@
 		</form>
 	</div>
 
-    {{pass}}
+	{{pass}}
 </div>
 {{block script}}
 <script type="text/javascript">
-    function setAction(action) {
-        document.getElementById("action").value = action;
-        if (action === 'reject') {
-            return confirm('are you sure you want to remove all the transcriptions?');
-        }
-        return true;
-    }
+	function setAction(action) {
+		document.getElementById("action").value = action;
+		if (action === 'reject') {
+			return confirm('are you sure you want to remove all the transcriptions?');
+		}
+		return true;
+	}
 </script>
 <script type="text/javascript" src="{{=URL('static', 'js/image_zoom.js')}}"></script>
 {{end}}

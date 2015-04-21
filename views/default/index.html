@@ -1,15 +1,15 @@
 {{ extend 'layout.html' }}
 <div>
-    <h1>Welcome to Transcriber</h1>
-    <div class="page-explanation">
-        <p>
-            Transcriber is a crowdsourcing website where people come together to share knowledge on historical documents. 
-        </p>
-        <p>
-            If you have documents you need transcribing, but don't have the time or the knowledge, register an account and upload the documents to be transcribed.
-            Otherwise, you can search the documents and offer transcriptions to the documents available.
-        </p>
-    </div>
+	<h1>Welcome to Transcriber</h1>
+	<div class="page-explanation">
+		<p>
+			Transcriber is a crowdsourcing website where people come together to share knowledge on historical documents. 
+		</p>
+		<p>
+			If you have documents you need transcribing, but don't have the time or the knowledge, register an account and upload the documents to be transcribed.
+			Otherwise, you can search the documents and offer transcriptions to the documents available.
+		</p>
+	</div>
 	<h2>Recent Documents:</h2>
 	<ul class="document-list">
 	{{for r in recents: }}
@@ -28,5 +28,5 @@
 		</li>
 	{{pass}}
 	</ul>
-    <a href="{{=URL(c='document', f='browse')}}"><h4 class="clarification">View All Documents</h4></a>
+	<a href="{{=URL(c='document', f='browse')}}"><h4 class="clarification">View All Documents</h4></a>
 </div>

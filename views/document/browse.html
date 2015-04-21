@@ -3,9 +3,9 @@
 	<div class="breadcrumb"> <a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
 		All Documents</div>
 	<h1>All Documents</h1>
-    <ul class="document-list">
-        
-    {{for r in docs: }}
+	<ul class="document-list">
+
+	{{for r in docs: }}
 		{{if current_user == None:}}
 			{{method = 'transcribe'}}
 		{{elif r.getProject().getCreator() == current_user.getId():}}
@@ -15,10 +15,10 @@
 		{{pass}}
 		<li>
 			<a href="{{=URL(c='document', f=method, args=[r.getId()])}}">
-                <h3>{{=r.getTitle()}}</h3>
-                <img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
+				<h3>{{=r.getTitle()}}</h3>
+				<img alt="{{=r.getAlt()}}" src="{{=URL(c='document', f='image', args=[r.getImage()])}}">
 			</a>
 		</li>
-    {{pass}}
-    </ul>
+	{{pass}}
+	</ul>
 </div>

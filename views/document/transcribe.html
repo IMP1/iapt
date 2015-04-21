@@ -3,31 +3,31 @@
 <link rel="stylesheet" type="text/css" href="{{=URL('static', 'css/document.css')}}" />
 {{end}}
 <div>
-    <div class="breadcrumb">
-    	<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
-    	<a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
+	<div class="breadcrumb">
+		<a href="{{=URL(c='default', f='index')}}">Home</a> &gt; 
+		<a href="{{=URL(c='project', f='view', args=[project.getId()])}}">{{=project.getTitle()}}</a> &gt; {{=document.getTitle()}}</div>
 	<h1>Transcribe {{=document.getTitle()}}</h1>
-    <div class="transcription-image">
-        Click on the image to zoom in/out.
-        <div id="image-container" class="transciption-image">
-            <img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="{{=document.getAlt()}}">
-        </div>
-    </div>
+	<div class="transcription-image">
+		Click on the image to zoom in/out.
+		<div id="image-container" class="transciption-image">
+			<img id="full-image" src="{{=URL(c='document', f='image', args=[document.getImage()])}}" alt="{{=document.getAlt()}}">
+		</div>
+	</div>
 	<div class="rightSide">
-        <div class="instructions">Transcribe one or more sections below. <br/> (Note: not all sections may apply to this document.)</div>
-        <form method="post" class="transcription-form">
-            <ul class="transcription-sections">
-                {{for section in document.getProject().getSections():}}
-                <li>
-                <h3>{{=section.getTitle()}}</h3>
-                <p>{{=section.getBlurb()}}</p>
-                <textarea name="section{{=section.getId()}}" 
-                placeholder="Enter transcription"></textarea>
-                </li>
-                {{pass}}
-            </ul>
-            <input type="submit" value="Submit this transcription">
-        </form>
+		<div class="instructions">Transcribe one or more sections below. <br/> (Note: not all sections may apply to this document.)</div>
+		<form method="post" class="transcription-form">
+			<ul class="transcription-sections">
+				{{for section in document.getProject().getSections():}}
+				<li>
+				<h3>{{=section.getTitle()}}</h3>
+				<p>{{=section.getBlurb()}}</p>
+				<textarea name="section{{=section.getId()}}" 
+				placeholder="Enter transcription"></textarea>
+				</li>
+				{{pass}}
+			</ul>
+			<input type="submit" value="Submit this transcription">
+		</form>
 	</div>
 </div>
 {{block script}}
